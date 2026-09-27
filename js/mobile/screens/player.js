@@ -160,11 +160,21 @@ export function openPlayer({ url, stream = null, context = {}, resumeMs = 0 }) {
 export function closePlayer() {
   if (!session || !host) return;
   session = null;
+  // Stop decoding and get the player off screen first; the full teardown (source reset,
+  // progress flush) can take a moment on phones, so it runs after the next paint.
   try {
-    PlayerController.stop?.();
-  } catch (error) {
-    console.warn("[fp-mobile] stop failed", error);
+    video.pause();
+  } catch {
+    // media element already torn down
   }
   host.hidden = true;
   document.body.style.overflow = "";
+  setTimeout(() => {
+    if (session) return; // a new video started in the meantime
+    try {
+      PlayerController.stop?.();
+    } catch (error) {
+      console.warn("[fp-mobile] stop failed", error);
+    }
+  }, 60);
 }

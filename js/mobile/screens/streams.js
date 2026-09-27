@@ -15,6 +15,11 @@ export function streamsHref({ type, id, videoId, season = null, episode = null, 
   return `#/streams/${encodeURIComponent(type || "movie")}/${encodeURIComponent(id)}${qs ? `?${qs}` : ""}`;
 }
 
+// Sources found in this session, so returning from the player (or re-opening a title soon after)
+// shows the list at once instead of searching every addon again.
+const CACHE_MS = 10 * 60 * 1000;
+const recent = new Map();
+
 // Formats browsers can't play (no sound, or software decoding): Dolby/DTS audio, HEVC, Dolby Vision.
 const NEEDS_APP = /(?:^|[^a-z0-9])(DD\+|DDP|E-?AC-?3|DTS|TrueHD|Atmos|HEVC|x265|H\.?265|DV|Dolby Vision|REMUX)(?![a-z])/i;
 const needsPlayerApp = (s) => Boolean(s?.behaviorHints?.notWebReady) || NEEDS_APP.test(`${s?.name || ""} ${s?.title || ""} ${s?.description || ""}`);
@@ -148,6 +153,14 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
     else if (!openInPlayer(pick, stream.url)) toast(`Couldn't open ${playerLabel(pick)}`);
   }
 
+  const cacheKey = `${type}|${videoId}`;
+  const cached = recent.get(cacheKey);
+  if (cached && Date.now() - cached.at < CACHE_MS && cached.streams.length) {
+    streams = cached.streams;
+    draw();
+    return;
+  }
+
   try {
     const result = await streamRepository.getStreamsFromAllAddons(type, videoId, {
       itemId: id,
@@ -171,6 +184,7 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
     if (disposed) return;
     console.warn("[fp-mobile] streams failed", error);
   }
+  if (streams.length) recent.set(cacheKey, { at: Date.now(), streams });
   if (!streams.length) {
     const names = [...asked.keys()].filter(Boolean);
     const detail = names.length

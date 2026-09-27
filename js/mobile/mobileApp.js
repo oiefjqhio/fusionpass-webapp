@@ -198,6 +198,12 @@ export async function bootstrapMobileApp() {
   warmStreamingLibs({ delayMs: 2500 });
 
   window.addEventListener("hashchange", () => void render());
+  try {
+    // Test hook for headless checks; off unless localStorage fp.debug is set.
+    if (localStorage.getItem("fp.debug")) window.fpDebug = { openPlayer, go };
+  } catch {
+    // storage blocked
+  }
   AuthManager.subscribe((state) => {
     if (state === AuthState.SIGNED_OUT) {
       signedIn = false;

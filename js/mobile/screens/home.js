@@ -81,12 +81,19 @@ export async function renderHome(screen, route, { onDispose }) {
   // Right after sign-in the local addon list is empty or a fallback; redraw on the first
   // completed pull, and again whenever a later pull changes what home shows.
   let firstPull = true;
+  // If sync is slow or fails, show whatever is installed after a few seconds rather than nothing.
+  let fallbackTimedOut = false;
+  const fallbackTimer = setTimeout(() => {
+    fallbackTimedOut = true;
+    if (!disposed && $(screen, "[data-rows] .fp-row .fp-skel")) void fill();
+  }, 8000);
   const unsubscribe = StartupSyncService.subscribeToPullCompleted?.((event) => {
     if (disposed) return;
     if (firstPull || event?.changedHomeInputs) void Promise.all([fillContinue(), fill()]);
     firstPull = false;
   });
   onDispose(() => {
+    clearTimeout(fallbackTimer);
     disposed = true;
     if (typeof unsubscribe === "function") unsubscribe();
   });
@@ -116,6 +123,11 @@ export async function renderHome(screen, route, { onDispose }) {
   }
 
   async function fill() {
+    const addons = await addonRepository.getInstalledAddons();
+    // Before the first sync after sign-in, Nuvio falls back to its built-in Cinemeta list. Keep
+    // the placeholders up until the account's own addons arrive (the pull listener refills).
+    const onlyFallback = addons.length > 0 && addons.every((a) => /cinemeta/i.test(a.baseUrl || ""));
+    if (onlyFallback && !StartupSyncService.lastPullCompleted && !fallbackTimedOut) return;
     const entries = await homeEntries();
     if (disposed) return;
     const rowsHost = $(screen, "[data-rows]");
