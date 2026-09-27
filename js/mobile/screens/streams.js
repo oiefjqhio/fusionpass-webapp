@@ -68,6 +68,13 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
 
   let streams = [];
   let filter = "";
+  const groups = new Map(); // addonName -> group, as each addon answers
+  const asked = new Map(); // addonName -> "searching" | count
+  const takeGroups = (list) => {
+    (list || []).forEach((g) => g && groups.set(g.addonName || g.addonId || "", g));
+    streams = flatten([...groups.values()]);
+    groups.forEach((g, name) => asked.set(name, flatten([g]).length));
+  };
   let disposed = false;
   const abort = new AbortController();
   onDispose(() => {
@@ -143,20 +150,29 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
       season,
       episode,
       signal: abort.signal,
+      onAddon: (addon) => {
+        if (disposed || !addon) return;
+        if (!asked.has(addon.displayName)) asked.set(addon.displayName, "searching");
+      },
       onChunk: (chunk) => {
         if (disposed || chunk?.status !== "success") return;
-        streams = flatten(chunk.data);
+        takeGroups(chunk.data);
         draw();
       }
     });
     if (disposed) return;
-    if (result?.status === "success") streams = flatten(result.data);
+    if (result?.status === "success") takeGroups(result.data);
+    else if (Array.isArray(result)) takeGroups(result);
   } catch (error) {
     if (disposed) return;
     console.warn("[fp-mobile] streams failed", error);
   }
   if (!streams.length) {
-    $(screen, "[data-list]").innerHTML = `<div class="fp-empty"><b>No sources found</b>Nothing is available for this title right now. Try again later.</div>`;
+    const names = [...asked.keys()].filter(Boolean);
+    const detail = names.length
+      ? `Asked ${names.map((n) => esc(n)).join(", ")}: no playable sources came back for this title.`
+      : "None of your addons offer sources for this kind of title.";
+    $(screen, "[data-list]").innerHTML = `<div class="fp-empty"><b>No sources found</b>${detail}</div>`;
   } else {
     draw();
   }
