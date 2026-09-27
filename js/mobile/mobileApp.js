@@ -21,7 +21,14 @@ import { openPlayer, closePlayer, mountPlayer } from "./screens/player.js";
 
 const MODE_KEY = "fp.ui";
 
-const isTouchDevice = () => Boolean(window.matchMedia?.("(pointer: coarse)").matches);
+// Phones and tablets: touch is the main input and nothing hovers. Touchscreen laptops keep the
+// big-screen layout because their main pointer is a trackpad or mouse.
+const isTouchDevice = () => Boolean(window.matchMedia?.("(pointer: coarse) and (hover: none)").matches);
+
+// TV browsers and set-top boxes: Samsung, LG, Fire TV (AFT*), Android/Google TV, Sony, Hisense,
+// Philips, Chromecast, HbbTV and similar. They get the big-screen (remote-friendly) layout.
+const TV_UA = /\b(tizen|web0s|webos|netcast|smart-?tv|smarttv|hbbtv|aft[a-z]{1,4}|android tv|googletv|google tv|bravia|crkey|vidaa|titanos|philipstv|mibox|shield android tv|aquos|roku|appletv|tvos)\b/i;
+const isTv = () => window.__NUVIO_PLATFORM__ === "tizen" || TV_UA.test(navigator.userAgent || "");
 
 export function setLayout(mode) {
   try {
@@ -62,14 +69,14 @@ export function isMobileMode() {
     if (q === "tv" || q === "mobile") localStorage.setItem(MODE_KEY, q);
     const saved = localStorage.getItem(MODE_KEY) || q;
     if (saved === "tv") {
-      if (isTouchDevice()) offerPhoneLayout();
+      if (isTouchDevice() && !isTv()) offerPhoneLayout();
       return false;
     }
     if (saved === "mobile") return true;
   } catch {
     // storage blocked: fall through to detection
   }
-  if (window.__NUVIO_PLATFORM__ === "tizen" || /tizen|web0s|webos|smart-?tv/i.test(navigator.userAgent)) return false;
+  if (isTv()) return false;
   return isTouchDevice();
 }
 
