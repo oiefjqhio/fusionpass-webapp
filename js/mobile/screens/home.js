@@ -78,8 +78,13 @@ export async function renderHome(screen, route, { onDispose }) {
     <div data-rows>${Array.from({ length: 3 }, () => `<div class="fp-row"><div class="fp-row-head"><span class="fp-row-title">&nbsp;</span></div><div class="fp-rail">${railSkeleton()}</div></div>`).join("")}</div>`;
 
   let disposed = false;
+  // Right after sign-in the local addon list is empty or a fallback; redraw on the first
+  // completed pull, and again whenever a later pull changes what home shows.
+  let firstPull = true;
   const unsubscribe = StartupSyncService.subscribeToPullCompleted?.((event) => {
-    if (!disposed && event?.changedHomeInputs) void fill();
+    if (disposed) return;
+    if (firstPull || event?.changedHomeInputs) void Promise.all([fillContinue(), fill()]);
+    firstPull = false;
   });
   onDispose(() => {
     disposed = true;
