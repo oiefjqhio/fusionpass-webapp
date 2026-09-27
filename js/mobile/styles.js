@@ -158,6 +158,8 @@ button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: poi
 .fp-player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
 .fp-player .ui { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0) 25%, rgba(0,0,0,0) 70%, rgba(0,0,0,.7)); transition: opacity .25s; }
 .fp-player.is-idle .ui { opacity: 0; pointer-events: none; }
+/* No live blur over playing video: Firefox on Android re-blurs every frame. */
+.fp-player .fp-round { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(0,0,0,.55); }
 .fp-player .top { display: flex; align-items: center; gap: 10px; padding: calc(var(--safe-t) + 10px) 14px 0; }
 .fp-player .top .t { flex: 1; min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .fp-player .mid { display: flex; justify-content: center; align-items: center; gap: 44px; }
