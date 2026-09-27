@@ -165,9 +165,11 @@ async function enterSignedIn() {
   const activeId = ProfileManager.getActiveProfileId();
   const profile = profiles.find((p) => String(p.id) === String(activeId)) || profiles[0] || null;
   if (profile) await ProfileManager.setActiveProfile(profile.id);
+  // start() resets profile-scoped sync, so it must be enabled through start itself;
+  // without it addons, library and progress are never pulled.
+  await StartupSyncService.start({ profileScopedSyncEnabled: true, runInitialPull: false });
   StartupSyncService.enableProfileScopedSync();
-  StartupSyncService.start({ runInitialPull: false });
-  void StartupSyncService.requestSyncNow({ notifyPullCompleted: true }).catch((error) => {
+  void StartupSyncService.requestSyncNow({ force: true, includeProfileSettings: true, notifyPullCompleted: true }).catch((error) => {
     console.warn("[fp-mobile] initial sync failed", error);
   });
   signedIn = true;
