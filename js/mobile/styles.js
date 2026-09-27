@@ -51,7 +51,7 @@ button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: poi
 .fp-hero-actions { display: flex; gap: 10px; width: 100%; max-width: 360px; }
 .fp-hero-actions .fp-btn { flex: 1; }
 .fp-dots { display: flex; gap: 6px; justify-content: center; margin-top: 4px; }
-.fp-dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.3); transition: width .2s; }
+.fp-dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.3); transition: background-color .2s; }
 .fp-dots i.is-on { width: 18px; background: #fff; }
 
 /* Rows */
