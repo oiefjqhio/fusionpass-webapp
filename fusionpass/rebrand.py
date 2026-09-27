@@ -38,6 +38,9 @@ for f in glob.glob(f'{ROOT}/assets/brand/app_logo_wordmark*.png'):
     copy(f'{OUT}/app_logo_wordmark.png', f)
 copy(f'{OUT}/app_logo_mark.png', f'{ROOT}/assets/brand/app_logo_mark.png')
 copy(f'{OUT}/app_icon.png', f'{ROOT}/assets/brand/app_icon.png')
+copy(f'{OUT}/app_icon_512.png', f'{ROOT}/assets/brand/app_icon_512.png')
+copy(f'{OUT}/app_icon_maskable_512.png', f'{ROOT}/assets/brand/app_icon_maskable_512.png')
+copy(f'{OUT}/app_icon_maskable_196.png', f'{ROOT}/assets/brand/app_icon_maskable_196.png')
 
 # 2. Visible text: Nuvio -> Fusion Pass in every language (text between tags only).
 for path in glob.glob(f'{ROOT}/res/values*/strings.xml'):
@@ -46,7 +49,17 @@ for path in glob.glob(f'{ROOT}/res/values*/strings.xml'):
     if n != s:
         open(path, 'w', encoding='utf8').write(n)
         changed.append(os.path.relpath(path, ROOT))
-edit(f'{ROOT}/index.html', [('<title>Nuvio TV</title>', '<title>Fusion Pass</title>')])
+edit(f'{ROOT}/index.html', [
+    ('<title>Nuvio TV</title>', '<title>Fusion Pass</title>'),
+    ('    <meta name="apple-mobile-web-app-capable" content="yes" />\n',
+     '    <meta name="apple-mobile-web-app-capable" content="yes" />\n'
+     '    <meta name="apple-mobile-web-app-title" content="Fusion Pass" />\n'
+     '    <meta name="apple-mobile-web-app-status-bar-style" content="black" />\n'
+     '    <meta name="theme-color" content="#0D0D0D" />\n'
+     '    <link rel="manifest" href="manifest.webmanifest" />\n'
+     '    <link rel="apple-touch-icon" href="assets/brand/app_icon_maskable_196.png" />\n'
+     '    <link rel="icon" type="image/png" href="assets/brand/app_icon.png" />\n'),
+])
 
 # 3. Our backend is the built-in one, with email + password sign-in (same as our TV app).
 edit(f'{J}/data/local/serverConfigurationStore.js', [
