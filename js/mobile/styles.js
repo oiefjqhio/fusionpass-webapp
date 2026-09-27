@@ -171,6 +171,8 @@ button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: poi
 .fp-player .spin { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; margin: -20px; border-radius: 50%; border: 3px solid rgba(255,255,255,.2); border-top-color: #fff; animation: fp-spin 0.8s linear infinite; display: none; }
 .fp-player.is-loading .spin { display: block; }
 @keyframes fp-spin { to { transform: rotate(360deg); } }
+.fp-player .fp-skip { position: absolute; right: 16px; bottom: calc(var(--safe-b) + 88px); z-index: 5; }
+.fp-player video::cue { background: rgba(0,0,0,.6); font-size: 1.05em; }
 .fp-player .err { position: absolute; left: 24px; right: 24px; top: 50%; transform: translateY(-50%); text-align: center; display: none; }
 .fp-player.is-error .err { display: block; }
 .fp-player .err p { color: var(--fg-2); }

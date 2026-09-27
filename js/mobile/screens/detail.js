@@ -73,6 +73,10 @@ export async function renderDetail(screen, route, { back }) {
   const seasons = seasonsOf(meta);
   const play = pickPlay(meta, realType, id, progress, seasons);
   const cast = castOf(meta);
+  const trailerId =
+    (meta.trailerStreams || []).find((t) => t?.ytId)?.ytId ||
+    (meta.trailers || []).find((t) => t?.source && (!t.type || /trailer/i.test(t.type)))?.source ||
+    null;
   const facts = [
     meta.releaseInfo,
     meta.runtime,
@@ -93,6 +97,7 @@ export async function renderDetail(screen, route, { back }) {
       <div class="fp-actions">
         <a class="fp-btn is-primary" href="${play.href}">${icon("play")}${esc(play.label)}</a>
         <button class="fp-btn is-ghost is-icon" data-save aria-label="${saved ? "Remove from library" : "Add to library"}">${icon(saved ? "check" : "plus")}</button>
+        ${trailerId ? `<a class="fp-btn is-ghost" href="https://www.youtube.com/watch?v=${esc(trailerId)}" target="_blank" rel="noopener">Trailer</a>` : ""}
       </div>
     </div>
     <div class="fp-detail-body">

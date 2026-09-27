@@ -4,6 +4,7 @@ import { watchProgressRepository } from "../../data/repository/watchProgressRepo
 import { HomeCatalogStore } from "../../data/local/homeCatalogStore.js";
 import { buildOrderedHomeCatalogItems, catalogSkipStep, catalogSupportsExtra } from "../../core/addons/homeCatalogs.js";
 import { StartupSyncService } from "../../core/profile/startupSyncService.js";
+import { metaRepository } from "../../data/repository/metaRepository.js";
 import { $, $$, el, esc, icon, lazyImages } from "../dom.js";
 import { continueCard, posterCard, progressFraction, railSkeleton, titleHref } from "../cards.js";
 import { streamsHref } from "./streams.js";
@@ -36,14 +37,48 @@ async function loadRow(entry) {
   return res?.status === "success" ? res.data?.items || [] : [];
 }
 
+/** The released episode after (season, episode) in a series' video list, or null. */
+function nextEpisode(meta, season, episode) {
+  const now = Date.now();
+  const list = (meta?.videos || [])
+    .filter((v) => v?.season != null && Number(v.season) > 0)
+    .sort((a, b) => Number(a.season) - Number(b.season) || Number(a.episode ?? a.number) - Number(b.episode ?? b.number));
+  const i = list.findIndex((v) => Number(v.season) === Number(season) && Number(v.episode ?? v.number) === Number(episode));
+  const next = i >= 0 ? list[i + 1] : null;
+  if (!next) return null;
+  const released = next.released ? Date.parse(next.released) : 0;
+  return released && released > now ? null : next;
+}
+
 async function continueWatching() {
   const all = await watchProgressRepository.getAllForContinueWatching().catch(() => []);
+  const byRecent = all.filter((p) => p?.contentId).sort((a, b) => Number(b.updatedAt || 0) - Number(a.updatedAt || 0));
+  // Latest entry per title: in progress -> resume card; a finished episode -> "Next up" card for the next one.
+  const latest = [];
   const seen = new Set();
-  return all
-    .filter((p) => p?.contentId && Number(p.positionMs) > 0 && progressFraction(p) < 0.92)
-    .sort((a, b) => Number(b.updatedAt || 0) - Number(a.updatedAt || 0))
-    .filter((p) => (seen.has(p.contentId) ? false : seen.add(p.contentId)))
-    .slice(0, 20);
+  for (const p of byRecent) if (!seen.has(p.contentId)) seen.add(p.contentId) && latest.push(p);
+  const out = await Promise.all(
+    latest.slice(0, 24).map(async (p) => {
+      const frac = progressFraction(p);
+      if (Number(p.positionMs) > 0 && frac < 0.92) return p;
+      if (p.season == null || p.episode == null) return null;
+      const res = await metaRepository.getMetaFromAllAddons(p.contentType || "series", p.contentId).catch(() => null);
+      const meta = res?.status === "success" ? res.data : null;
+      const next = nextEpisode(meta, p.season, p.episode);
+      if (!next) return null;
+      return {
+        ...p,
+        upNext: true,
+        videoId: next.id,
+        season: Number(next.season),
+        episode: Number(next.episode ?? next.number),
+        episodeTitle: next.title || next.name || null,
+        background: next.thumbnail || p.background || meta?.background || null,
+        positionMs: 0,
+      };
+    })
+  );
+  return out.filter(Boolean).slice(0, 20);
 }
 
 function heroMarkup(items) {

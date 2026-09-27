@@ -26,13 +26,15 @@ export function episodeLabel(p) {
 
 export function continueCard(p) {
   const img = p.background || p.poster;
-  const sub = episodeLabel(p) || (p.durationMs ? `${Math.round((1 - progressFraction(p)) * p.durationMs / 60000)}m left` : "");
+  const sub = p.upNext
+    ? `Next · ${episodeLabel(p)}`
+    : episodeLabel(p) || (p.durationMs ? `${Math.round((1 - progressFraction(p)) * p.durationMs / 60000)}m left` : "");
   return `
     <a class="fp-wide" href="#" data-resume="${esc(p.contentId)}">
       <div class="img fp-skel">
         ${img ? `<img data-src="${esc(img)}" alt="">` : ""}
         <div class="label">${esc(p.title || "")}${sub ? `<small>${esc(sub)}</small>` : ""}</div>
-        <div class="bar"><i style="width:${Math.round(progressFraction(p) * 100)}%"></i></div>
+        ${p.upNext ? "" : `<div class="bar"><i style="width:${Math.round(progressFraction(p) * 100)}%"></i></div>`}
       </div>
     </a>`;
 }
