@@ -15,6 +15,10 @@ export function streamsHref({ type, id, videoId, season = null, episode = null, 
   return `#/streams/${encodeURIComponent(type || "movie")}/${encodeURIComponent(id)}${qs ? `?${qs}` : ""}`;
 }
 
+// Formats browsers can't play (no sound, or software decoding): Dolby/DTS audio, HEVC, Dolby Vision.
+const NEEDS_APP = /(?:^|[^a-z0-9])(DD\+|DDP|E-?AC-?3|DTS|TrueHD|Atmos|HEVC|x265|H\.?265|DV|Dolby Vision|REMUX)(?![a-z])/i;
+const needsPlayerApp = (s) => Boolean(s?.behaviorHints?.notWebReady) || NEEDS_APP.test(`${s?.name || ""} ${s?.title || ""} ${s?.description || ""}`);
+
 // Fusion Pass plays direct HTTP (debrid, Usenet, HTTP) only; torrent/P2P entries never show.
 const playable = (s) => Boolean(s?.url && /^https?:\/\//i.test(s.url)) || Boolean(s?.externalUrl);
 
@@ -99,7 +103,7 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
         <button class="fp-stream" data-i="${i}">
           <div class="n">${esc(s.name || s.addonName)}</div>
           ${s.title || s.description ? `<div class="d">${esc(s.description || s.title)}</div>` : ""}
-          <div class="a">${esc(s.addonName)}${s.behaviorHints?.notWebReady ? " · best in an external player" : ""}</div>
+          <div class="a">${esc(s.addonName)}${needsPlayerApp(s) ? " · needs a player app" : ""}</div>
         </button>`
       )
       .join("");
@@ -129,14 +133,14 @@ export async function renderStreams(screen, route, { back, openPlayer, onDispose
     const preferred = getPreferredPlayer();
     if (preferred === "browser") return openPlayer({ url: stream.url, stream, context, resumeMs });
     if (preferred && players.some((p) => p.id === preferred)) return openInPlayer(preferred, stream.url);
+    // Phones can't decode Dolby/DTS audio or heavy HEVC in the browser: offer player apps first.
+    const appFirst = needsPlayerApp(stream) && players.length > 0;
+    const here = { id: "browser", label: "Play here", icon: "play", hint: appFirst ? "may have no sound" : "progress syncs" };
+    const apps = players.map((p) => ({ id: p.id, label: p.label, icon: "external" }));
     const pick = await actionSheet({
       title: "Play with",
-      subtitle: stream.name || "",
-      actions: [
-        { id: "browser", label: "Play here", icon: "play", hint: "progress syncs" },
-        ...players.map((p) => ({ id: p.id, label: p.label, icon: "external" })),
-        { id: "copy", label: "Copy link", icon: "copy" }
-      ]
+      subtitle: appFirst ? `${stream.name || ""}\nThis file's audio or video format needs a player app on phones.` : stream.name || "",
+      actions: [...(appFirst ? [...apps, here] : [here, ...apps]), { id: "copy", label: "Copy link", icon: "copy" }]
     });
     if (!pick) return;
     if (pick === "browser") openPlayer({ url: stream.url, stream, context, resumeMs });
