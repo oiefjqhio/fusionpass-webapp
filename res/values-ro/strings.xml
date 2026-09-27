@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nuvio</string>
+    <string name="app_name">Fusion Pass</string>
     <string name="type_movie">Film</string>
     <string name="type_series">Serial</string>
     <string name="home_no_addons">Nu sunt instalate extensii. Adaugă una pentru a începe.</string>
@@ -414,7 +414,7 @@
     <string name="trakt_stat_watched_hours">Ore vizionate</string>
     <string name="trakt_disconnect">Deconectare</string>
     <string name="trakt_disconnect_title">Deconectare Trakt?</string>
-    <string name="trakt_disconnect_subtitle">Aceasta va deconecta contul tău Trakt de Nuvio.</string>
+    <string name="trakt_disconnect_subtitle">Aceasta va deconecta contul tău Trakt de Fusion Pass.</string>
     <string name="trakt_login">Autentificare</string>
     <string name="trakt_retry">Reîncercare</string>
     <string name="trakt_back">Înapoi</string>
@@ -694,11 +694,11 @@
     <string name="catalog_see_all_from">din %1$s</string>
     <string name="catalog_see_all_empty_title">Niciun element disponibil</string>
     <string name="catalog_see_all_empty_subtitle">Încearcă un catalog diferit sau revino mai târziu</string>
-    <string name="layout_selection_welcome">Bine ai venit la Nuvio</string>
+    <string name="layout_selection_welcome">Bine ai venit la Fusion Pass</string>
     <string name="layout_selection_subtitle">Alege aspectul ecranului de pornire</string>
     <string name="layout_selection_continue">Continuă</string>
     <string name="update_title">Actualizare aplicație</string>
-    <string name="update_installer_required">Folosește Nuvio TV Installer pentru a actualiza aplicația pe televizor.</string>
+    <string name="update_installer_required">Folosește Fusion Pass Installer pentru a actualiza aplicația pe televizor.</string>
     <string name="update_release_notes">Noutăți</string>
     <string name="update_release_notes_unavailable">Descrierea versiunii nu este disponibilă.</string>
     <string name="update_downloading">Se descarcă actualizarea</string>
@@ -773,7 +773,7 @@
     <string name="autoplay_timeout_instant">Instantaneu</string>
     <string name="autoplay_timeout_unlimited">Nelimitat</string>
     <string name="unsupported_device_title">Televizor neacceptat</string>
-    <string name="unsupported_device_message">Acest televizor nu îndeplinește cerințele minime pentru această versiune Nuvio TV.</string>
+    <string name="unsupported_device_message">Acest televizor nu îndeplinește cerințele minime pentru această versiune Fusion Pass.</string>
     <string name="unsupported_device_current_platform">Platformă actuală</string>
     <string name="unsupported_device_current_firmware">Firmware actual</string>
     <string name="unsupported_device_required_platform">Platformă necesară</string>
@@ -803,7 +803,7 @@
     <string name="debrid_device_auth_expired">Acest cod a expirat. Încearcă din nou.</string>
     <string name="debrid_device_auth_failed">Autentificarea nu a putut fi pornită.</string>
     <string name="debrid_device_auth_connected">%1$s este conectat pe acest dispozitiv.</string>
-    <string name="debrid_device_auth_instructions">Scanează codul QR și introdu acest cod pentru a autoriza Nuvio.</string>
+    <string name="debrid_device_auth_instructions">Scanează codul QR și introdu acest cod pentru a autoriza Fusion Pass.</string>
     <string name="debrid_device_auth_missing_configuration">Această metodă de autentificare nu este configurată în această versiune.</string>
     <string name="debrid_disconnect">Deconectează</string>
     <string name="debrid_connected">Conectat</string>
@@ -1036,7 +1036,7 @@
     <string name="plugin_tv_model_unsupported">Pluginurile nu sunt disponibile pe acest model de televizor. Add-on-urile, redarea, biblioteca și sincronizarea rămân disponibile.</string>
     <string name="plugin_dex_unsupported">Pluginurile CloudStream/DEX nu sunt acceptate pe Web TV.</string>
     <string name="plugin_unknown_preserved">Tipul depozitului este necunoscut; acesta este păstrat și dezactivat până când poate fi identificat în siguranță.</string>
-    <string name="plugin_type_nuvio_js">Nuvio JS · executabil</string>
+    <string name="plugin_type_nuvio_js">Fusion Pass JS · executabil</string>
     <string name="plugin_type_external_dex">CloudStream DEX · doar metadate</string>
     <string name="plugin_type_legacy">Șablon URL vechi · doar păstrat</string>
     <string name="plugin_type_unknown">Tip necunoscut · dezactivat</string>
@@ -1045,10 +1045,10 @@
     <string name="plugin_runtime_checking">Se verifică runtime-ul pluginurilor TV…</string>
     <string name="plugin_runtime_unsupported">Execuția nu este disponibilă pe acest runtime TV</string>
     <string name="plugin_runtime_limited">Compatibilitatea pluginurilor este limitată pe acest televizor. Unii furnizori pot fi mai lenți sau indisponibili.</string>
-    <string name="plugin_runtime_tv_only">Se pot executa doar depozitele Nuvio JS; sursele DEX externe și vechi rămân doar metadate.</string>
+    <string name="plugin_runtime_tv_only">Se pot executa doar depozitele Fusion Pass JS; sursele DEX externe și vechi rămân doar metadate.</string>
     <string name="plugin_runtime_heading">Runtime pluginuri TV</string>
     <string name="plugin_settings_heading">Setări pluginuri</string>
-    <string name="plugin_settings_subtitle">Comenzile globale se aplică doar furnizorilor Nuvio JS executabili.</string>
+    <string name="plugin_settings_subtitle">Comenzile globale se aplică doar furnizorilor Fusion Pass JS executabili.</string>
     <string name="plugin_repository_add_subtitle">Adăugați un URL public de manifest sau un URL .cs3. Fișierele DEX nu sunt descărcate și nu sunt executate aici.</string>
     <string name="plugin_external_lists_count">S-au sincronizat %1$d liste externe de pluginuri; binarele nu sunt executate.</string>
     <string name="plugin_no_provider_code">Nu există furnizori executabili disponibili în acest depozit.</string>
@@ -1084,14 +1084,14 @@
     <string name="plugin_test_found_streams">Au fost găsite %1$d fluxuri</string>
     <string name="plugin_default_supported_types">movie/tv</string>
     <string name="settings.plugins.addRepositoryPrompt">Adaugă URL depozit</string>
-    <string name="settings.plugins.openSubtitle">Gestionează furnizorii Nuvio JS executabili și metadatele externe păstrate</string>
+    <string name="settings.plugins.openSubtitle">Gestionează furnizorii Fusion Pass JS executabili și metadatele externe păstrate</string>
     <string name="settings.plugins.refreshRepository">Reîmprospătează depozitul</string>
     <string name="settings.plugins.removeRepository">Elimină depozitul</string>
     <string name="home.continueStatusWatchedPercent">Vizionat {{percent}}%</string>
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -1152,6 +1152,6 @@
     <string name="auth_qr_terms_prefix">By signing up / logging in, I agree to the</string>
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
-    <string name="unsupported_device_warning">Puteți încerca totuși să porniți Nuvio TV, dar este posibil ca aplicația să nu funcționeze corect pe acest televizor. Această configurație nu este acceptată oficial.</string>
+    <string name="unsupported_device_warning">Puteți încerca totuși să porniți Fusion Pass, dar este posibil ca aplicația să nu funcționeze corect pe acest televizor. Această configurație nu este acceptată oficial.</string>
     <string name="unsupported_device_try_anyway">Încearcă oricum</string>
 </resources>

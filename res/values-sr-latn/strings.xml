@@ -22,7 +22,7 @@
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Opcije servera</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Poveži se na sopstveni server</string>
 <string name="server_options_change_custom">Poveži se na drugi server</string>
 <string name="server_options_use_official">Koristi zvanični server</string>
@@ -84,11 +84,11 @@
     <string name="auth_qr_terms_link">Uslove korišćenja</string>
     <string name="auth_qr_manual_instruction">Ili idite na %1$s i unesite</string>
     <string name="unsupported_device_title">TV nije podržan</string>
-    <string name="unsupported_device_message">Ovaj TV ne ispunjava minimalne zahteve za ovu verziju aplikacije Nuvio TV.</string>
+    <string name="unsupported_device_message">Ovaj TV ne ispunjava minimalne zahteve za ovu verziju aplikacije Fusion Pass.</string>
     <string name="unsupported_device_current_platform">Trenutna platforma</string>
     <string name="unsupported_device_current_firmware">Trenutni firmver</string>
     <string name="unsupported_device_required_platform">Potrebna platforma</string>
-    <string name="unsupported_device_warning">Ipak možete pokušati da pokrenete Nuvio TV, ali aplikacija možda neće ispravno raditi na ovom televizoru. Ova konfiguracija nije zvanično podržana.</string>
+    <string name="unsupported_device_warning">Ipak možete pokušati da pokrenete Fusion Pass, ali aplikacija možda neće ispravno raditi na ovom televizoru. Ova konfiguracija nije zvanično podržana.</string>
     <string name="unsupported_device_close">Zatvori</string>
     <string name="unsupported_device_try_anyway">Ipak pokreni</string>
     <string name="unsupported_device_unavailable">Nije dostupno</string>

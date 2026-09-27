@@ -16,6 +16,7 @@ import { ProviderCredentialSyncService } from "./core/profile/providerCredential
 import { ThemeManager } from "./ui/theme/themeManager.js";
 import { renderAppShell } from "./bootstrap/renderAppShell.js";
 import { renderAddonRemotePage } from "./bootstrap/renderAddonRemotePage.js";
+import { isMobileMode, bootstrapMobileApp } from "./mobile/mobileApp.js"; // Fusion Pass
 import { preloadStreamBadgeImages } from "./ui/screens/stream/streamScreen.js";
 import { warmStreamingLibs } from "./runtime/loadStreamingLibs.js";
 import { Platform } from "./platform/index.js";
@@ -651,7 +652,7 @@ if (document.readyState === "loading") {
   document.addEventListener(
     "DOMContentLoaded",
     () => {
-      const bootstrap = isAddonRemoteMode() ? bootstrapAddonRemoteMode : bootstrapApp;
+      const bootstrap = isAddonRemoteMode() ? bootstrapAddonRemoteMode : isMobileMode() ? bootstrapMobileApp : bootstrapApp;
       bootstrap().catch((error) => {
         console.error("App bootstrap failed", error);
         renderFatalError(error);
@@ -660,7 +661,7 @@ if (document.readyState === "loading") {
     { once: true }
   );
 } else {
-  const bootstrap = isAddonRemoteMode() ? bootstrapAddonRemoteMode : bootstrapApp;
+  const bootstrap = isAddonRemoteMode() ? bootstrapAddonRemoteMode : isMobileMode() ? bootstrapMobileApp : bootstrapApp;
   bootstrap().catch((error) => {
     console.error("App bootstrap failed", error);
     renderFatalError(error);

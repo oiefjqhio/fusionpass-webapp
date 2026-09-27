@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Nuvio</string>
+    <string name="app_name">Fusion Pass</string>
     <string name="type_movie">Film</string>
     <string name="type_series">Serie</string>
     <string name="type_unknown">Ukjent</string>
     <string name="home_no_addons">Ingen tillegg installert. Legg til et for å komme i gang.</string>
     <string name="home_no_catalog_addons">Ingen katalogtillegg installert. Installer et katalogtillegg for å se innhold.</string>
-    <string name="auth_notice_nuvio_logged_out">Du har blitt logget ut av Nuvio. Logg inn igjen.</string>
+    <string name="auth_notice_nuvio_logged_out">Du har blitt logget ut av Fusion Pass. Logg inn igjen.</string>
     <string name="auth_notice_trakt_logged_out">Du har blitt logget ut av Trakt. Koble til igjen.</string>
     <string name="error_generic">En feil har oppstått</string>
     <string name="action_retry">Prøv igjen</string>
@@ -234,12 +234,12 @@
     <string name="action_none">Ingen</string>
     <string name="action_close">Lukk</string>
     <string name="supporters_contributors_title">Støttespillere &amp; bidragsytere</string>
-    <string name="supporters_contributors_subtitle">Menneskene som støtter Nuvio og bidragsytere som bygger det på TV og mobil.</string>
+    <string name="supporters_contributors_subtitle">Menneskene som støtter Fusion Pass og bidragsytere som bygger det på TV og mobil.</string>
     <string name="supporters_contributors_supporters_copy">Støttespillere og donorer hjelper til med å holde prosjektet i gang, finansiere infrastruktur og gjøre plass for ambisiøse funksjoner.</string>
-    <string name="supporters_contributors_donate_copy">Nuvio vil forbli gratis og åpen kildekode. Hvis du vil støtte prosjektet, kan du donere for å dekke kostnadene for infrastrukturen bak det.</string>
-    <string name="supporters_contributors_donate_button">Doner til Nuvio</string>
+    <string name="supporters_contributors_donate_copy">Fusion Pass vil forbli gratis og åpen kildekode. Hvis du vil støtte prosjektet, kan du donere for å dekke kostnadene for infrastrukturen bak det.</string>
+    <string name="supporters_contributors_donate_button">Doner til Fusion Pass</string>
     <string name="supporters_contributors_qr_title">Skann for å donere</string>
-    <string name="supporters_contributors_qr_subtitle">Åpne lenken på telefonen din og støtt Nuvio gjennom Ko-fi.</string>
+    <string name="supporters_contributors_qr_subtitle">Åpne lenken på telefonen din og støtt Fusion Pass gjennom Ko-fi.</string>
     <string name="supporters_contributors_qr_hint">Pek kameraet på QR-koden eller bruk knappen nedenfor.</string>
     <string name="supporters_contributors_back_button">Tilbake til detaljer</string>
     <string name="supporters_tab">Støttespillere</string>
@@ -565,13 +565,13 @@
     <string name="trakt_watch_progress_title">Seeframgang</string>
     <string name="trakt_watch_progress_subtitle">Velg hvilken framgangskildes drivkraft gjenoppta og fortsett å se</string>
     <string name="trakt_watch_progress_dialog_title">Seeframgang</string>
-    <string name="trakt_watch_progress_dialog_subtitle">Velg om gjenopptagelse og fortsett å se skal bruke Trakt eller Nuvio Sync mens Trakt-skrobletmeldinger forblir aktive.</string>
+    <string name="trakt_watch_progress_dialog_subtitle">Velg om gjenopptagelse og fortsett å se skal bruke Trakt eller Fusion Pass Sync mens Trakt-skrobletmeldinger forblir aktive.</string>
     <string name="trakt_watch_progress_source_trakt">Trakt</string>
-    <string name="trakt_watch_progress_source_nuvio">Nuvio Sync</string>
+    <string name="trakt_watch_progress_source_nuvio">Fusion Pass Sync</string>
     <string name="trakt_setting_on">På</string>
     <string name="trakt_setting_off">Av</string>
     <string name="trakt_watch_progress_trakt_selected">Seeframgangskilden satt til Trakt</string>
-    <string name="trakt_watch_progress_nuvio_selected">Seeframgangskilden satt til Nuvio Sync</string>
+    <string name="trakt_watch_progress_nuvio_selected">Seeframgangskilden satt til Fusion Pass Sync</string>
     <string name="trakt_continue_watching_window">Fortsett å se vindu</string>
     <string name="trakt_continue_watching_subtitle">Trakt-historikk vurdert for fortsett å se</string>
     <string name="trakt_unaired_next_up">Usendte neste episoder</string>
@@ -593,7 +593,7 @@
     <string name="trakt_stat_watched_hours">Sette timer</string>
     <string name="trakt_disconnect">Koble fra</string>
     <string name="trakt_disconnect_title">Koble fra Trakt?</string>
-    <string name="trakt_disconnect_subtitle">Dette vil koble fra Trakt-kontoen din fra Nuvio.</string>
+    <string name="trakt_disconnect_subtitle">Dette vil koble fra Trakt-kontoen din fra Fusion Pass.</string>
     <string name="trakt_login">Logge inn</string>
     <string name="trakt_retry">Prøv igjen</string>
     <string name="trakt_back">Tilbake</string>
@@ -695,7 +695,7 @@
     <string name="profile_pin_overlay_set_support">Denne PIN-en blir nødvendig før åpning av denne profilen.</string>
     <string name="profile_pin_overlay_confirm_support">Angi samme 4 siffer på nytt for å avslutte oppsettet.</string>
     <string name="profile_pin_overlay_mismatch">PIN-ene matchet ikke. Skriv inn en ny PIN på nytt.</string>
-    <string name="profile_pin_overlay_forgot_hint">Glemt PIN? Tilbakestill det fra Nuvio-kontoen din på Nuvio-nettstedet.</string>
+    <string name="profile_pin_overlay_forgot_hint">Glemt PIN? Tilbakestill det fra Fusion Pass-kontoen din på Fusion Pass-nettstedet.</string>
     <string name="profile_pin_overlay_back_hint">Trykk tilbake for å avbryte</string>
     <string name="addon_title">Tillegg</string>
     <string name="addon_readonly_notice">Bruker primær profilens tillegg og kan ikke endres</string>
@@ -967,11 +967,11 @@
     <string name="catalog_see_all_from">fra %1$s</string>
     <string name="catalog_see_all_empty_title">Ingen elementer tilgjengelig</string>
     <string name="catalog_see_all_empty_subtitle">Prøv en annen katalog eller kom tilbake senere</string>
-    <string name="layout_selection_welcome">Velkommen til Nuvio</string>
+    <string name="layout_selection_welcome">Velkommen til Fusion Pass</string>
     <string name="layout_selection_subtitle">Velg oppsettet for hjemmeskjermen</string>
     <string name="layout_selection_continue">Fortsett</string>
     <string name="update_title">Appoppdatering</string>
-    <string name="update_installer_required">Bruk Nuvio TV Installer for å oppdatere appen på TV-en.</string>
+    <string name="update_installer_required">Bruk Fusion Pass Installer for å oppdatere appen på TV-en.</string>
     <string name="update_release_notes">Dette er nytt</string>
     <string name="update_release_notes_unavailable">Ingen utgivelsesbeskrivelse er tilgjengelig.</string>
     <string name="update_downloading">Laster ned oppdatering</string>
@@ -979,7 +979,7 @@
     <string name="update_downloading_ellipsis">Laster ned…</string>
     <string name="update_unknown_sources">Tillat installasjon fra ukjente kilder for å fortsette.</string>
     <string name="account_title">Konto</string>
-    <string name="account_sign_in_description">Logg inn for å synkronisere biblioteket, seeframgang, tillegg og programtillegg på tvers av enheter. Biblioteksynk bruker Nuvio Sync når Trakt ikke er tilkoblet, og seeframgang kan bruke enten Trakt eller Nuvio Sync.</string>
+    <string name="account_sign_in_description">Logg inn for å synkronisere biblioteket, seeframgang, tillegg og programtillegg på tvers av enheter. Biblioteksynk bruker Fusion Pass Sync når Trakt ikke er tilkoblet, og seeframgang kan bruke enten Trakt eller Fusion Pass Sync.</string>
     <string name="account_sync_code_title">Synkkode</string>
     <string name="account_sync_code_description">Synkroniser på tvers av enheter uten å opprette en konto.</string>
     <string name="account_linked_devices">Koblede enheter (%1$d)</string>
@@ -1044,7 +1044,7 @@
     <string name="autoplay_reuse_binge_group">Bruk bingegruppe på nytt</string>
     <string name="autoplay_reuse_binge_group_sub">Husk og bruk den siste bingegruppen på nytt mellom økter (Fortsett å se, Detaljer osv.).</string>
     <string name="unsupported_device_title">TV-en støttes ikke</string>
-    <string name="unsupported_device_message">Denne TV-en oppfyller ikke minimumskravene for denne versjonen av Nuvio TV.</string>
+    <string name="unsupported_device_message">Denne TV-en oppfyller ikke minimumskravene for denne versjonen av Fusion Pass.</string>
     <string name="unsupported_device_current_platform">Gjeldende plattform</string>
     <string name="unsupported_device_current_firmware">Gjeldende fastvare</string>
     <string name="unsupported_device_required_platform">Påkrevd plattform</string>
@@ -1074,7 +1074,7 @@
     <string name="debrid_device_auth_expired">Denne koden er utløpt. Prøv igjen.</string>
     <string name="debrid_device_auth_failed">Kunne ikke starte påloggingen.</string>
     <string name="debrid_device_auth_connected">%1$s er koblet til på denne enheten.</string>
-    <string name="debrid_device_auth_instructions">Skann QR-koden og skriv inn denne koden for å godkjenne Nuvio.</string>
+    <string name="debrid_device_auth_instructions">Skann QR-koden og skriv inn denne koden for å godkjenne Fusion Pass.</string>
     <string name="debrid_device_auth_missing_configuration">Denne påloggingsmetoden er ikke konfigurert i denne versjonen.</string>
     <string name="debrid_disconnect">Koble fra</string>
     <string name="debrid_connected">Tilkoblet</string>
@@ -1307,7 +1307,7 @@
     <string name="plugin_tv_model_unsupported">Programtillegg er ikke tilgjengelige på denne TV-modellen. Tillegg, avspilling, bibliotek og synkronisering er fortsatt tilgjengelig.</string>
     <string name="plugin_dex_unsupported">CloudStream/DEX-programtillegg støttes ikke på Web TV.</string>
     <string name="plugin_unknown_preserved">Typen til depotet er ukjent; det beholdes og deaktiveres til det kan identifiseres på en trygg måte.</string>
-    <string name="plugin_type_nuvio_js">Nuvio JS · kjørbar</string>
+    <string name="plugin_type_nuvio_js">Fusion Pass JS · kjørbar</string>
     <string name="plugin_type_external_dex">CloudStream DEX · bare metadata</string>
     <string name="plugin_type_legacy">Gammel URL-mal · bare bevart</string>
     <string name="plugin_type_unknown">Ukjent type · deaktivert</string>
@@ -1316,10 +1316,10 @@
     <string name="plugin_runtime_checking">Sjekker TV-plugin-kjøretid…</string>
     <string name="plugin_runtime_unsupported">Kjøring er ikke tilgjengelig på denne TV-kjøretiden</string>
     <string name="plugin_runtime_limited">Pluginstøtten er begrenset på denne TV-en. Noen leverandører kan være tregere eller utilgjengelige.</string>
-    <string name="plugin_runtime_tv_only">Bare Nuvio JS-repositorier kan kjøres; eksterne DEX- og eldre kilder beholdes kun som metadata.</string>
+    <string name="plugin_runtime_tv_only">Bare Fusion Pass JS-repositorier kan kjøres; eksterne DEX- og eldre kilder beholdes kun som metadata.</string>
     <string name="plugin_runtime_heading">TV-plugin-kjøretid</string>
     <string name="plugin_settings_heading">Plugin-innstillinger</string>
-    <string name="plugin_settings_subtitle">Globale kontroller gjelder bare kjørbare Nuvio JS-leverandører.</string>
+    <string name="plugin_settings_subtitle">Globale kontroller gjelder bare kjørbare Fusion Pass JS-leverandører.</string>
     <string name="plugin_repository_add_subtitle">Legg til en offentlig manifest-URL eller en .cs3-URL. DEX-filer lastes aldri ned eller kjøres her.</string>
     <string name="plugin_external_lists_count">%1$d eksterne pluginlister er synkronisert; binærfiler kjøres ikke.</string>
     <string name="plugin_no_provider_code">Ingen kjørbare leverandører er tilgjengelige fra dette repositoriet.</string>
@@ -1355,7 +1355,7 @@
     <string name="plugin_test_found_streams">Fant %1$d strømmer</string>
     <string name="plugin_default_supported_types">movie/tv</string>
     <string name="settings.plugins.addRepositoryPrompt">Legg til repository-URL</string>
-    <string name="settings.plugins.openSubtitle">Administrer kjørbare Nuvio JS-leverandører og bevarte eksterne metadata</string>
+    <string name="settings.plugins.openSubtitle">Administrer kjørbare Fusion Pass JS-leverandører og bevarte eksterne metadata</string>
     <string name="settings.plugins.refreshRepository">Oppdater repository</string>
     <string name="settings.plugins.removeRepository">Fjern repository</string>
     <string name="home.continueStatusWatchedPercent">{{percent}} % sett</string>
@@ -1363,7 +1363,7 @@
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -1424,6 +1424,6 @@
     <string name="auth_qr_terms_prefix">By signing up / logging in, I agree to the</string>
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
-    <string name="unsupported_device_warning">Du kan likevel prøve å starte Nuvio TV, men appen fungerer kanskje ikke som den skal på denne TV-en. Denne konfigurasjonen støttes ikke offisielt.</string>
+    <string name="unsupported_device_warning">Du kan likevel prøve å starte Fusion Pass, men appen fungerer kanskje ikke som den skal på denne TV-en. Denne konfigurasjonen støttes ikke offisielt.</string>
     <string name="unsupported_device_try_anyway">Prøv likevel</string>
 </resources>

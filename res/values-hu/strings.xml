@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nuvio</string>
+    <string name="app_name">Fusion Pass</string>
     <string name="type_movie">Film</string>
     <string name="type_series">Sorozat</string>
     <string name="type_unknown">Ismeretlen</string>
@@ -203,10 +203,10 @@
 	
 <!-- SupportersContributorsScreen -->
     <string name="supporters_contributors_title">Támogatók és közreműködők</string>
-    <string name="supporters_contributors_subtitle">A Nuvio támogatói, valamint a TV-s és mobil platformokon dolgozó közreműködők.</string>
+    <string name="supporters_contributors_subtitle">A Fusion Pass támogatói, valamint a TV-s és mobil platformokon dolgozó közreműködők.</string>
     <string name="supporters_contributors_supporters_copy">A közreműködők és támogatók (adományozók) segítenek a projekt fenntartásában, az infrastruktúra finanszírozásában és az ambiciózus funkciók megvalósításában.</string>
-    <string name="supporters_contributors_donate_copy">A Nuvio ingyenes és nyílt forráskódú marad. Ha szeretnéd támogatni a projektet, segíthetsz a ráfordított idő és az infrastruktúra költségeinek fedezésében.</string>
-    <string name="supporters_contributors_donate_button">Nuvio támogatása</string>
+    <string name="supporters_contributors_donate_copy">A Fusion Pass ingyenes és nyílt forráskódú marad. Ha szeretnéd támogatni a projektet, segíthetsz a ráfordított idő és az infrastruktúra költségeinek fedezésében.</string>
+    <string name="supporters_contributors_donate_button">Fusion Pass támogatása</string>
     <string name="supporters_contributors_qr_title">Beolvasás a támogatáshoz</string>
     <string name="supporters_contributors_qr_subtitle">Nyisd meg a linket a telefonodon, és támogasd a Nuviót Ko-fin keresztül.</string>
     <string name="supporters_contributors_qr_hint">Irányítsd a kamerád a QR-kódra, vagy használd az alábbi gombot.</string>
@@ -551,7 +551,7 @@
     <string name="trakt_stat_watched_hours">Nézett órák</string>
     <string name="trakt_disconnect">Leválasztás</string>
     <string name="trakt_disconnect_title">Lecsatlakozol a Traktról?</string>
-    <string name="trakt_disconnect_subtitle">Ez megszünteti a kapcsolatot a Trakt fiókod és a Nuvio között.</string>
+    <string name="trakt_disconnect_subtitle">Ez megszünteti a kapcsolatot a Trakt fiókod és a Fusion Pass között.</string>
     <string name="trakt_login">Bejelentkezés</string>
     <string name="trakt_retry">Újra</string>
     <string name="trakt_back">Vissza</string>
@@ -925,13 +925,13 @@
     <string name="catalog_see_all_empty_subtitle">Próbálkozz másik katalógussal, vagy térj vissza később</string>
 	
     <!-- LayoutSelectionScreen -->
-    <string name="layout_selection_welcome">Üdvözöl a Nuvio</string>
+    <string name="layout_selection_welcome">Üdvözöl a Fusion Pass</string>
     <string name="layout_selection_subtitle">Válaszd ki a kezdőképernyő elrendezését</string>
     <string name="layout_selection_continue">Folytatás</string>
 	
     <!-- UpdatePromptDialog -->
     <string name="update_title">Alkalmazásfrissítés</string>
-    <string name="update_installer_required">A TV-n lévő alkalmazás frissítéséhez használd a Nuvio TV Installert.</string>
+    <string name="update_installer_required">A TV-n lévő alkalmazás frissítéséhez használd a Fusion Pass Installert.</string>
     <string name="update_release_notes">Újdonságok</string>
     <string name="update_release_notes_unavailable">Nem érhető el kiadási leírás.</string>
     <string name="update_downloading">Frissítés letöltése</string>
@@ -1017,7 +1017,7 @@
     <string name="autoplay_timeout_instant">Azonnal</string>
     <string name="autoplay_timeout_unlimited">Korlátlan</string>
     <string name="unsupported_device_title">A TV nem támogatott</string>
-    <string name="unsupported_device_message">Ez a TV nem felel meg a Nuvio TV ezen verziójához szükséges minimumkövetelményeknek.</string>
+    <string name="unsupported_device_message">Ez a TV nem felel meg a Fusion Pass ezen verziójához szükséges minimumkövetelményeknek.</string>
     <string name="unsupported_device_current_platform">Jelenlegi platform</string>
     <string name="unsupported_device_current_firmware">Jelenlegi firmware</string>
     <string name="unsupported_device_required_platform">Szükséges platform</string>
@@ -1047,7 +1047,7 @@
     <string name="debrid_device_auth_expired">Ez a kód lejárt. Próbáld újra.</string>
     <string name="debrid_device_auth_failed">Nem sikerült elindítani a bejelentkezést.</string>
     <string name="debrid_device_auth_connected">A(z) %1$s csatlakoztatva van ezen az eszközön.</string>
-    <string name="debrid_device_auth_instructions">Olvasd be a QR-kódot, majd add meg ezt a kódot a Nuvio engedélyezéséhez.</string>
+    <string name="debrid_device_auth_instructions">Olvasd be a QR-kódot, majd add meg ezt a kódot a Fusion Pass engedélyezéséhez.</string>
     <string name="debrid_device_auth_missing_configuration">Ez a bejelentkezési mód nincs beállítva ebben a buildben.</string>
     <string name="debrid_disconnect">Leválasztás</string>
     <string name="debrid_connected">Csatlakoztatva</string>
@@ -1283,7 +1283,7 @@
     <string name="plugin_tv_model_unsupported">A bővítmények ezen a TV-modellen nem érhetők el. A kiegészítők, a lejátszás, a könyvtár és a szinkronizálás továbbra is elérhető.</string>
     <string name="plugin_dex_unsupported">A CloudStream/DEX bővítmények nem támogatottak a Web TV-n.</string>
     <string name="plugin_unknown_preserved">A repository típusa ismeretlen; megőrizzük és letiltjuk, amíg biztonságosan azonosítható nem lesz.</string>
-    <string name="plugin_type_nuvio_js">Nuvio JS · futtatható</string>
+    <string name="plugin_type_nuvio_js">Fusion Pass JS · futtatható</string>
     <string name="plugin_type_external_dex">CloudStream DEX · csak metaadat</string>
     <string name="plugin_type_legacy">Régi URL-sablon · csak megőrizve</string>
     <string name="plugin_type_unknown">Ismeretlen típus · letiltva</string>
@@ -1292,10 +1292,10 @@
     <string name="plugin_runtime_checking">A TV-bővítmények futtatókörnyezetének ellenőrzése…</string>
     <string name="plugin_runtime_unsupported">A végrehajtás nem érhető el ezen a TV-s futtatókörnyezeten</string>
     <string name="plugin_runtime_limited">Ezen a tévén korlátozott a pluginok támogatása. Egyes szolgáltatók lassabbak lehetnek, vagy nem érhetők el.</string>
-    <string name="plugin_runtime_tv_only">Csak a Nuvio JS-tárolók futtathatók; a külső DEX- és régi források csak metaadatként maradnak meg.</string>
+    <string name="plugin_runtime_tv_only">Csak a Fusion Pass JS-tárolók futtathatók; a külső DEX- és régi források csak metaadatként maradnak meg.</string>
     <string name="plugin_runtime_heading">TV-s bővítmények futtatókörnyezete</string>
     <string name="plugin_settings_heading">Bővítménybeállítások</string>
-    <string name="plugin_settings_subtitle">A globális vezérlők csak a futtatható Nuvio JS-szolgáltatókra vonatkoznak.</string>
+    <string name="plugin_settings_subtitle">A globális vezérlők csak a futtatható Fusion Pass JS-szolgáltatókra vonatkoznak.</string>
     <string name="plugin_repository_add_subtitle">Adjon meg nyilvános manifest-URL-t vagy .cs3 URL-t. A DEX-fájlokat itt soha nem töltjük le és nem futtatjuk.</string>
     <string name="plugin_external_lists_count">%1$d külső bővítménylista szinkronizálva; a bináris fájlok nem futnak.</string>
     <string name="plugin_no_provider_code">Ebben a tárolóban nincs elérhető futtatható szolgáltató.</string>
@@ -1331,7 +1331,7 @@
     <string name="plugin_test_found_streams">%1$d forrás található</string>
     <string name="plugin_default_supported_types">movie/tv</string>
     <string name="settings.plugins.addRepositoryPrompt">Tároló URL-jének hozzáadása</string>
-    <string name="settings.plugins.openSubtitle">Futtatható Nuvio JS-szolgáltatók és megőrzött külső metaadatok kezelése</string>
+    <string name="settings.plugins.openSubtitle">Futtatható Fusion Pass JS-szolgáltatók és megőrzött külső metaadatok kezelése</string>
     <string name="settings.plugins.refreshRepository">Tároló frissítése</string>
     <string name="settings.plugins.removeRepository">Tároló eltávolítása</string>
     <string name="home.continueStatusWatchedPercent">Megnézve: {{percent}}%</string>
@@ -1340,7 +1340,7 @@
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -1401,6 +1401,6 @@
     <string name="auth_qr_terms_prefix">By signing up / logging in, I agree to the</string>
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
-    <string name="unsupported_device_warning">Ennek ellenére megpróbálhatja elindítani a Nuvio TV-t, de előfordulhat, hogy az alkalmazás nem működik megfelelően ezen a tévén. Ez a konfiguráció hivatalosan nem támogatott.</string>
+    <string name="unsupported_device_warning">Ennek ellenére megpróbálhatja elindítani a Fusion Pass-t, de előfordulhat, hogy az alkalmazás nem működik megfelelően ezen a tévén. Ez a konfiguráció hivatalosan nem támogatott.</string>
     <string name="unsupported_device_try_anyway">Próbálja meg mégis</string>
 </resources>

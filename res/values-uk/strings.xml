@@ -7,7 +7,7 @@
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -69,11 +69,11 @@
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
     <string name="unsupported_device_title">Телевізор не підтримується</string>
-    <string name="unsupported_device_message">Цей телевізор не відповідає мінімальним вимогам для цієї версії Nuvio TV.</string>
+    <string name="unsupported_device_message">Цей телевізор не відповідає мінімальним вимогам для цієї версії Fusion Pass.</string>
     <string name="unsupported_device_current_platform">Поточна платформа</string>
     <string name="unsupported_device_current_firmware">Поточна прошивка</string>
     <string name="unsupported_device_required_platform">Необхідна платформа</string>
-    <string name="unsupported_device_warning">Ви все одно можете спробувати запустити Nuvio TV, але застосунок може працювати на цьому телевізорі неправильно. Ця конфігурація офіційно не підтримується.</string>
+    <string name="unsupported_device_warning">Ви все одно можете спробувати запустити Fusion Pass, але застосунок може працювати на цьому телевізорі неправильно. Ця конфігурація офіційно не підтримується.</string>
     <string name="unsupported_device_close">Закрити</string>
     <string name="unsupported_device_try_anyway">Усе одно запустити</string>
     <string name="unsupported_device_unavailable">Недоступно</string>

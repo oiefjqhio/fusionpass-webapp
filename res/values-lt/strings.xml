@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nuvio</string>
+    <string name="app_name">Fusion Pass</string>
     <string name="type_movie">Filmas</string>
     <string name="type_series">Serialas</string>
     <string name="type_unknown">Nežinoma</string>
@@ -190,12 +190,12 @@
     <string name="action_none">Nėra</string>
     <string name="action_close">Uždaryti</string>
     <string name="supporters_contributors_title">Rėmėjai ir pagalbininkai</string>
-    <string name="supporters_contributors_subtitle">Žmonės, palaikantys „Nuvio“, ir pagalbininkai, kuriantys ją televizijai ir mobiliesiems įrenginiams.</string>
+    <string name="supporters_contributors_subtitle">Žmonės, palaikantys „Fusion Pass“, ir pagalbininkai, kuriantys ją televizijai ir mobiliesiems įrenginiams.</string>
     <string name="supporters_contributors_supporters_copy">Rėmėjai ir aukotojai padeda projektui judėti į priekį, finansuoja infrastruktūrą ir suteikia vietos ambicingoms funkcijoms.</string>
-    <string name="supporters_contributors_donate_copy">„Nuvio“ išliks nemokama ir atviro kodo sistema. Jei norite paremti projektą, galite padėti padengti laiką ir infrastruktūrą už jo.</string>
-    <string name="supporters_contributors_donate_button">Paaukoti „Nuvio“</string>
+    <string name="supporters_contributors_donate_copy">„Fusion Pass“ išliks nemokama ir atviro kodo sistema. Jei norite paremti projektą, galite padėti padengti laiką ir infrastruktūrą už jo.</string>
+    <string name="supporters_contributors_donate_button">Paaukoti „Fusion Pass“</string>
     <string name="supporters_contributors_qr_title">Skenuoti, kad paaukotumėte</string>
-    <string name="supporters_contributors_qr_subtitle">Atidarykite nuorodą telefone ir paremkite „Nuvio“ per „Ko-fi“.</string>
+    <string name="supporters_contributors_qr_subtitle">Atidarykite nuorodą telefone ir paremkite „Fusion Pass“ per „Ko-fi“.</string>
     <string name="supporters_contributors_qr_hint">Nukreipkite kamerą į QR kodą arba naudokite žemiau esantį mygtuką.</string>
     <string name="supporters_contributors_back_button">Grįžti į informaciją</string>
     <string name="supporters_tab">Rėmėjai</string>
@@ -513,11 +513,11 @@
     <string name="trakt_watch_progress_title">Žiūrėjimo pažanga</string>
     <string name="trakt_watch_progress_subtitle">Pasirinkite, kuris pažangos šaltinis valdys atkūrimo tęsimą ir „Tęsti žiūrėjimą“</string>
     <string name="trakt_watch_progress_dialog_title">Žiūrėjimo pažanga</string>
-    <string name="trakt_watch_progress_dialog_subtitle">Pasirinkite, ar tęsimui ir „Tęsti žiūrėjimą“ naudoti „Trakt“, ar „Nuvio Sync“. „Trakt“ peržiūrų registravimas (scrobbling) vis tiek išliks aktyvus.</string>
+    <string name="trakt_watch_progress_dialog_subtitle">Pasirinkite, ar tęsimui ir „Tęsti žiūrėjimą“ naudoti „Trakt“, ar „Fusion Pass Sync“. „Trakt“ peržiūrų registravimas (scrobbling) vis tiek išliks aktyvus.</string>
     <string name="trakt_watch_progress_source_trakt">Trakt</string>
-    <string name="trakt_watch_progress_source_nuvio">Nuvio Sync</string>
+    <string name="trakt_watch_progress_source_nuvio">Fusion Pass Sync</string>
     <string name="trakt_watch_progress_trakt_selected">Žiūrėjimo pažangos šaltinis nustatytas į „Trakt“</string>
-    <string name="trakt_watch_progress_nuvio_selected">Žiūrėjimo pažangos šaltinis nustatytas į „Nuvio Sync“</string>
+    <string name="trakt_watch_progress_nuvio_selected">Žiūrėjimo pažangos šaltinis nustatytas į „Fusion Pass Sync“</string>
     <string name="trakt_continue_watching_window">„Tęsti žiūrėjimą“ langas</string>
     <string name="trakt_continue_watching_subtitle">„Trakt“ istorija, naudojama „Tęsti žiūrėjimą“ skilčiai</string>
     <string name="trakt_unaired_next_up">Neišleistos „Kitas“ serijos</string>
@@ -533,7 +533,7 @@
     <string name="trakt_stat_watched_hours">Žiūrėta valandų</string>
     <string name="trakt_disconnect">Atsijungti</string>
     <string name="trakt_disconnect_title">Atsijungti nuo „Trakt“?</string>
-    <string name="trakt_disconnect_subtitle">Tai atsies jūsų „Trakt“ paskyrą nuo „Nuvio“.</string>
+    <string name="trakt_disconnect_subtitle">Tai atsies jūsų „Trakt“ paskyrą nuo „Fusion Pass“.</string>
     <string name="trakt_login">Prisijungti</string>
     <string name="trakt_retry">Bandyti dar kartą</string>
     <string name="trakt_back">Atgal</string>
@@ -776,10 +776,10 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="library_empty_local_subtitle">Išsaugokite mėgstamiausius, kad pamatytumėte juos čia</string>
     <string name="library_empty_trakt_subtitle">Naudokite „+“ informacijos lange turiniui pridėti į žiūrėjimo ar kitus sąrašus</string>
     <string name="account_loading">Įkeliama…</string>
-    <string name="account_sync_description">Jūsų paskyra sinchronizuojama per „Nuvio Sync“.</string>
+    <string name="account_sync_description">Jūsų paskyra sinchronizuojama per „Fusion Pass Sync“.</string>
     <string name="account_sync_restart_note">Pakeitimų įsigaliojimui gali reikėti paleisti programą iš naujo.</string>
     <string name="account_signin_qr_title">Prisijungti</string>
-    <string name="account_signin_qr_subtitle">„Nuvio“ naudoja „Supabase“ sinchronizavimui</string>
+    <string name="account_signin_qr_subtitle">„Fusion Pass“ naudoja „Supabase“ sinchronizavimui</string>
     <string name="account_signed_in_label">Prisijungta kaip</string>
     <string name="account_total_label">Iš viso</string>
     <string name="account_loading_sync">Sinchronizuojama…</string>
@@ -857,11 +857,11 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="catalog_see_all_from">iš %1$s</string>
     <string name="catalog_see_all_empty_title">Elementų nėra</string>
     <string name="catalog_see_all_empty_subtitle">Šiame kataloge turinio nerasta</string>
-    <string name="layout_selection_welcome">Sveiki atvykę į Nuvio</string>
+    <string name="layout_selection_welcome">Sveiki atvykę į Fusion Pass</string>
     <string name="layout_selection_subtitle">Pasirinkite, kaip norite matyti pradinį ekraną</string>
     <string name="layout_selection_continue">Tęsti</string>
     <string name="update_title">Programos atnaujinimas</string>
-    <string name="update_installer_required">Norėdami atnaujinti programą televizoriuje, naudokite Nuvio TV Installer.</string>
+    <string name="update_installer_required">Norėdami atnaujinti programą televizoriuje, naudokite Fusion Pass Installer.</string>
     <string name="update_release_notes">Kas naujo</string>
     <string name="update_release_notes_unavailable">Leidimo aprašymas nepasiekiamas.</string>
     <string name="update_downloading">Atsiunčiama…</string>
@@ -869,7 +869,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="update_downloading_ellipsis">Atsiunčiama…</string>
     <string name="update_unknown_sources">Leisti diegti iš nežinomų šaltinių</string>
     <string name="account_title">Paskyra</string>
-    <string name="account_sign_in_description">Prisijunkite, kad sinchronizuotumėte biblioteką, pažangą ir priedus tarp įrenginių. Biblioteka sinchronizuojama per „Nuvio Sync“, kai „Trakt“ neprijungta.</string>
+    <string name="account_sign_in_description">Prisijunkite, kad sinchronizuotumėte biblioteką, pažangą ir priedus tarp įrenginių. Biblioteka sinchronizuojama per „Fusion Pass Sync“, kai „Trakt“ neprijungta.</string>
     <string name="account_sync_code_title">Sinchronizavimo kodas</string>
     <string name="account_sync_code_description">Susiekite savo įrenginius naudodami kodą</string>
     <string name="account_linked_devices">Susieti įrenginiai</string>
@@ -931,7 +931,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="autoplay_reuse_binge_group">Pakartotinai naudoti „Binge“ grupę</string>
     <string name="autoplay_reuse_binge_group_sub">Įsiminti ir pakartotinai naudoti paskutinę grupę tarp seansų (Tęsti žiūrėjimą, Išsami informacija ir kt.).</string>
     <string name="unsupported_device_title">Televizorius nepalaikomas</string>
-    <string name="unsupported_device_message">Šis televizorius neatitinka minimalių šios „Nuvio TV“ versijos reikalavimų.</string>
+    <string name="unsupported_device_message">Šis televizorius neatitinka minimalių šios „Fusion Pass“ versijos reikalavimų.</string>
     <string name="unsupported_device_current_platform">Dabartinė platforma</string>
     <string name="unsupported_device_current_firmware">Dabartinė programinė aparatinė įranga</string>
     <string name="unsupported_device_required_platform">Reikalinga platforma</string>
@@ -961,7 +961,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="debrid_device_auth_expired">Šis kodas nebegalioja. Bandykite dar kartą.</string>
     <string name="debrid_device_auth_failed">Nepavyko pradėti prisijungimo.</string>
     <string name="debrid_device_auth_connected">%1$s prijungtas šiame įrenginyje.</string>
-    <string name="debrid_device_auth_instructions">Nuskaitykite QR kodą ir įveskite šį kodą, kad patvirtintumėte Nuvio.</string>
+    <string name="debrid_device_auth_instructions">Nuskaitykite QR kodą ir įveskite šį kodą, kad patvirtintumėte Fusion Pass.</string>
     <string name="debrid_device_auth_missing_configuration">Šis prisijungimo būdas nesukonfigūruotas šioje versijoje.</string>
     <string name="debrid_disconnect">Atjungti</string>
     <string name="debrid_connected">Prijungta</string>
@@ -1194,7 +1194,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="plugin_tv_model_unsupported">Papildiniai šiame televizoriaus modelyje nepasiekiami. Priedai, atkūrimas, biblioteka ir sinchronizavimas išlieka pasiekiami.</string>
     <string name="plugin_dex_unsupported">CloudStream/DEX papildiniai Web TV nepalaikomi.</string>
     <string name="plugin_unknown_preserved">Saugyklos tipas nežinomas; ji išsaugoma ir išjungiama, kol bus galima saugiai nustatyti jos tipą.</string>
-    <string name="plugin_type_nuvio_js">Nuvio JS · vykdomas</string>
+    <string name="plugin_type_nuvio_js">Fusion Pass JS · vykdomas</string>
     <string name="plugin_type_external_dex">CloudStream DEX · tik metaduomenys</string>
     <string name="plugin_type_legacy">Senas URL šablonas · tik išsaugotas</string>
     <string name="plugin_type_unknown">Nežinomas tipas · išjungta</string>
@@ -1203,10 +1203,10 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="plugin_runtime_checking">Tikrinama TV įskiepių vykdymo aplinka…</string>
     <string name="plugin_runtime_unsupported">Šioje TV vykdymo aplinkoje vykdymas nepasiekiamas</string>
     <string name="plugin_runtime_limited">Šiame televizoriuje įskiepių palaikymas yra ribotas. Kai kurie teikėjai gali veikti lėčiau arba būti nepasiekiami.</string>
-    <string name="plugin_runtime_tv_only">Vykdyti galima tik Nuvio JS saugyklas; išoriniai DEX ir seni šaltiniai lieka tik kaip metaduomenys.</string>
+    <string name="plugin_runtime_tv_only">Vykdyti galima tik Fusion Pass JS saugyklas; išoriniai DEX ir seni šaltiniai lieka tik kaip metaduomenys.</string>
     <string name="plugin_runtime_heading">TV įskiepių vykdymo aplinka</string>
     <string name="plugin_settings_heading">Įskiepių nustatymai</string>
-    <string name="plugin_settings_subtitle">Visi valdikliai taikomi tik vykdomiems Nuvio JS teikėjams.</string>
+    <string name="plugin_settings_subtitle">Visi valdikliai taikomi tik vykdomiems Fusion Pass JS teikėjams.</string>
     <string name="plugin_repository_add_subtitle">Pridėkite viešą manifesto URL arba .cs3 URL. DEX failai čia niekada neatsisiunčiami ir nevykdomi.</string>
     <string name="plugin_external_lists_count">Sinchronizuota %1$d išorinių įskiepių sąrašų; dvejetainiai failai nevykdomi.</string>
     <string name="plugin_no_provider_code">Šioje saugykloje nėra vykdomų teikėjų.</string>
@@ -1242,7 +1242,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="plugin_test_found_streams">Rasta %1$d srautų</string>
     <string name="plugin_default_supported_types">movie/tv</string>
     <string name="settings.plugins.addRepositoryPrompt">Pridėti saugyklos URL</string>
-    <string name="settings.plugins.openSubtitle">Tvarkyti vykdomus Nuvio JS teikėjus ir išsaugotus išorinius metaduomenis</string>
+    <string name="settings.plugins.openSubtitle">Tvarkyti vykdomus Fusion Pass JS teikėjus ir išsaugotus išorinius metaduomenis</string>
     <string name="settings.plugins.refreshRepository">Atnaujinti saugyklą</string>
     <string name="settings.plugins.removeRepository">Pašalinti saugyklą</string>
     <string name="home.continueStatusWatchedPercent">Peržiūrėta {{percent}}%</string>
@@ -1250,7 +1250,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -1311,6 +1311,6 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="auth_qr_terms_prefix">By signing up / logging in, I agree to the</string>
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
-    <string name="unsupported_device_warning">Vis tiek galite pabandyti paleisti „Nuvio TV“, tačiau programa šiame televizoriuje gali veikti netinkamai. Ši konfigūracija oficialiai nepalaikoma.</string>
+    <string name="unsupported_device_warning">Vis tiek galite pabandyti paleisti „Fusion Pass“, tačiau programa šiame televizoriuje gali veikti netinkamai. Ši konfigūracija oficialiai nepalaikoma.</string>
     <string name="unsupported_device_try_anyway">Vis tiek paleisti</string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nuvio</string>
+    <string name="app_name">Fusion Pass</string>
     <string name="type_movie">फ़िल्म</string>
     <string name="type_series">सीरीज़</string>
     <string name="type_unknown">अज्ञात</string>
@@ -190,12 +190,12 @@
     <string name="action_none">कोई नहीं</string>
     <string name="action_close">बंद करें</string>
     <string name="supporters_contributors_title">समर्थक और योगदानकर्ता</string>
-    <string name="supporters_contributors_subtitle">वे लोग जो Nuvio को समर्थन देते हैं और TV व मोबाइल पर इसे बनाने में योगदान करते हैं।</string>
+    <string name="supporters_contributors_subtitle">वे लोग जो Fusion Pass को समर्थन देते हैं और TV व मोबाइल पर इसे बनाने में योगदान करते हैं।</string>
     <string name="supporters_contributors_supporters_copy">समर्थक और दानकर्ता प्रोजेक्ट को आगे बढ़ाने, इंफ्रास्ट्रक्चर फंड करने और नए फीचर्स के लिए मदद करते हैं।</string>
-    <string name="supporters_contributors_donate_copy">Nuvio हमेशा मुफ्त और ओपन सोर्स रहेगा। यदि आप प्रोजेक्ट का समर्थन करना चाहते हैं, तो आप इसके विकास और इंफ्रास्ट्रक्चर में मदद कर सकते हैं।</string>
-    <string name="supporters_contributors_donate_button">Nuvio को डोनेट करें</string>
+    <string name="supporters_contributors_donate_copy">Fusion Pass हमेशा मुफ्त और ओपन सोर्स रहेगा। यदि आप प्रोजेक्ट का समर्थन करना चाहते हैं, तो आप इसके विकास और इंफ्रास्ट्रक्चर में मदद कर सकते हैं।</string>
+    <string name="supporters_contributors_donate_button">Fusion Pass को डोनेट करें</string>
     <string name="supporters_contributors_qr_title">डोनेट करने के लिए स्कैन करें</string>
-    <string name="supporters_contributors_qr_subtitle">अपने फोन पर लिंक खोलें और Ko-fi के माध्यम से Nuvio को सपोर्ट करें।</string>
+    <string name="supporters_contributors_qr_subtitle">अपने फोन पर लिंक खोलें और Ko-fi के माध्यम से Fusion Pass को सपोर्ट करें।</string>
     <string name="supporters_contributors_qr_hint">QR कोड स्कैन करने के लिए कैमरा इस्तेमाल करें या नीचे दिए बटन का उपयोग करें।</string>
     <string name="supporters_contributors_back_button">डिटेल्स पर वापस जाएँ</string>
     <string name="supporters_tab">समर्थक</string>
@@ -525,7 +525,7 @@
     <string name="trakt_stat_watched_hours">देखे गए घंटे</string>
     <string name="trakt_disconnect">डिस्कनेक्ट</string>
     <string name="trakt_disconnect_title">Trakt डिस्कनेक्ट करें?</string>
-    <string name="trakt_disconnect_subtitle">यह आपके Trakt अकाउंट को Nuvio से डिस्कनेक्ट कर देगा।</string>
+    <string name="trakt_disconnect_subtitle">यह आपके Trakt अकाउंट को Fusion Pass से डिस्कनेक्ट कर देगा।</string>
     <string name="trakt_login">लॉगिन</string>
     <string name="trakt_retry">फिर से कोशिश करें</string>
     <string name="trakt_back">वापस</string>
@@ -846,11 +846,11 @@
     <string name="catalog_see_all_from">%1$s से</string>
     <string name="catalog_see_all_empty_title">कोई आइटम उपलब्ध नहीं</string>
     <string name="catalog_see_all_empty_subtitle">कोई दूसरा कैटलॉग आज़माएँ या बाद में देखें</string>
-    <string name="layout_selection_welcome">Nuvio में आपका स्वागत है</string>
+    <string name="layout_selection_welcome">Fusion Pass में आपका स्वागत है</string>
     <string name="layout_selection_subtitle">अपना होम स्क्रीन लेआउट चुनें</string>
     <string name="layout_selection_continue">जारी रखें</string>
     <string name="update_title">ऐप अपडेट</string>
-    <string name="update_installer_required">अपने टीवी पर ऐप अपडेट करने के लिए Nuvio TV Installer का उपयोग करें।</string>
+    <string name="update_installer_required">अपने टीवी पर ऐप अपडेट करने के लिए Fusion Pass Installer का उपयोग करें।</string>
     <string name="update_release_notes">नया क्या है</string>
     <string name="update_release_notes_unavailable">रिलीज़ का विवरण उपलब्ध नहीं है।</string>
     <string name="update_downloading">अपडेट डाउनलोड हो रहा है</string>
@@ -1053,7 +1053,7 @@
     <string name="autoplay_reuse_binge_group">बिंज ग्रुप का फिर से उपयोग करें</string>
     <string name="autoplay_reuse_binge_group_sub">सत्रों के बीच अंतिम बिंज ग्रुप को याद रखें और फिर उपयोग करें (देखना जारी रखें, विवरण आदि)।</string>
     <string name="unsupported_device_title">टीवी समर्थित नहीं है</string>
-    <string name="unsupported_device_message">यह टीवी Nuvio TV के इस संस्करण की न्यूनतम आवश्यकताओं को पूरा नहीं करता।</string>
+    <string name="unsupported_device_message">यह टीवी Fusion Pass के इस संस्करण की न्यूनतम आवश्यकताओं को पूरा नहीं करता।</string>
     <string name="unsupported_device_current_platform">वर्तमान प्लेटफ़ॉर्म</string>
     <string name="unsupported_device_current_firmware">वर्तमान फ़र्मवेयर</string>
     <string name="unsupported_device_required_platform">आवश्यक प्लेटफ़ॉर्म</string>
@@ -1083,7 +1083,7 @@
     <string name="debrid_device_auth_expired">यह कोड समाप्त हो गया है। फिर से प्रयास करें।</string>
     <string name="debrid_device_auth_failed">साइन-इन शुरू नहीं किया जा सका।</string>
     <string name="debrid_device_auth_connected">इस डिवाइस पर %1$s कनेक्ट है।</string>
-    <string name="debrid_device_auth_instructions">QR कोड स्कैन करें और Nuvio को अनुमति देने के लिए यह कोड दर्ज करें।</string>
+    <string name="debrid_device_auth_instructions">QR कोड स्कैन करें और Fusion Pass को अनुमति देने के लिए यह कोड दर्ज करें।</string>
     <string name="debrid_device_auth_missing_configuration">इस बिल्ड में यह साइन-इन तरीका कॉन्फ़िगर नहीं है।</string>
     <string name="debrid_disconnect">डिस्कनेक्ट करें</string>
     <string name="debrid_connected">कनेक्टेड</string>
@@ -1316,7 +1316,7 @@
     <string name="plugin_tv_model_unsupported">इस टीवी मॉडल पर प्लगइन उपलब्ध नहीं हैं। ऐड-ऑन, प्लेबैक, लाइब्रेरी और सिंक उपलब्ध रहेंगे।</string>
     <string name="plugin_dex_unsupported">CloudStream/DEX प्लगइन Web TV पर समर्थित नहीं हैं।</string>
     <string name="plugin_unknown_preserved">रिपॉज़िटरी का प्रकार अज्ञात है; सुरक्षित रूप से पहचान होने तक इसे सुरक्षित रखा और अक्षम किया गया है।</string>
-    <string name="plugin_type_nuvio_js">Nuvio JS · चलने योग्य</string>
+    <string name="plugin_type_nuvio_js">Fusion Pass JS · चलने योग्य</string>
     <string name="plugin_type_external_dex">CloudStream DEX · केवल मेटाडेटा</string>
     <string name="plugin_type_legacy">पुराना URL टेम्पलेट · केवल सुरक्षित</string>
     <string name="plugin_type_unknown">अज्ञात प्रकार · अक्षम</string>
@@ -1325,10 +1325,10 @@
     <string name="plugin_runtime_checking">TV प्लगइन रनटाइम की जाँच हो रही है…</string>
     <string name="plugin_runtime_unsupported">इस TV रनटाइम पर निष्पादन उपलब्ध नहीं है</string>
     <string name="plugin_runtime_limited">इस टीवी पर प्लगइन समर्थन सीमित है। कुछ प्रदाता धीमे हो सकते हैं या उपलब्ध नहीं हो सकते।</string>
-    <string name="plugin_runtime_tv_only">केवल Nuvio JS रिपॉज़िटरी चल सकती हैं; बाहरी DEX और पुराने स्रोत केवल मेटाडेटा के रूप में सुरक्षित रहते हैं।</string>
+    <string name="plugin_runtime_tv_only">केवल Fusion Pass JS रिपॉज़िटरी चल सकती हैं; बाहरी DEX और पुराने स्रोत केवल मेटाडेटा के रूप में सुरक्षित रहते हैं।</string>
     <string name="plugin_runtime_heading">TV प्लगइन रनटाइम</string>
     <string name="plugin_settings_heading">प्लगइन सेटिंग</string>
-    <string name="plugin_settings_subtitle">वैश्विक नियंत्रण केवल चलने योग्य Nuvio JS प्रदाताओं पर लागू होते हैं।</string>
+    <string name="plugin_settings_subtitle">वैश्विक नियंत्रण केवल चलने योग्य Fusion Pass JS प्रदाताओं पर लागू होते हैं।</string>
     <string name="plugin_repository_add_subtitle">सार्वजनिक मेनिफेस्ट URL या .cs3 URL जोड़ें। DEX फ़ाइलें यहाँ कभी डाउनलोड या निष्पादित नहीं की जातीं।</string>
     <string name="plugin_external_lists_count">%1$d बाहरी प्लगइन सूचियाँ सिंक की गईं; बाइनरी निष्पादित नहीं किए जाते।</string>
     <string name="plugin_no_provider_code">इस रिपॉज़िटरी में कोई चलने योग्य प्रदाता उपलब्ध नहीं है।</string>
@@ -1363,13 +1363,13 @@
     <string name="plugin_test_no_results">कोई परिणाम नहीं मिला</string>
     <string name="plugin_test_found_streams">%1$d स्ट्रीम मिलीं</string>
     <string name="plugin_default_supported_types">movie/tv</string>
-    <string name="settings.plugins.openSubtitle">चलने योग्य Nuvio JS प्रदाताओं और सुरक्षित बाहरी मेटाडेटा को प्रबंधित करें</string>
+    <string name="settings.plugins.openSubtitle">चलने योग्य Fusion Pass JS प्रदाताओं और सुरक्षित बाहरी मेटाडेटा को प्रबंधित करें</string>
     <string name="home.continueStatusWatchedPercent">{{percent}}% देखा गया</string>
     <string name="player_post_play_play_manually">मैन्युअली चलाएँ</string>
 <string name="server_options_title">Server options</string>
 <string name="server_options_content_description">Server options</string>
 <string name="server_options_custom_active">Connected to a self-hosted server</string>
-<string name="server_options_official_active">Using the official Nuvio server</string>
+<string name="server_options_official_active">Using the official Fusion Pass server</string>
 <string name="server_options_connect_custom">Connect to custom server</string>
 <string name="server_options_change_custom">Connect to another server</string>
 <string name="server_options_use_official">Use official server</string>
@@ -1430,6 +1430,6 @@
     <string name="auth_qr_terms_prefix">By signing up / logging in, I agree to the</string>
     <string name="auth_qr_terms_link">Terms</string>
     <string name="auth_qr_manual_instruction">Or go to %1$s and enter</string>
-    <string name="unsupported_device_warning">आप फिर भी Nuvio TV शुरू करने का प्रयास कर सकते हैं, लेकिन यह ऐप इस टीवी पर सही ढंग से काम नहीं कर सकता। यह कॉन्फ़िगरेशन आधिकारिक रूप से समर्थित नहीं है।</string>
+    <string name="unsupported_device_warning">आप फिर भी Fusion Pass शुरू करने का प्रयास कर सकते हैं, लेकिन यह ऐप इस टीवी पर सही ढंग से काम नहीं कर सकता। यह कॉन्फ़िगरेशन आधिकारिक रूप से समर्थित नहीं है।</string>
     <string name="unsupported_device_try_anyway">फिर भी शुरू करें</string>
 </resources>
