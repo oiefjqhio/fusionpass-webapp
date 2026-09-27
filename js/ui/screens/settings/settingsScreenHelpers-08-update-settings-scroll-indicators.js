@@ -296,6 +296,10 @@ export function getVisibleSections(model) {
     if (section.hideFromNav) {
       return false;
     }
+    // Fusion Pass: addons, plugins, integrations and tracking are managed for the account.
+    if (["contentDiscovery", "plugins", "integration", "trakt"].includes(section.id)) {
+      return false;
+    }
     if (section.id === "plugins" && !arePluginsSupported()) {
       return false;
     }

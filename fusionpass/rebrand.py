@@ -83,6 +83,38 @@ if old in s:
 elif new not in s:
     sys.exit('rebrand: app.js bootstrap selector not found (upstream changed; update rebrand.py)')
 
+# 5. Lock-down, same as the Android apps: the account comes fully configured, so no addon manager,
+#    plugins, debrid/metadata integrations or tracking in the big-screen UI, and never P2P.
+edit(f'{J}/platform/tizen/tizenCapabilities.js', [
+    ("""  canUsePlugins(runtime = globalThis) {
+    const capabilities = getTizenCapabilities(runtime);
+    return !capabilities.isTizen || capabilities.tizenPluginVersionSupported;
+  },""", """  canUsePlugins(runtime = globalThis) {
+    return false; // Fusion Pass: no plugins
+  },"""),
+    ("""  isP2pUnsupported(runtime = globalThis) {
+    const capabilities = getTizenCapabilities(runtime);""", """  isP2pUnsupported(runtime = globalThis) {
+    return true; // Fusion Pass: never P2P
+    const capabilities = getTizenCapabilities(runtime);"""),
+])
+edit(f'{J}/ui/screens/settings/settingsScreenHelpers-08-update-settings-scroll-indicators.js', [
+    ("""    if (section.hideFromNav) {
+      return false;
+    }""", """    if (section.hideFromNav) {
+      return false;
+    }
+    // Fusion Pass: addons, plugins, integrations and tracking are managed for the account.
+    if (["contentDiscovery", "plugins", "integration", "trakt"].includes(section.id)) {
+      return false;
+    }"""),
+])
+edit(f'{J}/app.js', [
+    ("""function isAddonRemoteMode() {
+  try {""", """function isAddonRemoteMode() {
+  return false; // Fusion Pass: addons are managed for the account, no remote addon manager
+  try {"""),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

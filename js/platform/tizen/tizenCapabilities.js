@@ -196,11 +196,11 @@ export const TizenCapabilities = {
   },
 
   canUsePlugins(runtime = globalThis) {
-    const capabilities = getTizenCapabilities(runtime);
-    return !capabilities.isTizen || capabilities.tizenPluginVersionSupported;
+    return false; // Fusion Pass: no plugins
   },
 
   isP2pUnsupported(runtime = globalThis) {
+    return true; // Fusion Pass: never P2P
     const capabilities = getTizenCapabilities(runtime);
     return capabilities.isTizen && !capabilities.supportsP2p;
   },

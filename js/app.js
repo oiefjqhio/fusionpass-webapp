@@ -202,6 +202,7 @@ function applyPerformanceMode() {
 }
 
 function isAddonRemoteMode() {
+  return false; // Fusion Pass: addons are managed for the account, no remote addon manager
   try {
     return new URLSearchParams(window.location.search).get("addonsRemote") === "1";
   } catch {
