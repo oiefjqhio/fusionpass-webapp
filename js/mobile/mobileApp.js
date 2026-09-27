@@ -21,19 +21,56 @@ import { openPlayer, closePlayer, mountPlayer } from "./screens/player.js";
 
 const MODE_KEY = "fp.ui";
 
+const isTouchDevice = () => Boolean(window.matchMedia?.("(pointer: coarse)").matches);
+
+export function setLayout(mode) {
+  try {
+    localStorage.setItem(MODE_KEY, mode);
+  } catch {
+    // storage blocked: the ?ui= parameter still carries the choice for this load
+  }
+  const url = new URL(window.location.href);
+  url.searchParams.set("ui", mode);
+  url.hash = "";
+  window.location.replace(url.toString());
+}
+
+/** A floating way back to the phone layout while the TV layout is open on a touch device. */
+function offerPhoneLayout() {
+  const add = () => {
+    if (document.getElementById("fp-layout-switch")) return;
+    const btn = document.createElement("button");
+    btn.id = "fp-layout-switch";
+    btn.type = "button";
+    btn.textContent = "Phone layout";
+    btn.style.cssText =
+      "position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:2147483647;" +
+      "height:44px;padding:0 18px;border:0;border-radius:22px;background:#7B6CFF;color:#fff;" +
+      "font:600 15px -apple-system,BlinkMacSystemFont,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.45)";
+    btn.addEventListener("click", () => setLayout("mobile"));
+    // On <html>, not <body>: the TV shell replaces the body's contents while it boots.
+    document.documentElement.appendChild(btn);
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", add, { once: true });
+  else add();
+}
+
 /** Phones and tablets (coarse pointer) get this UI. ?ui=tv / ?ui=mobile override and stick. */
 export function isMobileMode() {
   try {
     const q = new URLSearchParams(window.location.search).get("ui");
     if (q === "tv" || q === "mobile") localStorage.setItem(MODE_KEY, q);
-    const saved = localStorage.getItem(MODE_KEY);
-    if (saved === "tv") return false;
+    const saved = localStorage.getItem(MODE_KEY) || q;
+    if (saved === "tv") {
+      if (isTouchDevice()) offerPhoneLayout();
+      return false;
+    }
     if (saved === "mobile") return true;
   } catch {
     // storage blocked: fall through to detection
   }
   if (window.__NUVIO_PLATFORM__ === "tizen" || /tizen|web0s|webos|smart-?tv/i.test(navigator.userAgent)) return false;
-  return Boolean(window.matchMedia?.("(pointer: coarse)").matches);
+  return isTouchDevice();
 }
 
 const TABS = [

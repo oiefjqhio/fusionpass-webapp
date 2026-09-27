@@ -1,6 +1,7 @@
 import { AuthManager } from "../../core/auth/authManager.js";
 import { $, esc, icon, actionSheet } from "../dom.js";
 import { availablePlayers, getPreferredPlayer, playerLabel, setPreferredPlayer } from "../externalPlayers.js";
+import { setLayout } from "../mobileApp.js";
 
 const SITE = "https://fusionpass.shop";
 
@@ -18,7 +19,7 @@ export async function renderSettings(screen) {
       <div class="fp-list">
         <a class="fp-list-item" href="${SITE}/setup" target="_blank" rel="noopener"><span class="l">Set up another device</span>${icon("chevron")}</a>
         <a class="fp-list-item" href="${SITE}/account" target="_blank" rel="noopener"><span class="l">Your pass<small>Renew, change password, devices</small></span>${icon("chevron")}</a>
-        <a class="fp-list-item" href="?ui=tv"><span class="l">Use the TV layout<small>For big screens with a keyboard or remote</small></span>${icon("chevron")}</a>
+        <button class="fp-list-item" data-tv><span class="l">Use the TV layout<small>For big screens. A "Phone layout" button brings you back.</small></span>${icon("chevron")}</button>
       </div>
       <div class="fp-section-label">About</div>
       <div class="fp-list">
@@ -43,6 +44,7 @@ export async function renderSettings(screen) {
       setPreferredPlayer(pick === "ask" ? "" : pick);
       draw();
     };
+    $(screen, "[data-tv]").onclick = () => setLayout("tv");
     $(screen, "[data-signout]").onclick = async () => {
       const ok = await actionSheet({ title: "Sign out of Fusion Pass?", actions: [{ id: "yes", label: "Sign out" }] });
       if (ok === "yes") await AuthManager.signOut();
