@@ -115,6 +115,38 @@ edit(f'{J}/app.js', [
   try {"""),
 ])
 
+# Trailers never autoplay on the detail page (owner report 2026-09-28): on a computer the TV layout's
+# autoplayed trailer took over the tab ("Press back to return to details", no Back button) and a click
+# on Play restarted it, so nothing could be played. The trailer button still plays one on request.
+edit(f'{J}/data/local/playerSettingsStore.js', [
+    ('  trailerAutoplay: true,\n', '  trailerAutoplay: false, // Fusion Pass\n'),
+    ('    trailerAutoplay: persistentSettings.trailerAutoplay ?? DEFAULTS.trailerAutoplay,', '    trailerAutoplay: false, // Fusion Pass: never, even when synced on from a TV'),
+])
+edit(f'{J}/ui/screens/settings/settingsScreenPlaybackMarkup-02-audio.js', [
+    ("""            ${this.renderToggleRow({
+              focusKey: "playback:trailer",
+              title: t("settings.playback.autoplayTrailer.title"),
+              subtitle: t("settings.playback.autoplayTrailer.subtitle"),
+              checked: Boolean(model.player.trailerAutoplay)
+            })}
+            ${model.player.trailerAutoplay ? this.renderActionRow({ focusKey: "playback:trailerDelay", title: t("audio_trailer_delay"), subtitle: t("audio_trailer_delay_sub", {}, "Delay before trailer playback starts"), value: `${model.player.trailerDelaySeconds ?? 7}s` }) : ""}
+""", """            ${"" /* Fusion Pass: no trailer autoplay setting */}
+"""),
+])
+
+# Mouse support in the big-screen UI on computers (owner report 2026-09-28: "can't click anything").
+# Nuvio only listens to pointer clicks on LG webOS (Magic Remote); a desktop browser got keyboard-only
+# navigation, so a click on Play did nothing. Any mouse-driven browser now uses the same pointer path.
+edit(f'{J}/ui/navigation/focusEngine.js', [
+    ('import { Platform } from "../../platform/index.js";\n',
+     'import { Platform } from "../../platform/index.js";\n\n// Fusion Pass: pointer (mouse / Magic Remote) handling on webOS and on any browser with a fine pointer.\n'
+     'function fpPointerRemote() {\n  return Platform.isWebOS() || Boolean(globalThis.matchMedia?.("(pointer: fine)")?.matches);\n}\n'),
+    ('    if (Platform.isWebOS()) {\n      document.addEventListener("mousemove"', '    if (fpPointerRemote()) {\n      document.addEventListener("mousemove"'),
+    ('    if (!Platform.isWebOS()) {\n      return;\n    }\n    this.pendingPointerMoveEvent = event;', '    if (!fpPointerRemote()) {\n      return;\n    }\n    this.pendingPointerMoveEvent = event;'),
+    ('  processPointerMove(event) {\n    if (!Platform.isWebOS()) {', '  processPointerMove(event) {\n    if (!fpPointerRemote()) {'),
+    ('  handlePointerClick(event) {\n    if (!Platform.isWebOS()) {', '  handlePointerClick(event) {\n    if (!fpPointerRemote()) {'),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

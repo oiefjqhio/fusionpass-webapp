@@ -1,6 +1,11 @@
 import { Router } from "./routerState.js";
 import { Platform } from "../../platform/index.js";
 
+// Fusion Pass: pointer (mouse / Magic Remote) handling on webOS and on any browser with a fine pointer.
+function fpPointerRemote() {
+  return Platform.isWebOS() || Boolean(globalThis.matchMedia?.("(pointer: fine)")?.matches);
+}
+
 function buildNormalizedEvent(event) {
   const normalizedKey = Platform.normalizeKey(event);
   const normalizedCode = Number(normalizedKey.keyCode || 0);
@@ -59,7 +64,7 @@ export const FocusEngine = {
     this.boundHandlePointerClick = this.handlePointerClick.bind(this);
     document.addEventListener("keydown", this.boundHandleKey, true);
     document.addEventListener("keyup", this.boundHandleKeyUp, true);
-    if (Platform.isWebOS()) {
+    if (fpPointerRemote()) {
       document.addEventListener("mousemove", this.boundHandlePointerMove, true);
       document.addEventListener("pointermove", this.boundHandlePointerMove, true);
       document.addEventListener("click", this.boundHandlePointerClick, true);
@@ -272,7 +277,7 @@ export const FocusEngine = {
   },
 
   handlePointerMove(event) {
-    if (!Platform.isWebOS()) {
+    if (!fpPointerRemote()) {
       return;
     }
     this.pendingPointerMoveEvent = event;
@@ -293,7 +298,7 @@ export const FocusEngine = {
   },
 
   processPointerMove(event) {
-    if (!Platform.isWebOS()) {
+    if (!fpPointerRemote()) {
       return;
     }
     const currentScreen = Router.getCurrentScreen();
@@ -309,7 +314,7 @@ export const FocusEngine = {
   },
 
   handlePointerClick(event) {
-    if (!Platform.isWebOS()) {
+    if (!fpPointerRemote()) {
       return;
     }
     const target = this.getPointerFocusable(event);
