@@ -118,9 +118,22 @@ edit(f'{J}/app.js', [
 # Trailers never autoplay on the detail page (owner report 2026-09-28): on a computer the TV layout's
 # autoplayed trailer took over the tab ("Press back to return to details", no Back button) and a click
 # on Play restarted it, so nothing could be played. The trailer button still plays one on request.
+edit(f'{J}/ui/screens/detail/metaDetailsScreenMethods-17-capture-detail-focus.js', [
+    ('        this.shouldSuppressTrailerAutoplay() ||\n        !PlayerSettingsStore.get().trailerAutoplay\n',
+     '        this.shouldSuppressTrailerAutoplay() ||\n        true || // Fusion Pass: never on the web (the synced setting stays as the TV/phone left it)\n        !PlayerSettingsStore.get().trailerAutoplay\n'),
+])
+edit(f'{J}/ui/screens/player/playerScreenMethods-51-get-startup-preferred-subtitle-language-targets.js', [
+    ('        if (configured === "system" || configured === "device") {\n          return primaryPreference ? systemLanguage : "";\n        }\n',
+     '        if (configured === "fpauto") {\n          return originalLanguage === "ja" ? "ja" : "en"; // Fusion Pass: English, Japanese for anime\n        }\n        if (configured === "system" || configured === "device") {\n          return primaryPreference ? systemLanguage : "";\n        }\n'),
+])
+edit(f'{J}/ui/screens/settings/settingsScreenHelpers-02-available-languages.js', [
+    ('export const PREFERRED_PLAYBACK_LANGUAGE_OPTIONS = [\n  { id: "system", labelKey: "common.system" },\n',
+     'export const PREFERRED_PLAYBACK_LANGUAGE_OPTIONS = [\n  { id: "fpauto", label: "Auto (English, Japanese for anime)" }, // Fusion Pass\n  { id: "system", labelKey: "common.system" },\n'),
+])
+# Audio default = the apps' "Auto" value (English, Japanese for anime), because the web exports its whole
+# player settings on sync: its old default "system" went out as DEVICE and would override the apps' default.
 edit(f'{J}/data/local/playerSettingsStore.js', [
-    ('  trailerAutoplay: true,\n', '  trailerAutoplay: false, // Fusion Pass\n'),
-    ('    trailerAutoplay: persistentSettings.trailerAutoplay ?? DEFAULTS.trailerAutoplay,', '    trailerAutoplay: false, // Fusion Pass: never, even when synced on from a TV'),
+    ('  preferredAudioLanguage: "system",\n', '  preferredAudioLanguage: "fpauto", // Fusion Pass: same value as the apps (settings sync)\n'),
 ])
 edit(f'{J}/ui/screens/settings/settingsScreenPlaybackMarkup-02-audio.js', [
     ("""            ${this.renderToggleRow({

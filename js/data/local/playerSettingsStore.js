@@ -24,9 +24,9 @@ const DEFAULTS = {
   subtitlesEnabled: true,
   subtitleLanguage: "en",
   secondarySubtitleLanguage: "off",
-  preferredAudioLanguage: "system",
+  preferredAudioLanguage: "fpauto", // Fusion Pass: same value as the apps (settings sync)
   secondaryPreferredAudioLanguage: "none",
-  trailerAutoplay: false, // Fusion Pass
+  trailerAutoplay: true,
   trailerDelaySeconds: 7,
   skipIntroEnabled: true,
   loadingOverlayEnabled: true,
@@ -285,7 +285,7 @@ export function normalizePlayerSettings(settings = {}) {
     postPlayMovieThresholdPercent: normalizePostPlayMovieThreshold(
       persistentSettings.postPlayMovieThresholdPercent
     ),
-    trailerAutoplay: false, // Fusion Pass: never, even when synced on from a TV
+    trailerAutoplay: persistentSettings.trailerAutoplay ?? DEFAULTS.trailerAutoplay,
     trailerDelaySeconds: Math.min(
       15,
       Math.max(0, Math.trunc(Number(persistentSettings.trailerDelaySeconds ?? 7)) || 0)

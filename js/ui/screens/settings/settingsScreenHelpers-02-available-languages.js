@@ -220,6 +220,7 @@ export const AVAILABLE_LANGUAGES = [
 export const PREFERRED_SUBTITLE_LANGUAGE_OPTIONS = [{ id: "off", labelKey: "common.none", label: "None" }, ...AVAILABLE_LANGUAGES];
 
 export const PREFERRED_PLAYBACK_LANGUAGE_OPTIONS = [
+  { id: "fpauto", label: "Auto (English, Japanese for anime)" }, // Fusion Pass
   { id: "system", labelKey: "common.system" },
   { id: "original", labelKey: "audio_lang_original", label: "Original language" },
   // "None" never auto-selects an audio track, leaving the stream's own

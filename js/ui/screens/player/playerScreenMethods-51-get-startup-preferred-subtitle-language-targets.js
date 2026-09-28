@@ -123,6 +123,9 @@ export function createPlayerScreenMethods51() {
         if (!configured || ["default", "off", "none", "forced"].includes(configured)) {
           return "";
         }
+        if (configured === "fpauto") {
+          return originalLanguage === "ja" ? "ja" : "en"; // Fusion Pass: English, Japanese for anime
+        }
         if (configured === "system" || configured === "device") {
           return primaryPreference ? systemLanguage : "";
         }

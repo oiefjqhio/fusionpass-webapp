@@ -303,6 +303,7 @@ export function createMetaDetailsScreenMethods17() {
         this.pendingEpisodeSelection ||
         this.pendingMovieSelection ||
         this.shouldSuppressTrailerAutoplay() ||
+        true || // Fusion Pass: never on the web (the synced setting stays as the TV/phone left it)
         !PlayerSettingsStore.get().trailerAutoplay
       ) {
         return;
