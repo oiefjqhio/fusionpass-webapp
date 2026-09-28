@@ -147,6 +147,14 @@ edit(f'{J}/ui/navigation/focusEngine.js', [
     ('  handlePointerClick(event) {\n    if (!Platform.isWebOS()) {', '  handlePointerClick(event) {\n    if (!fpPointerRemote()) {'),
 ])
 
+# No debrid names anywhere (owner 2026-09-28): drop the Premiumize / TorBox credits from Licenses.
+edit(f'{J}/ui/screens/settings/licensesAttributionsScreen.js', [
+    ('''      ["premiumize", "https://www.premiumize.me"],
+      ["torbox", "https://torbox.app"],
+''', '''      // Fusion Pass: no debrid credits
+'''),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

@@ -13,8 +13,7 @@ const SECTIONS = [
       ["tmdb", "https://www.themoviedb.org"],
       ["trakt", "https://trakt.tv"],
       ["simkl", "https://simkl.com"],
-      ["premiumize", "https://www.premiumize.me"],
-      ["torbox", "https://torbox.app"],
+      // Fusion Pass: no debrid credits
       ["mdblist", "https://mdblist.com"],
       ["introdb", "https://introdb.app/"],
       ["imdb", "https://developer.imdb.com/non-commercial-datasets/"]
