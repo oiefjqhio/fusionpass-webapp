@@ -73,7 +73,7 @@ export function createAuthQrSignInScreenMethods01() {
 
       this.container.innerHTML = `
           <div class="qr-layout">
-            <button type="button" class="qr-server-menu-trigger focusable" data-action="server-menu"
+            <button type="button" class="qr-server-menu-trigger" data-action="server-menu" hidden
                     aria-label="${escapeHtml(I18n.t("server_options_content_description"))}">⋮</button>
             <section class="qr-left-panel">
               <div class="qr-brand-lockup">
@@ -99,7 +99,7 @@ export function createAuthQrSignInScreenMethods01() {
                     this.isSignedIn
                       ? I18n.t("auth.qr.syncedData")
                       : this.useEmailLogin
-                        ? I18n.t("auth.email.instruction")
+                        ? ""
                         : I18n.t("auth.qr.scanInstruction")
                   }
                 </p>

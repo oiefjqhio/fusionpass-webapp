@@ -13,6 +13,7 @@ html.fp-mobile, html.fp-mobile body {
   -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent;
 }
 html.fp-mobile * { box-sizing: border-box; }
+html.fp-mobile [hidden] { display: none !important; }
 html.fp-mobile #app { width: 100%; height: auto; overflow: visible; }
 .fp-i { width: 22px; height: 22px; flex: none; }
 button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 12px; font-weight: 600; font-size: 15px; color: var(--fg); background: var(--card); text-decoration: none; }
@@ -157,7 +158,7 @@ button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: poi
 
 /* Player */
 .fp-player { position: fixed; inset: 0; z-index: 50; background: #000; }
-.fp-player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.fp-player video, .fp-player #videoPlayer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
 .fp-player .ui { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,0) 25%, rgba(0,0,0,0) 70%, rgba(0,0,0,.7)); transition: opacity .25s; }
 .fp-player.is-idle .ui { opacity: 0; pointer-events: none; }
 /* No live blur over playing video: Firefox on Android re-blurs every frame. */

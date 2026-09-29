@@ -211,6 +211,20 @@ edit(f'{J}/data/repository/streamRepository.js', [
      '    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${fpBrowser ? `?b=${fpKind}` : baseQuery}`;'),
 ])
 
+# Big-screen sign-in (owner report 2026-09-29): on our backend it is email sign-in, never Nuvio's QR, so
+# no "Sign In With QR" heading, no repeated instruction line, and no server menu (Nuvio's own server).
+edit(f'{ROOT}/res/values/strings.xml', [
+    ('<string name="auth_qr_title">Sign In With QR</string>', '<string name="auth_qr_title">Sign in</string>'),
+    ('<string name="auth_email_hint">Sign in directly with the account on your self-hosted server.</string>',
+     '<string name="auth_email_hint">Use your app login from fusionpass.shop/account.</string>'),
+])
+edit(f'{J}/ui/screens/account/authQrSignInScreenMethods-01-mount.js', [
+    ('<button type="button" class="qr-server-menu-trigger focusable" data-action="server-menu"',
+     '<button type="button" class="qr-server-menu-trigger" data-action="server-menu" hidden'),
+    ('                        ? I18n.t("auth.email.instruction")\n                        : I18n.t("auth.qr.scanInstruction")',
+     '                        ? ""\n                        : I18n.t("auth.qr.scanInstruction")'),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)
