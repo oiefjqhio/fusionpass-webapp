@@ -168,6 +168,38 @@ edit(f'{J}/ui/screens/settings/licensesAttributionsScreen.js', [
 '''),
 ])
 
+# Updates and links go to Fusion Pass, never to Nuvio (owner 2026-09-29). The web app updates when we
+# deploy it, so the GitHub release check (Nuvio's repo) is off; sign-in, support, terms and privacy
+# links point at fusionpass.shop. TV QR sign-in: fusionpass.shop/tv-login (the backend requires /tv-login).
+edit(f'{J}/core/update/appUpdateService.js', [
+    ('''} = {}) {
+  if (typeof fetchImpl !== "function") {
+    throw new Error("Fetch is unavailable");
+  }
+''', '''} = {}) {
+  if (true) return null; // Fusion Pass: the web app updates on deploy, no release check
+  if (typeof fetchImpl !== "function") {
+    throw new Error("Fetch is unavailable");
+  }
+'''),
+])
+edit(f'{ROOT}/scripts/envProperties.mjs', [
+    ('TV_LOGIN_WEB_BASE_URL: "https://nuvio.tv/tv-login"', 'TV_LOGIN_WEB_BASE_URL: "https://fusionpass.shop/tv-login"'),
+    ('SUPPORT_URL: "https://nuvio.tv/support"', 'SUPPORT_URL: "https://fusionpass.shop/help"'),
+    ('DEVICE_LOGIN_WEB_BASE_URL: "https://nuvio.tv/link"', 'DEVICE_LOGIN_WEB_BASE_URL: "https://fusionpass.shop/account"'),
+    ('SUPPORTERS_API_BASE_URL: "https://nuvio.tv/"', 'SUPPORTERS_API_BASE_URL: "https://fusionpass.shop/"'),
+])
+for f, pairs in [
+    (f'{J}/config.js', [('"https://nuvio.tv/tv-login"', '"https://fusionpass.shop/tv-login"'), ('"https://nuvio.tv/link"', '"https://fusionpass.shop/account"'),
+                        ('"https://nuvio.tv/support"', '"https://fusionpass.shop/help"')]),
+    (f'{J}/runtime/env.js', [('"https://nuvio.tv/tv-login"', '"https://fusionpass.shop/tv-login"'), ('"https://nuvio.tv/link"', '"https://fusionpass.shop/account"'),
+                             ('"https://nuvio.tv/support"', '"https://fusionpass.shop/help"')]),
+    (f'{J}/ui/screens/account/authQrSignInScreenMethods-02-bind-controls.js', [('"https://nuvio.tv/terms"', '"https://fusionpass.shop/terms"')]),
+    (f'{J}/ui/screens/settings/settingsScreenHelpers-01-settings-ui-state-key.js', [('"https://nuvio.tv/privacy-policy"', '"https://fusionpass.shop/privacy"')]),
+    (f'{J}/ui/screens/plugin/pluginScreen.js', [('"https://nuvio.tv/account?tab=addons"', '"https://fusionpass.shop/account"')]),
+]:
+    edit(f, pairs)
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

@@ -4,10 +4,10 @@ export const SUPABASE_URL = String(runtimeEnv.NUVIO_SUPABASE_URL || "").trim();
 export const SUPABASE_ANON_KEY = String(runtimeEnv.NUVIO_SUPABASE_ANON_KEY || "").trim();
 export const SUPABASE_FALLBACK_URL = String(runtimeEnv.NUVIO_SUPABASE_FALLBACK_URL || "").trim();
 export const TV_LOGIN_WEB_BASE_URL = String(
-  runtimeEnv.TV_LOGIN_WEB_BASE_URL || "https://nuvio.tv/tv-login"
+  runtimeEnv.TV_LOGIN_WEB_BASE_URL || "https://fusionpass.shop/tv-login"
 ).trim();
 export const DEVICE_LOGIN_WEB_BASE_URL = String(
-  runtimeEnv.DEVICE_LOGIN_WEB_BASE_URL || "https://nuvio.tv/link"
+  runtimeEnv.DEVICE_LOGIN_WEB_BASE_URL || "https://fusionpass.shop/account"
 ).trim();
 export const YOUTUBE_PROXY_URL = String(
   runtimeEnv.YOUTUBE_PROXY_URL || "youtube-proxy.html"
@@ -30,7 +30,7 @@ export const UNIQUE_CONTRIBUTIONS_BASE_URL = String(
 export const SUPPORTERS_API_BASE_URL = String(
   runtimeEnv.SUPPORTERS_API_BASE_URL || "https://nuvio.tv/"
 ).trim();
-export const SUPPORT_URL = String(runtimeEnv.SUPPORT_URL || "https://nuvio.tv/support").trim();
+export const SUPPORT_URL = String(runtimeEnv.SUPPORT_URL || "https://fusionpass.shop/help").trim();
 export const SPONSOR_NAMES = String(runtimeEnv.SPONSOR_NAMES || "").trim() || "ragmehos.";
 export const TMDB_API_KEY = String(runtimeEnv.TMDB_API_KEY || "").trim();
 export const TRAKT_CLIENT_ID = String(runtimeEnv.TRAKT_CLIENT_ID || "").trim();

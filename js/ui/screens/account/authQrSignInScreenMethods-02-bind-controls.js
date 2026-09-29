@@ -30,7 +30,7 @@ export function createAuthQrSignInScreenMethods02() {
       this.container.querySelector("[data-action='cancel-signout']")?.addEventListener("click", () => this.dismissSignOutConfirmation());
       this.container.querySelector("[data-action='confirm-signout']")?.addEventListener("click", () => void this.handleSignOut());
       this.container.querySelector("[data-action='terms']")?.addEventListener("click", () => {
-        window.open?.("https://nuvio.tv/terms", "_blank");
+        window.open?.("https://fusionpass.shop/terms", "_blank");
       });
 
       const emailInput = this.container.querySelector("#auth-email-input");

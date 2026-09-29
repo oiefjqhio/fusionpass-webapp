@@ -75,6 +75,7 @@ export async function getLatestAppUpdate({
   fetchImpl = globalThis.fetch,
   timeoutMs = DEFAULT_TIMEOUT_MS
 } = {}) {
+  if (true) return null; // Fusion Pass: the web app updates on deploy, no release check
   if (typeof fetchImpl !== "function") {
     throw new Error("Fetch is unavailable");
   }

@@ -26,7 +26,7 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-const PHONE_MANAGER_URL = "https://nuvio.tv/account?tab=addons";
+const PHONE_MANAGER_URL = "https://fusionpass.shop/account";
 const ADDONS_ROUTE_ENTER_DURATION_MS = 350;
 
 async function getPhoneManagerUrl() {

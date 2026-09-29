@@ -152,7 +152,7 @@ export const CURRENT_APP_VERSION = typeof __NUVIO_APP_VERSION__ !== "undefined" 
 
 export const SETTINGS_VERSION_LABEL = formatSettingsVersionLabel(CURRENT_APP_VERSION);
 
-export const PRIVACY_URL = "https://nuvio.tv/privacy-policy";
+export const PRIVACY_URL = "https://fusionpass.shop/privacy";
 
 export function formatHalfStepSettingValue(value, suffix = "") {
   const rounded = Math.round(Number(value || 0) * 2) / 2;

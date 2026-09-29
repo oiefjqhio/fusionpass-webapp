@@ -15,11 +15,11 @@
         : existing.NUVIO_SUPABASE_FALLBACK_URL,
     TV_LOGIN_WEB_BASE_URL:
       typeof existing.TV_LOGIN_WEB_BASE_URL === "undefined"
-        ? "https://nuvio.tv/tv-login"
+        ? "https://fusionpass.shop/tv-login"
         : existing.TV_LOGIN_WEB_BASE_URL,
     DEVICE_LOGIN_WEB_BASE_URL:
       typeof existing.DEVICE_LOGIN_WEB_BASE_URL === "undefined"
-        ? "https://nuvio.tv/link"
+        ? "https://fusionpass.shop/account"
         : existing.DEVICE_LOGIN_WEB_BASE_URL,
     YOUTUBE_PROXY_URL:
       typeof existing.YOUTUBE_PROXY_URL === "undefined"
@@ -49,7 +49,7 @@
         : existing.SUPPORTERS_API_BASE_URL,
     SUPPORT_URL:
       typeof existing.SUPPORT_URL === "undefined"
-        ? "https://nuvio.tv/support"
+        ? "https://fusionpass.shop/help"
         : existing.SUPPORT_URL,
     SPONSOR_NAMES:
       typeof existing.SPONSOR_NAMES === "undefined" || !String(existing.SPONSOR_NAMES).trim()
