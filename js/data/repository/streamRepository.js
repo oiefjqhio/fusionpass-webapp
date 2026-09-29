@@ -619,7 +619,9 @@ class StreamRepository {
     const baseQuery = queryStart >= 0 ? cleanBaseUrl.slice(queryStart) : "";
     // Fusion Pass: our streams proxy has a browser list (AAC/Opus first)
     const fpBrowser = /^https:\/\/fusionpass\.shop\/api\/addon\/[^/]+$/.test(basePath) ? "/browser" : "";
-    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;
+    // Chrome/Edge (Chromium, incl. Android) also play MKV; Safari/Firefox only MP4 (b=o)
+    const fpKind = (globalThis.navigator?.userAgentData?.brands || []).some((b) => /Chromium/.test(b.brand)) ? "c" : "o";
+    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${fpBrowser ? `?b=${fpKind}` : baseQuery}`;
   }
 
   buildMetaUrl(baseUrl, type, id) {

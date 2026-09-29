@@ -206,7 +206,9 @@ edit(f'{J}/data/repository/streamRepository.js', [
     ('    return `${basePath}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;',
      '    // Fusion Pass: our streams proxy has a browser list (AAC/Opus first)\n'
      '    const fpBrowser = /^https:\\/\\/fusionpass\\.shop\\/api\\/addon\\/[^/]+$/.test(basePath) ? "/browser" : "";\n'
-     '    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;'),
+     '    // Chrome/Edge (Chromium, incl. Android) also play MKV; Safari/Firefox only MP4 (b=o)\n'
+     '    const fpKind = (globalThis.navigator?.userAgentData?.brands || []).some((b) => /Chromium/.test(b.brand)) ? "c" : "o";\n'
+     '    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${fpBrowser ? `?b=${fpKind}` : baseQuery}`;'),
 ])
 
 print('rebrand: ok,', len(changed), 'changes')
