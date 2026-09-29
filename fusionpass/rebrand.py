@@ -200,6 +200,15 @@ for f, pairs in [
 ]:
     edit(f, pairs)
 
+# Browser playback (owner 2026-09-29): ask our addon proxy for its browser list (AAC/Opus files first,
+# which Chrome and Firefox can play with sound; the normal picks follow). The apps never do this.
+edit(f'{J}/data/repository/streamRepository.js', [
+    ('    return `${basePath}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;',
+     '    // Fusion Pass: our streams proxy has a browser list (AAC/Opus first)\n'
+     '    const fpBrowser = /^https:\\/\\/fusionpass\\.shop\\/api\\/addon\\/[^/]+$/.test(basePath) ? "/browser" : "";\n'
+     '    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;'),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

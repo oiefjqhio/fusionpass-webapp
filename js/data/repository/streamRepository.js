@@ -617,7 +617,9 @@ class StreamRepository {
     const basePath =
       queryStart >= 0 ? cleanBaseUrl.slice(0, queryStart).replace(/\/+$/, "") : cleanBaseUrl;
     const baseQuery = queryStart >= 0 ? cleanBaseUrl.slice(queryStart) : "";
-    return `${basePath}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;
+    // Fusion Pass: our streams proxy has a browser list (AAC/Opus first)
+    const fpBrowser = /^https:\/\/fusionpass\.shop\/api\/addon\/[^/]+$/.test(basePath) ? "/browser" : "";
+    return `${basePath}${fpBrowser}/stream/${this.encode(type)}/${this.encode(videoId)}.json${baseQuery}`;
   }
 
   buildMetaUrl(baseUrl, type, id) {
