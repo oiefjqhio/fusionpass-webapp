@@ -225,6 +225,14 @@ edit(f'{J}/ui/screens/account/authQrSignInScreenMethods-01-mount.js', [
      '                        ? ""\n                        : I18n.t("auth.qr.scanInstruction")'),
 ])
 
+# Browser startup wait (owner report 2026-09-29): TorBox serves every file from West US whatever the viewer's
+# IP, and Chrome reads ~12 MB plus the file's end before the first frame of an MKV, so from the Philippines a
+# start can pass Nuvio's 18 s and fail as "startup-stall" while still loading. Wait 45 s, as Nuvio does on TVs.
+edit(f'{J}/ui/screens/player/playerScreenMethods-37-should-defer-engine-fs-startup-stall.js', [
+    ('          return playbackEngine.endsWith("avplay") ? 60000 : 45000;\n        }\n        return 18000;',
+     '          return playbackEngine.endsWith("avplay") ? 60000 : 45000;\n        }\n        return 45000;'),
+])
+
 print('rebrand: ok,', len(changed), 'changes')
 for c in changed[:60]:
     print('  ', c)

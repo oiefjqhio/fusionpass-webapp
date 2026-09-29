@@ -132,7 +132,7 @@ export function createPlayerScreenMethods37() {
         if (Environment.isTizen() || Environment.isWebOS()) {
           return playbackEngine.endsWith("avplay") ? 60000 : 45000;
         }
-        return 18000;
+        return 45000;
       }
       if (Environment.isTizen()) {
         return playbackEngine.endsWith("avplay") ? 22000 : 16000;
