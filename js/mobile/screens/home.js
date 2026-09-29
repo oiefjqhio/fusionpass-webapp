@@ -5,7 +5,7 @@ import { HomeCatalogStore } from "../../data/local/homeCatalogStore.js";
 import { buildOrderedHomeCatalogItems, catalogSkipStep, catalogSupportsExtra } from "../../core/addons/homeCatalogs.js";
 import { StartupSyncService } from "../../core/profile/startupSyncService.js";
 import { metaRepository } from "../../data/repository/metaRepository.js";
-import { $, $$, el, esc, icon, lazyImages } from "../dom.js";
+import { $, $$, actionSheet, el, esc, icon, lazyImages, toast } from "../dom.js";
 import { continueCard, posterCard, progressFraction, railSkeleton, titleHref } from "../cards.js";
 import { streamsHref } from "./streams.js";
 
@@ -138,8 +138,19 @@ export async function renderHome(screen, route, { onDispose }) {
     const host = $(screen, "[data-cw]");
     if (!host || disposed) return;
     host.innerHTML = items.length
-      ? `<div class="fp-row"><div class="fp-row-head"><span class="fp-row-title">Continue Watching</span></div><div class="fp-rail">${items.map(continueCard).join("")}</div></div>`
+      ? `<div class="fp-row"><div class="fp-row-head"><span class="fp-row-title">Continue Watching</span></div><div class="fp-rail">${items.map((p, i) => continueCard(p, i)).join("")}</div></div>`
       : "";
+    $$(host, "[data-cw-more]").forEach((b) =>
+      b.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const p = items[Number(b.dataset.cwMore)];
+        const pick = await actionSheet({ title: p.title || "", actions: [{ id: "remove", label: "Remove from Continue Watching" }] });
+        if (pick !== "remove") return;
+        await watchProgressRepository.removeProgress(p.contentId).catch(() => toast("Couldn't remove it. Try again."));
+        void fillContinue();
+      })
+    );
     $$(host, "[data-resume]").forEach((a, i) => {
       a.addEventListener("click", (e) => {
         e.preventDefault();

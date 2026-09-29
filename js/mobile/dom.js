@@ -32,7 +32,8 @@ const P = {
   rewind: '<path d="M11 7 5 12l6 5zM19 7l-6 5 6 5z" fill="currentColor" stroke="none"/>',
   forward: '<path d="m13 7 6 5-6 5zM5 7l6 5-6 5z" fill="currentColor" stroke="none"/>',
   cc: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 10.5a2 2 0 1 0 0 3M17 10.5a2 2 0 1 0 0 3"/>',
-  expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'
+  expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+  more: '<circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/>'
 };
 
 export function icon(name, cls = "") {

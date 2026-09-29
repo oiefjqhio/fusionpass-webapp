@@ -74,6 +74,8 @@ button.fp-btn, .fp-btn { appearance: none; border: 0; font: inherit; cursor: poi
 .fp-wide .label small { display: block; color: var(--fg-2); font-weight: 500; font-size: 11px; }
 .fp-wide .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.2); z-index: 3; }
 .fp-wide .bar i { display: block; height: 100%; background: var(--accent); }
+.fp-card-more { position: absolute; top: 6px; right: 6px; z-index: 4; width: 32px; height: 32px; border: 0; border-radius: 16px; display: grid; place-items: center; background: rgba(0,0,0,.55); color: #fff; padding: 0; }
+.fp-card-more svg { width: 18px; height: 18px; }
 .fp-skel { background: linear-gradient(90deg, #1b1b1b, #262626, #1b1b1b); background-size: 200% 100%; animation: fp-sk 1.2s infinite linear; }
 @keyframes fp-sk { to { background-position: -200% 0; } }
 

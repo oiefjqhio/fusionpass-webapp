@@ -2,6 +2,7 @@
 // this file only draws touch controls around its <video id="videoPlayer">.
 import { PlayerController } from "../../core/player/playerController.js";
 import { subtitleRepository } from "../../data/repository/subtitleRepository.js";
+import { PlayerSettingsStore } from "../../data/local/playerSettingsStore.js";
 import { skipIntroRepository } from "../../data/repository/skipIntroRepository.js";
 import { $, el, esc, icon, actionSheet, toast } from "../dom.js";
 import { availablePlayers, openInPlayer } from "../externalPlayers.js";
@@ -22,6 +23,18 @@ function toVtt(text) {
   const t = String(text || "").replace(/^\uFEFF/, "").replace(/\r/g, "");
   if (/^WEBVTT/.test(t)) return t;
   return "WEBVTT\n\n" + t.replace(/^\d+\n(?=\d{2}:\d{2})/gm, "").replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g, "$1.$2");
+}
+
+/** Subtitle size from the synced player settings (percent), applied to the browser's cues. */
+function applyCueSize() {
+  const pct = Number(PlayerSettingsStore.get()?.subtitleStyle?.fontSize) || 100;
+  let tag = document.getElementById("fp-cue-size");
+  if (!tag) {
+    tag = document.createElement("style");
+    tag.id = "fp-cue-size";
+    document.head.appendChild(tag);
+  }
+  tag.textContent = `.fp-player video::cue { font-size: ${((1.05 * pct) / 100).toFixed(2)}em; }`;
 }
 
 function clearSubtitleTrack() {
@@ -238,6 +251,7 @@ export function openPlayer({ url, stream = null, context = {}, resumeMs = 0 }) {
   window.location.hash = "#/player";
   const requestHeaders = stream?.behaviorHints?.proxyHeaders?.request || {};
   clearSubtitleTrack();
+  applyCueSize();
   $(host, "[data-skip]").hidden = true;
   $(host, "[data-cc]").hidden = true;
   void loadExtras(context);
