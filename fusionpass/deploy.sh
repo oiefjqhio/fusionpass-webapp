@@ -47,7 +47,10 @@ cp fusionpass/manifest.webmanifest fusionpass/service-worker.js dist/
 
 rsync -a --delete -e "ssh -i $KEY" dist/ "$HOST:$DEST/"
 scp -q -i "$KEY" fusionpass/nginx-watch.conf "$HOST:/etc/nginx/sites-available/watch.fusionpass.shop"
-ssh -o BatchMode=yes -i "$KEY" "$HOST" "chown -R www-data:www-data $DEST && ln -sf /etc/nginx/sites-available/watch.fusionpass.shop /etc/nginx/sites-enabled/ && nginx -t 2>&1 | grep -v 'protocol options redefined' && systemctl reload nginx"
+# Owned by root and read-only to everyone else: www-data is also the dev Paymenter's php-fpm uid,
+# and code running there must not be able to rewrite the JS that handles customers' sync logins
+# (code review 2026-09-29, 08 L6). nginx only reads.
+ssh -o BatchMode=yes -i "$KEY" "$HOST" "chown -R root:root $DEST && chmod -R u=rwX,go=rX $DEST && ln -sf /etc/nginx/sites-available/watch.fusionpass.shop /etc/nginx/sites-enabled/ && nginx -t 2>&1 | grep -v 'protocol options redefined' && systemctl reload nginx"
 
 for u in "" app/ manifest.webmanifest service-worker.js; do
   echo "https://watch.fusionpass.shop/$u -> $(curl -s -o /dev/null -w '%{http_code}' "https://watch.fusionpass.shop/$u")"
