@@ -49,6 +49,17 @@ for path in glob.glob(f'{ROOT}/res/values*/strings.xml'):
     if n != s:
         open(path, 'w', encoding='utf8').write(n)
         changed.append(os.path.relpath(path, ROOT))
+# Boot-failure / unsupported-TV screen: customer-visible, so no upstream name (owner: "No Nuvio in
+# front of customers"; code review 2026-09-29, 22 F6).
+edit(f'{ROOT}/boot-guard.js', [
+    ('"This TV does not meet the minimum requirements for this version of Nuvio TV."',
+     '"This TV does not meet the minimum requirements for this version of Fusion Pass."'),
+    ('"You can try to start Nuvio TV anyway, but the app may not work correctly on this TV. This configuration is not officially supported."',
+     '"You can try to start Fusion Pass anyway, but it may not work correctly on this TV. This configuration is not officially supported."'),
+    ('logo.alt = "Nuvio";', 'logo.alt = "Fusion Pass";'),
+    ('title.textContent = "Nuvio TV could not start";', 'title.textContent = "Fusion Pass could not start";'),
+])
+
 edit(f'{ROOT}/index.html', [
     ('<title>Nuvio TV</title>', '<title>Fusion Pass</title>'),
     ('    <meta name="apple-mobile-web-app-capable" content="yes" />\n',
