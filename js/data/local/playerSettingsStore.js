@@ -1,4 +1,5 @@
 import { createProfileScopedStore } from "./profileScopedStore.js";
+import { ProfileManager } from "../../core/profile/profileManager.js";
 import {
   SUBTITLE_VERTICAL_OFFSET_CONTRACT,
   SUBTITLE_VERTICAL_OFFSET_DEFAULT,
@@ -17,6 +18,7 @@ export const DEFAULT_POST_PLAY_MOVIE_THRESHOLD_PERCENT = 90;
 
 const DEFAULTS = {
   autoplayNextEpisode: false,
+  nextEpisodeCountdownEnabled: true,
   postPlayRecommendationsEnabled: true,
   postPlayMovieThresholdPercent: DEFAULT_POST_PLAY_MOVIE_THRESHOLD_PERCENT,
   // Legacy Web-only switch. Subtitle startup is controlled by the preferred
@@ -279,6 +281,9 @@ export function normalizePlayerSettings(settings = {}) {
   return {
     ...DEFAULTS,
     ...persistentSettings,
+    nextEpisodeCountdownEnabled: Boolean(
+      persistentSettings.nextEpisodeCountdownEnabled ?? DEFAULTS.nextEpisodeCountdownEnabled
+    ),
     postPlayRecommendationsEnabled: Boolean(
       persistentSettings.postPlayRecommendationsEnabled ?? DEFAULTS.postPlayRecommendationsEnabled
     ),
@@ -405,17 +410,54 @@ const store = createProfileScopedStore({
   }
 });
 
+// Playback ticks read these settings repeatedly. Keep only the last normalized
+// snapshot, checking the persisted value on every read so cloud updates, profile
+// changes and storage clears remain visible without an invalidation protocol.
+let cachedRead = null;
+
+function getPlayerSettingsForProfile(profileId) {
+  const normalizedProfileId =
+    String(profileId ?? ProfileManager.getActiveProfileId() ?? "1").trim() || "1";
+  let raw;
+  try {
+    raw = localStorage.getItem(KEY);
+  } catch (_) {
+    cachedRead = null;
+    return store.getForProfile(normalizedProfileId);
+  }
+  if (cachedRead && cachedRead.profileId === normalizedProfileId && cachedRead.raw === raw) {
+    // Callers can mutate nested settings without changing subsequent reads.
+    return JSON.parse(cachedRead.value);
+  }
+  cachedRead = null;
+  const value = store.getForProfile(normalizedProfileId);
+  try {
+    // The normal read may migrate/normalize storage or seed a missing profile.
+    const persisted = localStorage.getItem(KEY);
+    const serializedValue = JSON.stringify(value);
+    if (
+      persisted !== null &&
+      JSON.stringify(JSON.parse(persisted)?.profiles?.[normalizedProfileId]) === serializedValue
+    ) {
+      cachedRead = { profileId: normalizedProfileId, raw: persisted, value: serializedValue };
+    }
+  } catch (_) {
+    // Storage may be unavailable; retain the existing uncached behavior.
+  }
+  return value;
+}
+
 export const PlayerSettingsStore = {
   getDefaults() {
     return normalizePlayerSettings({});
   },
 
   getForProfile(profileId) {
-    return store.getForProfile(profileId);
+    return getPlayerSettingsForProfile(profileId);
   },
 
   get() {
-    return store.get();
+    return getPlayerSettingsForProfile();
   },
 
   replaceForProfile(profileId, nextValue, options = {}) {

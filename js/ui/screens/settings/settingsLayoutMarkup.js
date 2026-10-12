@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import * as internals from "./settingsScreenContext.js";
+import { getTvPerformanceMode, getTvRuntimePerformanceProfile } from "../../../platform/tvRuntimePerformance.js";
 
 export function renderLayoutMarkup(model) {
   const { isModernSidebarBlurAvailable, HOME_LAYOUT_OPTIONS, SECTION_META, t } = internals;
@@ -17,6 +18,13 @@ export function renderLayoutMarkup(model) {
         ? t("settings.layout.continueWatchingSort.streamingStyle", {}, "Streaming Style")
         : t("settings.layout.continueWatchingSort.default", {}, "Default");
   const homeRatingsShown = model.layout.homeImdbRatingsVisibility !== "HIDE_ALL";
+  const detailRatingsVisibility = String(model.layout.detailImdbRatingsVisibility || "SHOW_ALL");
+  const detailRatingsVisibilityLabel =
+    detailRatingsVisibility === "HIDE_UNWATCHED_EPISODES"
+      ? t("layout_ratings_hide_unwatched", {}, "Hide Unwatched")
+      : detailRatingsVisibility === "HIDE_EPISODES" || detailRatingsVisibility === "HIDE_ALL"
+        ? t("layout_ratings_hide", {}, "Hide")
+        : t("layout_ratings_show", {}, "Show");
 
   const homeLayoutBody = `
           <div class="settings-stack">
@@ -246,6 +254,12 @@ export function renderLayoutMarkup(model) {
               subtitle: t("settings.layout.blurUnwatched.subtitle"),
               checked: Boolean(model.layout.blurUnwatchedEpisodes)
             })}
+            ${this.renderActionRow({
+              focusKey: "layout:detail:episodeRatings",
+              title: t("layout_episode_ratings", {}, "Episode Ratings"),
+              subtitle: t("layout_episode_ratings_sub", {}, "Choose which episode ratings are visible."),
+              value: detailRatingsVisibilityLabel
+            })}
             ${this.renderToggleRow({
               focusKey: "layout:detail:trailerButton",
               title: t("settings.layout.showTrailerButton.title"),
@@ -397,6 +411,16 @@ export function renderLayoutMarkup(model) {
                 bodyHtml: focusedPosterBody
               })}
               ${this.renderCollapsibleRow({ focusKey: "layout:toggle:cardAppearance", title: t("settings_card_depth_title", {}, "Card appearance"), subtitle: t("settings_card_depth_description", {}, "Size, corners and depth surfaces"), expanded: Boolean(expanded.cardAppearance), bodyHtml: cardAppearanceBody })}
+              ${
+                getTvRuntimePerformanceProfile().isTvRuntime
+                  ? this.renderActionRow({
+                      focusKey: "layout:performanceMode",
+                      title: t("layout_animations_effects", {}, "Animations & effects"),
+                      subtitle: t("settings.performance.mode.subtitle", {}, "Reduce visual effects if the TV feels slow"),
+                      value: t(`layout_perf_${getTvPerformanceMode()}`, {}, getTvPerformanceMode())
+                    })
+                  : ""
+              }
             </div>
           </div>
         `;
