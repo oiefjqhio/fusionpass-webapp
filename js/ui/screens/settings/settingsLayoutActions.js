@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import * as internals from "./settingsScreenContext.js";
+import { getTvPerformanceMode, setTvPerformanceMode } from "../../../platform/tvRuntimePerformance.js";
 
 export function registerLayoutActions(model) {
   const { HomeCatalogStore, LayoutPreferences, HOME_LAYOUT_OPTIONS, t } = internals;
@@ -20,6 +21,21 @@ export function registerLayoutActions(model) {
   });
   this.actionMap.set("layout:toggle:cardAppearance", () => {
     this.toggleExpandedSection("layout", "cardAppearance");
+  });
+  this.actionMap.set("layout:performanceMode", () => {
+    this.openOptionDialog({
+      title: t("layout_animations_effects", {}, "Animations & effects"),
+      options: [
+        { id: "auto", labelKey: "layout_perf_auto" },
+        { id: "reduced", labelKey: "layout_perf_reduced" },
+        { id: "full", labelKey: "layout_perf_full" }
+      ],
+      selectedId: getTvPerformanceMode(),
+      returnFocusKey: "layout:performanceMode",
+      onSelect: (option) => {
+        setTvPerformanceMode(option.id);
+      }
+    });
   });
 
   HOME_LAYOUT_OPTIONS.forEach((option) => {
@@ -262,6 +278,26 @@ export function registerLayoutActions(model) {
   this.actionMap.set("layout:detail:blurUnwatched", () => {
     LayoutPreferences.set({
       blurUnwatchedEpisodes: !LayoutPreferences.get().blurUnwatchedEpisodes
+    });
+  });
+  this.actionMap.set("layout:detail:episodeRatings", () => {
+    const options = [
+      { id: "SHOW_ALL", labelKey: "layout_ratings_show", label: "Show" },
+      { id: "HIDE_EPISODES", labelKey: "layout_ratings_hide", label: "Hide" },
+      {
+        id: "HIDE_UNWATCHED_EPISODES",
+        labelKey: "layout_ratings_hide_unwatched",
+        label: "Hide Unwatched"
+      }
+    ];
+    this.openOptionDialog({
+      title: t("layout_episode_ratings", {}, "Episode Ratings"),
+      options,
+      selectedId: LayoutPreferences.get().detailImdbRatingsVisibility,
+      returnFocusKey: "layout:detail:episodeRatings",
+      onSelect: (option) => {
+        LayoutPreferences.set({ detailImdbRatingsVisibility: String(option.id || "SHOW_ALL") });
+      }
     });
   });
 }

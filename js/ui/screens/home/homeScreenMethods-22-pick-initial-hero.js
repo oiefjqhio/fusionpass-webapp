@@ -66,17 +66,18 @@ export function createHomeScreenMethods22() {
           batchDescriptors.map(async (catalog) => {
             const result = this.filterUnreleasedResult(
               await withTimeout(
-                catalogRepository.getCatalog({
-                  addonBaseUrl: catalog.addonBaseUrl,
-                  addonId: catalog.addonId,
-                  addonName: catalog.addonName,
-                  catalogId: catalog.catalogId,
-                  catalogName: catalog.catalogName,
-                  type: catalog.type,
-                  skip: 0,
-                  skipStep: catalog.skipStep,
-                  supportsSkip: catalog.supportsSkip !== false
-                }),
+                options.prefetchedResults?.get(catalog) ??
+                  catalogRepository.getCatalog({
+                    addonBaseUrl: catalog.addonBaseUrl,
+                    addonId: catalog.addonId,
+                    addonName: catalog.addonName,
+                    catalogId: catalog.catalogId,
+                    catalogName: catalog.catalogName,
+                    type: catalog.type,
+                    skip: 0,
+                    skipStep: catalog.skipStep,
+                    supportsSkip: catalog.supportsSkip !== false
+                  }),
                 timeoutMs,
                 { status: "error", message: "timeout" }
               )
@@ -152,8 +153,6 @@ export function createHomeScreenMethods22() {
       const token = this.homeLoadToken;
       this.catalogRetryInFlight = true;
       const retryBatchSize = Math.max(1, Number(this.getDeferredCatalogBatchSize() || pendingRows.length || 1));
-      const progressiveRetryRendering = this.shouldProgressivelyRenderDeferredRows();
-      let hasBufferedUpdates = false;
       (async () => {
         for (let index = 0; index < pendingRows.length; index += retryBatchSize) {
           const batch = pendingRows.slice(index, index + retryBatchSize);
@@ -179,41 +178,30 @@ export function createHomeScreenMethods22() {
               if (result?.status !== "success") {
                 return null;
               }
-              return {
-                ...row,
-                result
-              };
+              if (token !== this.homeLoadToken || Router.getCurrent() !== "home") {
+                return null;
+              }
+              const updatedRow = { ...row, result };
+              const combinedByKey = new Map((this.rows || []).map((entry) => [entry.homeCatalogKey, entry]));
+              combinedByKey.set(updatedRow.homeCatalogKey, updatedRow);
+              this.rows = this.sortAndFilterRows(Array.from(combinedByKey.values()), this.collections);
+              this.heroCandidates = uniqueById(this.collectHeroCandidates(this.rows));
+              if (!this.heroItem) {
+                this.heroItem = this.pickInitialHero();
+              }
+              this.requestBackgroundRender();
+              return updatedRow;
             })
           );
           if (token !== this.homeLoadToken || Router.getCurrent() !== "home") {
             return;
           }
-          const updatedRows = settled.filter((entry) => entry?.status === "fulfilled" && entry.value).map((entry) => entry.value);
           settled
             .filter((entry) => entry?.status === "rejected")
             .forEach((entry) => console.warn("Retry catalog row load failed", entry.reason));
-          if (updatedRows.length) {
-            const combinedByKey = new Map((this.rows || []).map((entry) => [entry.homeCatalogKey, entry]));
-            updatedRows.forEach((row) => {
-              combinedByKey.set(row.homeCatalogKey, row);
-            });
-            this.rows = this.sortAndFilterRows(Array.from(combinedByKey.values()), this.collections);
-            this.heroCandidates = uniqueById(this.collectHeroCandidates(this.rows));
-            if (!this.heroItem) {
-              this.heroItem = this.pickInitialHero();
-            }
-            if (progressiveRetryRendering) {
-              this.requestBackgroundRender();
-            } else {
-              hasBufferedUpdates = true;
-            }
-          }
           if (index + retryBatchSize < pendingRows.length) {
             await new Promise((resolve) => setTimeout(resolve, 0));
           }
-        }
-        if (hasBufferedUpdates && token === this.homeLoadToken && Router.getCurrent() === "home") {
-          this.requestBackgroundRender();
         }
       })().finally(() => {
         if (token === this.homeLoadToken) {
