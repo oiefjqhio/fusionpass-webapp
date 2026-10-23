@@ -1,3 +1,4 @@
+import { renderCustomPosterSettings } from "./settingsCustomPosterSection.js";
 /* eslint-disable no-unused-vars */
 import * as internals from "./settingsScreenContext.js";
 
@@ -17,6 +18,13 @@ export function renderLayoutMarkup(model) {
         ? t("settings.layout.continueWatchingSort.streamingStyle", {}, "Streaming Style")
         : t("settings.layout.continueWatchingSort.default", {}, "Default");
   const homeRatingsShown = model.layout.homeImdbRatingsVisibility !== "HIDE_ALL";
+  const detailRatingsVisibility = String(model.layout.detailImdbRatingsVisibility || "SHOW_ALL");
+  const detailRatingsVisibilityLabel =
+    detailRatingsVisibility === "HIDE_UNWATCHED_EPISODES"
+      ? t("layout_ratings_hide_unwatched", {}, "Hide Unwatched")
+      : detailRatingsVisibility === "HIDE_EPISODES" || detailRatingsVisibility === "HIDE_ALL"
+        ? t("layout_ratings_hide", {}, "Hide")
+        : t("layout_ratings_show", {}, "Show");
 
   const homeLayoutBody = `
           <div class="settings-stack">
@@ -107,6 +115,9 @@ export function renderLayoutMarkup(model) {
                   })
                 : ""
             }
+            ${
+              !isModernLayout
+                ? `
             ${this.renderToggleRow({
               focusKey: "layout:heroSection",
               title: t("settings.layout.heroSection.title"),
@@ -114,6 +125,9 @@ export function renderLayoutMarkup(model) {
               checked: Boolean(model.layout.heroSectionEnabled)
             })}
             ${model.layout.heroSectionEnabled ? this.renderActionRow({ focusKey: "layout:heroCatalogs", title: t("layout_hero_catalog", {}, "Hero catalogs"), subtitle: t("layout_hero_catalog_sub", {}, "Choose catalogs used by the Hero section"), value: model.layout.heroCatalogKeys?.length ? String(model.layout.heroCatalogKeys.length) : t("common_all", {}, "All") }) : ""}
+            `
+                : ""
+            }
             ${this.renderActionRow({
               focusKey: "layout:searchDiscover",
               title: t("layout_discover_location_action", {}, "Discover location"),
@@ -240,11 +254,18 @@ export function renderLayoutMarkup(model) {
 
   const detailPageBody = `
           <div class="settings-stack">
+            ${this.renderToggleRow({ focusKey: "layout:detail:shuffle", title: t("random_episode_title"), subtitle: t("layout_random_episode_sub"), checked: Boolean(model.layout.randomEpisodeEnabled) })}
             ${this.renderToggleRow({
               focusKey: "layout:detail:blurUnwatched",
               title: t("settings.layout.blurUnwatched.title"),
               subtitle: t("settings.layout.blurUnwatched.subtitle"),
               checked: Boolean(model.layout.blurUnwatchedEpisodes)
+            })}
+            ${this.renderActionRow({
+              focusKey: "layout:detail:episodeRatings",
+              title: t("layout_episode_ratings", {}, "Episode Ratings"),
+              subtitle: t("layout_episode_ratings_sub", {}, "Choose which episode ratings are visible."),
+              value: detailRatingsVisibilityLabel
             })}
             ${this.renderToggleRow({
               focusKey: "layout:detail:trailerButton",
@@ -359,6 +380,7 @@ export function renderLayoutMarkup(model) {
 
   return `
           ${this.renderSectionHeader(SECTION_META.find((item) => item.id === "layout"))}
+          <div class="settings-group-card"><div class="settings-stack">${renderCustomPosterSettings.call(this)}</div></div>
           <div class="settings-group-card settings-group-card-fill">
             <div class="settings-stack">
               ${this.renderCollapsibleRow({

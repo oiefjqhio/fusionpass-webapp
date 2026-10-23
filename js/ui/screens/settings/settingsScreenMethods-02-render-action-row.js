@@ -78,14 +78,16 @@ export function createSettingsScreenMethods02() {
     renderThemeCard(theme, selected, focusKey) {
       const selectedClass = selected ? " is-selected" : "";
       const swatchClass = theme.id === "WHITE" ? " settings-theme-swatch-light" : "";
-      const swatchBackground = ThemeColors.getPalette(theme.id)["--accent-gradient"] || theme.color;
+      const palette = ThemeColors.getPalette(theme.id, theme.customThemeColors);
+      const swatchBackground = palette["--accent-gradient"] || theme.color;
+      const swatchCheckColor = theme.onColor || palette["--on-secondary"] || "#fff";
       return `
           <button class="settings-theme-card settings-content-focusable focusable${selectedClass}"
                   data-zone="content"
                   ${this.registerAction(focusKey, this.actionMap.get(focusKey))}>
             <span class="settings-theme-swatch-wrap">
               <span class="settings-theme-swatch${swatchClass}" style="background:${escapeHtml(swatchBackground)};">
-                ${selected ? `<span class="settings-theme-check-wrap" style="color:${escapeHtml(theme.onColor || "#fff")};">${iconSvg(ROW_ICONS.check, "settings-theme-check")}</span>` : ""}
+                ${selected ? `<span class="settings-theme-check-wrap" style="color:${escapeHtml(swatchCheckColor)};">${iconSvg(ROW_ICONS.check, "settings-theme-check")}</span>` : ""}
               </span>
             </span>
             <span class="settings-theme-name">${escapeHtml(translateOptionLabel(theme))}</span>
@@ -206,6 +208,7 @@ export function createSettingsScreenMethods02() {
       title,
       value = "",
       multiline = false,
+      secret = false,
       placeholder = "",
       returnFocusKey,
       saveLabel = t("common.save", {}, "Save"),
@@ -220,6 +223,7 @@ export function createSettingsScreenMethods02() {
         value: String(value ?? ""),
         draft: String(value ?? ""),
         multiline: Boolean(multiline),
+        secret: Boolean(secret),
         placeholder,
         returnFocusKey,
         saveLabel,
@@ -243,13 +247,25 @@ export function createSettingsScreenMethods02() {
       if (typeof onClose === "function") onClose();
       this.focusZone = "content";
     },
-    closeTextDialog() {
+    closeTextDialog({ restoreEditor = true } = {}) {
       if (!this.textDialog) {
         return;
       }
       this.contentFocusKey = this.textDialog.returnFocusKey || this.contentFocusKey;
+      const restoreCustomThemeEditor = Boolean(restoreEditor && this.textDialog.restoreCustomThemeEditor && this.customThemeDraft);
       this.textDialog = null;
+      if (restoreCustomThemeEditor) {
+        this.showCustomThemeEditorDialog();
+        return;
+      }
       this.focusZone = "content";
+    },
+    dismissDialogsForAmbient() {
+      this.closeOptionDialog();
+      this.closeTextDialog({ restoreEditor: false });
+      for (const slot of this.container?.querySelectorAll?.("[data-settings-dialog], [data-trakt-dialog]") || []) {
+        slot.textContent = "";
+      }
     },
     renderOptionDialog() {
       if (!this.optionDialog) {

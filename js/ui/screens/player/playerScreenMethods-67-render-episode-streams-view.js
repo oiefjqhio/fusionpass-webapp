@@ -251,7 +251,7 @@ export function createPlayerScreenMethods67() {
       }
       streamRepository.setLocalPluginSearchPaused(true);
       if (!selectedStream && this.episodePanelMode !== "streams") {
-        await this.openEpisodeStreamsView({ forceReload: true });
+        await this.openEpisodeStreamsView();
         return;
       }
       this.switchingEpisode = true;
@@ -299,6 +299,7 @@ export function createPlayerScreenMethods67() {
             preferredStreamId: bestStreamCandidate.id || null,
             playbackSourceContext: this.getPlaybackSourceContext(bestStreamCandidate),
             returnToStreamOnBack: false,
+            returnHomeOnBack: this.buildDetailRouteParamsFromPlayer().returnHomeOnBack,
             nextEpisodeVideoId: nextEpisode?.id || null,
             nextEpisodeLabel: nextEpisode ? `S${nextEpisode.season}E${nextEpisode.episode}` : null,
             nextEpisodeSeason: nextEpisode?.season ?? null,

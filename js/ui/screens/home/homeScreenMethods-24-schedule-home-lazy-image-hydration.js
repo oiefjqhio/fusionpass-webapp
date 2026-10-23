@@ -8,6 +8,7 @@ export function createHomeScreenMethods24() {
     HOME_LAZY_IMAGE_ROW_SELECTOR,
     HOME_LEGACY_LAZY_HYDRATION_DEBOUNCE_MS,
     HOME_LEGACY_LAZY_HYDRATION_MAX_PER_FRAME,
+    getTvRuntimePerformanceProfile,
     isSeriesTypeForContinueWatching,
     isCompletedForContinueWatching,
     episodeKey,
@@ -16,9 +17,19 @@ export function createHomeScreenMethods24() {
   } = internals;
 
   return {
+    shouldUseBoundedHomeImageHydration() {
+      // Keep image prefetch bounded on TV independently of the animated scroll policy.
+      return Boolean(this.isPerformanceConstrained() || getTvRuntimePerformanceProfile().isTvRuntime);
+    },
     scheduleHomeLazyImageHydration(
       anchorNode = null,
-      { refreshIndex = false, deferUntilVerticalSettle = false, focusedRowOnly = false, includeNeighborRows = false } = {}
+      {
+        refreshIndex = false,
+        deferUntilVerticalSettle = false,
+        focusedRowOnly = false,
+        includeNeighborRows = false,
+        viewportChanged = false
+      } = {}
     ) {
       const anchorRow = anchorNode instanceof HTMLElement ? anchorNode.closest(HOME_LAZY_IMAGE_ROW_SELECTOR) : null;
       const anchorImagePending = Boolean(
@@ -44,7 +55,8 @@ export function createHomeScreenMethods24() {
         !this.homeLazyImageHydrationNeedsIndexRefresh &&
         !this.homeLazyImageHydrationRaf &&
         !includeNeighborRows &&
-        !(this.shouldUseImmediateFocusScroll() && anchorImagePending)
+        !viewportChanged &&
+        !(this.shouldUseBoundedHomeImageHydration() && anchorImagePending)
       ) {
         // Avoid scheduling another animation-frame callback until the DOM,
         // viewport, or focused image changes. Smart-TV bounded hydration may
@@ -141,7 +153,7 @@ export function createHomeScreenMethods24() {
         return;
       }
       const anchorRow = anchorNode?.closest?.(HOME_LAZY_IMAGE_ROW_SELECTOR) || null;
-      const useBoundedTvHydration = this.shouldUseImmediateFocusScroll();
+      const useBoundedTvHydration = this.shouldUseBoundedHomeImageHydration();
       const sameAnchorRow = anchorRow instanceof HTMLElement && anchorRow === this.lastHomeLazyImageHydrationAnchorRow;
       if (!forceFullScan && !refreshIndex && sameAnchorRow && !useBoundedTvHydration) {
         // The first pass for a focused row hydrates every image in that row. On

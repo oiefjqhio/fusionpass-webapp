@@ -200,6 +200,19 @@
   line-clamp: 5 !important;
 }
 
+/* Episode/preview thumbs and cast avatars already draw their own focus ring.
+   Keep the fast path from adding a second ring around the outer card. */
+.performance-constrained .series-episode-card.focused,
+.performance-constrained .detail-morelike-card.focused,
+.performance-constrained .movie-cast-card.focused,
+.performance-constrained .series-cast-card.focused,
+.legacy-tizen .series-episode-card.focused,
+.legacy-tizen .detail-morelike-card.focused,
+.legacy-tizen .movie-cast-card.focused,
+.legacy-tizen .series-cast-card.focused {
+  box-shadow: none !important;
+}
+
 .performance-constrained .detail-comment-card.focused p {
   -webkit-line-clamp: 5 !important;
   line-clamp: 5 !important;
@@ -295,4 +308,35 @@
 .legacy-tizen .modern-sidebar-profile.focused {
   transform: scale(1.04) !important;
   will-change: transform !important;
+}
+
+/* FIX: keep remote focus immediate on Samsung CU-series hardware. */
+.legacy-tizen .focusable,
+.legacy-tizen .series-episode-card,
+.legacy-tizen .detail-morelike-card,
+.legacy-tizen .movie-cast-card,
+.legacy-tizen .series-cast-card,
+.legacy-tizen .detail-company-card,
+.legacy-tizen .series-season-btn,
+.legacy-tizen .series-insight-tab,
+.legacy-tizen .series-primary-btn,
+.legacy-tizen .series-circle-btn,
+.legacy-tizen .modern-sidebar-nav-item,
+.legacy-tizen .modern-sidebar-profile {
+  transition: none !important;
+}
+.legacy-tizen .series-episode-card.focused,
+.legacy-tizen .detail-morelike-card.focused,
+.legacy-tizen .movie-cast-card.focused,
+.legacy-tizen .series-cast-card.focused,
+.legacy-tizen .detail-company-card.focused,
+.legacy-tizen .series-season-btn.focused,
+.legacy-tizen .series-insight-tab.focused,
+.legacy-tizen .series-primary-btn.focused,
+.legacy-tizen .series-circle-btn.focused,
+.legacy-tizen .modern-sidebar-nav-item.focused,
+.legacy-tizen .modern-sidebar-profile.focused {
+  animation: none !important;
+  transform: none !important;
+  will-change: auto !important;
 }

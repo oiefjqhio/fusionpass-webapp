@@ -3,6 +3,7 @@ import * as internals from "./metaDetailsScreenContext.js";
 
 export function createMetaDetailsScreenMethods09() {
   const {
+    LayoutPreferences,
     contentTextDirection,
     EPISODE_VIRTUALIZATION_THRESHOLD,
     EPISODE_VIRTUALIZATION_MIN_WINDOW,
@@ -14,19 +15,25 @@ export function createMetaDetailsScreenMethods09() {
     ratingToneClass,
     escapeHtml,
     escapeAttribute,
-    resolveTrailerItems
+    resolveTrailerItems,
+    filterEpisodeImdbRatings,
+    showEpisodeRatings
   } = internals;
 
   return {
     renderSeriesInsightSection() {
       const trailerItems = resolveTrailerItems(this.meta);
+      const ratingsVisibility = LayoutPreferences.get().detailImdbRatingsVisibility;
       const tabItems = [
         ["cast", t("detail.creatorCast", {}, "Creator and Cast")],
-        ["ratings", t("detail.ratings", {}, "Ratings")],
+        ...(showEpisodeRatings(ratingsVisibility) ? [["ratings", t("detail.ratings", {}, "Ratings")]] : []),
         ...(this.moreLikeThisItems.length ? [["morelike", t("detail.moreLikeThis", {}, "More Like This")]] : []),
         ...(trailerItems.length ? [["trailer", t("detail_tab_trailer", {}, "Trailer")]] : []),
         ...(this.collectionItems.length ? [["collection", this.collectionName || "Collection"]] : [])
       ];
+      if (!tabItems.some(([tab]) => tab === this.seriesInsightTab)) {
+        this.seriesInsightTab = tabItems[0]?.[0] || "cast";
+      }
       const tabs = tabItems.length > 1 ? this.renderPeopleTabs("series", this.seriesInsightTab, tabItems) : "";
       return `
           <section class="series-insight-section is-switching">
@@ -47,8 +54,11 @@ export function createMetaDetailsScreenMethods09() {
     },
     renderMoreLikeThisAttribution() {
       if (!this.moreLikeThisSource) return "";
-      const provider = this.moreLikeThisSource === "trakt" ? "Trakt" : "TMDB";
-      return `<p class="detail-more-like-source">Related titles provided by ${provider}.</p>`;
+      const label =
+        this.moreLikeThisSource === "trakt"
+          ? t("detail_more_like_this_powered_by_trakt", {}, "Powered by Trakt")
+          : t("detail_more_like_this_powered_by_tmdb", {}, "Powered by TMDB");
+      return `<p class="detail-more-like-source">${escapeHtml(label)}</p>`;
     },
     renderPeopleTabs(kind, activeTab, items = []) {
       const normalized = items.filter(([, label]) => Boolean(label));
@@ -113,7 +123,11 @@ export function createMetaDetailsScreenMethods09() {
       if (!seasonKeys.includes(Number(this.selectedRatingSeason))) {
         this.selectedRatingSeason = seasonKeys[0];
       }
-      const ratings = this.seriesRatingsBySeason?.[this.selectedRatingSeason] || [];
+      const ratings = filterEpisodeImdbRatings(
+        LayoutPreferences.get().detailImdbRatingsVisibility,
+        this.seriesRatingsBySeason?.[this.selectedRatingSeason] || [],
+        (entry) => this.isEpisodeMarkedWatched({ season: this.selectedRatingSeason, episode: entry?.episode })
+      );
       const seasonButtons = seasonKeys
         .map(
           (season) => `

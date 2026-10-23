@@ -5,6 +5,7 @@ export function createHomeScreenMethods30() {
 
   return {
     cleanup() {
+      this.heroMdbListRequest = null;
       if (this.unsubscribeStartupSyncPullCompleted) {
         this.unsubscribeStartupSyncPullCompleted();
         this.unsubscribeStartupSyncPullCompleted = null;
@@ -46,6 +47,7 @@ export function createHomeScreenMethods30() {
       this.teardownGridStickyHeader();
       this.teardownModernTrackScrollPagination();
       this.teardownContinueWatchingProgressiveRendering();
+      this.homeReturnFocusRestoreToken = Number(this.homeReturnFocusRestoreToken || 0) + 1;
       if (this.homeViewportFocusSyncTimer) {
         clearTimeout(this.homeViewportFocusSyncTimer);
         this.homeViewportFocusSyncTimer = null;
@@ -55,7 +57,7 @@ export function createHomeScreenMethods30() {
         this.homeViewportScrollFrame = 0;
       }
       if (this.boundHomeViewport && this.boundHomeViewportScrollHandler) {
-        this.boundHomeViewport.removeEventListener("scroll", this.boundHomeViewportScrollHandler);
+        this.boundHomeViewport.removeEventListener("scroll", this.boundHomeViewportScrollHandler, true);
       }
       this.boundHomeViewport = null;
       if (this.homeTruncationFrame) {

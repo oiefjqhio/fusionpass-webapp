@@ -1,3 +1,5 @@
+import { handleListedStreamRedirect } from "./streamRedirectMetadata.js";
+import { syncHtmlSubtitleClearance } from "./subtitleOverlayClearance.js";
 import * as internals from "./playerScreenContext.js";
 import { createPlayerVideoLifecycleHandlers } from "./playerVideoLifecycleHandlers.js";
 import { createPlayerVideoEventHandlers } from "./playerVideoEventHandlers.js";
@@ -26,6 +28,15 @@ export function createPlayerScreenMethods27() {
         lifecycleHandlers;
       const { onWebOsAudioTrackSelectionChanged, onAvPlaySubtitleChange, onError } = eventHandlers;
       const bindings = [
+        [
+          "webosexactseekvisual",
+          (event) => {
+            if (!Environment.isWebOS() || !this.seekLoading) return;
+            this.seekLoadingVisualComplete = event.detail?.moving === true;
+            this.updateLoadingVisibility();
+          }
+        ],
+        ["streamredirect", (event) => handleListedStreamRedirect(this, PlayerController, event.detail)],
         ["waiting", onWaiting],
         ["playing", onPlaying],
         ["error", onError],
@@ -39,6 +50,14 @@ export function createPlayerScreenMethods27() {
         ["avplaytrackschanged", onTrackListChanged],
         ["avplaysubtitlechange", onAvPlaySubtitleChange],
         ["webosaudiotrackselectionchanged", onWebOsAudioTrackSelectionChanged],
+        [
+          "webosaudioconversionchanged",
+          () => {
+            this.invalidateTrackDialogCaches();
+            this.renderAudioDialog();
+            this.updateLoadingVisibility();
+          }
+        ],
         ["hlstrackschanged", onTrackListChanged],
         ["dashtrackschanged", onTrackListChanged]
       ];
@@ -51,17 +70,16 @@ export function createPlayerScreenMethods27() {
       if (typeof window?.addEventListener === "function") {
         const onViewportResize = () => {
           this.applyAspectMode({ showToast: false });
-          // applyAspectMode() restores the native AVPlay surface to full screen.
-          // In post-play the same mode key may still be current, so invalidate it
-          // before re-applying the Android mini-window geometry.
-          this.cancelPostPlayNativeSurfaceAnimation();
-          const viewport = PlayerController.getAvPlayViewportSize?.() || {
+          // applyAspectMode() restores the playback surface. Invalidate the
+          // post-play mode before re-applying the Android mini-window geometry.
+          this.cancelPostPlayPlayerSurfaceAnimation();
+          const viewport = PlayerController.getCssPlayerViewportSize?.() || {
             width: 1920,
             height: 1080
           };
           if (this.isPostPlayVisible()) {
-            this.postPlayNativeSurfaceStateKey = "";
-            this.postPlayNativeSurfaceRect = {
+            this.postPlayPlayerSurfaceStateKey = "";
+            this.postPlayPlayerSurfaceRect = {
               x: 0,
               y: 0,
               width: Math.max(1, Math.round(Number(viewport.width || 1920))),
@@ -69,6 +87,7 @@ export function createPlayerScreenMethods27() {
             };
           }
           this.syncPostPlayPlayerSurface(this.getPostPlayState());
+          syncHtmlSubtitleClearance(this);
         };
         window.addEventListener("resize", onViewportResize);
         this.videoListeners.push({

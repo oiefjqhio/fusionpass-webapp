@@ -44,8 +44,6 @@ import {
 
 import { TorrentSettingsStore } from "../../../data/local/torrentSettingsStore.js";
 
-import { WebOsAudioCompatibilityStore } from "../../../data/local/webOsAudioCompatibilityStore.js";
-
 import { LayoutPreferences } from "../../../data/local/layoutPreferences.js";
 
 import { ExperienceModeStore } from "../../../data/local/experienceModeStore.js";
@@ -209,6 +207,12 @@ export const THEME_OPTIONS = [
     id: "GRAPHITE",
     labelKey: "settings.appearance.themes.graphite",
     color: "#aab2be",
+    onColor: "#111111"
+  },
+  {
+    id: "CUSTOM",
+    labelKey: "settings.appearance.themes.custom",
+    color: "#ec70a9",
     onColor: "#111111"
   },
   {
