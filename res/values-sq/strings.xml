@@ -3015,7 +3015,7 @@
     <string name="party_start_title">Shikoni së bashku</string>
     <string name="party_start_description">Fto miqtë e tu. Secili luan nga burimet e veta dhe të gjithë mbeten të sinkronizuar.</string>
     <string name="party_start_action">Nis watch party</string>
-    <string name="party_sign_in_required">Hyr në llogarinë tënde Nuvio për të përdorur watch party.</string>
+    <string name="party_sign_in_required">Hyr në llogarinë tënde Fusion Pass për të përdorur watch party.</string>
     <string name="party_unavailable">Watch party nuk është i disponueshëm tani.</string>
     <string name="party_experimental">Watch party është eksperimental dhe mund të mos funksionojë siç pritet.</string>
     <string name="party_code_label">Kodi i grupit</string>
@@ -3083,6 +3083,6 @@
     <string name="party_share_unavailable">Ky transmetim nuk mund të ndahet.</string>
     <string name="party_shared_by">Ndarë nga %1$s</string>
     <string name="party_invite_scan">Skano me telefon për t\'u bashkuar</string>
-    <string name="party_invite_share">Ose ndaj kodin. Miqtë mund ta fusin te Watch party në çdo aplikacion Nuvio.</string>
+    <string name="party_invite_share">Ose ndaj kodin. Miqtë mund ta fusin te Watch party në çdo aplikacion Fusion Pass.</string>
     <string name="party_invite_qr">Kodi QR i ftesës për watch party</string>
 </resources>

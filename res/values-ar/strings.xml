@@ -2317,7 +2317,7 @@
     <string name="tracking_accounts_subtitle">ربط وإدارة خدمات التتبع</string>
     <string name="tracking_simkl_features_subtitle">إعدادات خاصة بـ Simkl</string>
     <string name="tracking_simkl_features_title">ميزات Simkl</string>
-    <string name="tracking_sources_subtitle">اختر من أين يقرأ Nuvio مكتبتك وتقدم مشاهدتك. التشغيل يُسجل في كل خدمة متصلة.</string>
+    <string name="tracking_sources_subtitle">اختر من أين يقرأ Fusion Pass مكتبتك وتقدم مشاهدتك. التشغيل يُسجل في كل خدمة متصلة.</string>
     <string name="tracking_trakt_features_subtitle">السجل والمراجعات والتوصيات الخاصة بـ Trakt</string>
     <string name="action_back">رجوع</string>
 
@@ -2329,7 +2329,7 @@
     <string name="party_start_title">شاهدوا معًا</string>
     <string name="party_start_description">ادعُ أصدقاءك. يشغّل كل شخص من مصادره الخاصة ويبقى الجميع متزامنين.</string>
     <string name="party_start_action">بدء مشاهدة جماعية</string>
-    <string name="party_sign_in_required">سجّل الدخول إلى حساب Nuvio لاستخدام المشاهدة الجماعية.</string>
+    <string name="party_sign_in_required">سجّل الدخول إلى حساب Fusion Pass لاستخدام المشاهدة الجماعية.</string>
     <string name="party_unavailable">المشاهدة الجماعية غير متاحة حاليًا.</string>
     <string name="party_experimental">المشاهدة الجماعية ميزة تجريبية وقد لا تعمل كما هو متوقع.</string>
     <string name="party_code_label">رمز المشاهدة</string>
@@ -2397,6 +2397,6 @@
     <string name="party_share_unavailable">لا يمكن مشاركة هذا البث.</string>
     <string name="party_shared_by">شاركه %1$s</string>
     <string name="party_invite_scan">امسح الرمز بهاتف للانضمام</string>
-    <string name="party_invite_share">أو شارك الرمز. يمكن لأصدقائك إدخاله في المشاهدة الجماعية في أي تطبيق Nuvio.</string>
+    <string name="party_invite_share">أو شارك الرمز. يمكن لأصدقائك إدخاله في المشاهدة الجماعية في أي تطبيق Fusion Pass.</string>
     <string name="party_invite_qr">رمز QR لدعوة المشاهدة الجماعية</string>
 </resources>

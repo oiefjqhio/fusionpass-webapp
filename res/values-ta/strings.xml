@@ -2478,7 +2478,7 @@
     <string name="party_start_title">ஒன்றாகப் பாருங்கள்</string>
     <string name="party_start_description">உங்கள் நண்பர்களை அழையுங்கள். ஒவ்வொருவரும் தங்கள் சொந்த மூலங்களிலிருந்து இயக்குவார்கள், அனைவரும் ஒத்திசைவில் இருப்பார்கள்.</string>
     <string name="party_start_action">வாட்ச் பார்ட்டியைத் தொடங்கு</string>
-    <string name="party_sign_in_required">வாட்ச் பார்ட்டியைப் பயன்படுத்த உங்கள் Nuvio கணக்கில் உள்நுழையவும்.</string>
+    <string name="party_sign_in_required">வாட்ச் பார்ட்டியைப் பயன்படுத்த உங்கள் Fusion Pass கணக்கில் உள்நுழையவும்.</string>
     <string name="party_unavailable">வாட்ச் பார்ட்டி இப்போது கிடைக்கவில்லை.</string>
     <string name="party_experimental">வாட்ச் பார்ட்டி சோதனை நிலையில் உள்ளது, எதிர்பார்த்தபடி செயல்படாமல் போகலாம்.</string>
     <string name="party_code_label">பார்ட்டி குறியீடு</string>
@@ -2546,6 +2546,6 @@
     <string name="party_share_unavailable">இந்த ஸ்ட்ரீமைப் பகிர முடியாது.</string>
     <string name="party_shared_by">%1$s பகிர்ந்தது</string>
     <string name="party_invite_scan">சேர தொலைபேசியில் ஸ்கேன் செய்யவும்</string>
-    <string name="party_invite_share">அல்லது குறியீட்டைப் பகிரவும். நண்பர்கள் எந்த Nuvio பயன்பாட்டிலும் வாட்ச் பார்ட்டியில் அதை உள்ளிடலாம்.</string>
+    <string name="party_invite_share">அல்லது குறியீட்டைப் பகிரவும். நண்பர்கள் எந்த Fusion Pass பயன்பாட்டிலும் வாட்ச் பார்ட்டியில் அதை உள்ளிடலாம்.</string>
     <string name="party_invite_qr">வாட்ச் பார்ட்டி அழைப்பு QR குறியீடு</string>
 </resources>

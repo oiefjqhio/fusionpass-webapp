@@ -74,8 +74,8 @@ edit(f'{ROOT}/index.html', [
 
 # 3. Our backend is the built-in one, with email + password sign-in (same as our TV app).
 edit(f'{J}/data/local/serverConfigurationStore.js', [
-    ('capabilities: { emailPasswordAuth: false, tvLogin: true },',
-     'capabilities: { emailPasswordAuth: true, tvLogin: true }, // Fusion Pass: our self-hosted backend'),
+    ('capabilities: { emailPasswordAuth: false, tvLogin: true, watchParty: true },',
+     'capabilities: { emailPasswordAuth: true, tvLogin: true, watchParty: false }, // Fusion Pass: our self-hosted backend (no watch-party functions)'),
 ])
 
 # 4. Phones and tablets boot the Fusion Pass touch UI (js/mobile/); TVs and desktops keep the TV UI.

@@ -2800,7 +2800,7 @@
     <string name="party_start_title">Δείτε μαζί</string>
     <string name="party_start_description">Προσκαλέστε τους φίλους σας. Ο καθένας αναπαράγει από τις δικές του πηγές και όλοι μένετε συγχρονισμένοι.</string>
     <string name="party_start_action">Έναρξη watch party</string>
-    <string name="party_sign_in_required">Συνδεθείτε στον λογαριασμό σας Nuvio για να χρησιμοποιήσετε τα watch party.</string>
+    <string name="party_sign_in_required">Συνδεθείτε στον λογαριασμό σας Fusion Pass για να χρησιμοποιήσετε τα watch party.</string>
     <string name="party_unavailable">Τα watch party δεν είναι διαθέσιμα αυτή τη στιγμή.</string>
     <string name="party_experimental">Τα watch party είναι πειραματικά και ενδέχεται να μη λειτουργούν όπως αναμένεται.</string>
     <string name="party_code_label">Κωδικός πάρτι</string>
@@ -2868,6 +2868,6 @@
     <string name="party_share_unavailable">Αυτή η ροή δεν μπορεί να κοινοποιηθεί.</string>
     <string name="party_shared_by">Κοινοποιήθηκε από %1$s</string>
     <string name="party_invite_scan">Σαρώστε με ένα τηλέφωνο για να συμμετάσχετε</string>
-    <string name="party_invite_share">Ή μοιραστείτε τον κωδικό. Οι φίλοι μπορούν να τον εισαγάγουν στο Watch party σε οποιαδήποτε εφαρμογή Nuvio.</string>
+    <string name="party_invite_share">Ή μοιραστείτε τον κωδικό. Οι φίλοι μπορούν να τον εισαγάγουν στο Watch party σε οποιαδήποτε εφαρμογή Fusion Pass.</string>
     <string name="party_invite_qr">Κωδικός QR πρόσκλησης σε watch party</string>
 </resources>

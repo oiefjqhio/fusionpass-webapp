@@ -1178,7 +1178,7 @@
     <string name="party_start_title">Vizionați împreună</string>
     <string name="party_start_description">Invită-ți prietenii. Fiecare redă din propriile surse și toți rămâneți sincronizați.</string>
     <string name="party_start_action">Pornește watch party</string>
-    <string name="party_sign_in_required">Conectează-te la contul Nuvio pentru a folosi watch party.</string>
+    <string name="party_sign_in_required">Conectează-te la contul Fusion Pass pentru a folosi watch party.</string>
     <string name="party_unavailable">Watch party nu este disponibil momentan.</string>
     <string name="party_experimental">Watch party este experimental și s-ar putea să nu funcționeze conform așteptărilor.</string>
     <string name="party_code_label">Cod party</string>
@@ -1246,6 +1246,6 @@
     <string name="party_share_unavailable">Acest stream nu poate fi partajat.</string>
     <string name="party_shared_by">Partajat de %1$s</string>
     <string name="party_invite_scan">Scanează cu telefonul pentru a te alătura</string>
-    <string name="party_invite_share">Sau partajează codul. Prietenii îl pot introduce în Watch party în orice aplicație Nuvio.</string>
+    <string name="party_invite_share">Sau partajează codul. Prietenii îl pot introduce în Watch party în orice aplicație Fusion Pass.</string>
     <string name="party_invite_qr">Cod QR de invitație la watch party</string>
 </resources>

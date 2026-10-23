@@ -2397,8 +2397,8 @@
     <string name="tracking_status_connected">Bağlı</string>
     <string name="tracking_status_disconnected">Bağlı değil</string>
     <string name="tracking_status_waiting">Onay bekleniyor</string>
-    <string name="tracking_watch_progress_dialog_subtitle">Nuvio'nun devam etme ve İzlemeye Devam Et için okuyacağı servisi seç. Scrobbling bağlı tüm servislerde açık kalır.</string>
-    <string name="tracking_library_source_dialog_subtitle">Nuvio'nun Kütüphane için okuyacağı servisi seç. Oynatma, bağlı tüm servislere scrobble edilir.</string>
+    <string name="tracking_watch_progress_dialog_subtitle">Fusion Pass'nun devam etme ve İzlemeye Devam Et için okuyacağı servisi seç. Scrobbling bağlı tüm servislerde açık kalır.</string>
+    <string name="tracking_library_source_dialog_subtitle">Fusion Pass'nun Kütüphane için okuyacağı servisi seç. Oynatma, bağlı tüm servislere scrobble edilir.</string>
     <string name="tracking_trakt_features_title">Trakt özellikleri</string>
     <string name="tracking_simkl_anime_id_title">Anime kimlik tercihi</string>
     <string name="tracking_simkl_anime_id_subtitle">Anime dizilerinin nasıl tanınacağını belirler. MAL veya Kitsu seçersen her sezon ayrı kayıt olur; IMDB'de hepsi tek kimlik altında toplanır.</string>
@@ -2412,9 +2412,9 @@
     <string name="simkl_visit">Simkl'ı ziyaret et</string>
     <string name="simkl_sync_info_action">Eşitleme nasıl çalışır</string>
     <string name="simkl_sync_info_title">Simkl eşitlemesi nasıl çalışır</string>
-    <string name="simkl_sync_info_description">Nuvio, Simkl'ı en fazla her %1$d dakikada bir otomatik kontrol eder. Başka bir uygulama veya Simkl sitesinden yapılan değişikliklerin görünmesi bu kadar sürebilir.</string>
+    <string name="simkl_sync_info_description">Fusion Pass, Simkl'ı en fazla her %1$d dakikada bir otomatik kontrol eder. Başka bir uygulama veya Simkl sitesinden yapılan değişikliklerin görünmesi bu kadar sürebilir.</string>
     <string name="simkl_sync_info_activity">Her yenilemede önce Simkl'da değişiklik olup olmadığı kontrol edilir ve yalnızca güncellemeler indirilir. Bu, Simkl'ın API kurallarına uyar, gereksiz veri kullanımını azaltır ve servisin stabil kalmasına yardımcı olur.</string>
-    <string name="simkl_sync_info_manual">Nuvio'da yaptığın değişiklikler hemen Simkl'a gönderilir. Uzak değişiklikleri daha erken kontrol ettirmek istediğinde Şimdi eşitle'ye bas.</string>
+    <string name="simkl_sync_info_manual">Fusion Pass'da yaptığın değişiklikler hemen Simkl'a gönderilir. Uzak değişiklikleri daha erken kontrol ettirmek istediğinde Şimdi eşitle'ye bas.</string>
     <string name="simkl_sync_info_library_statuses">Simkl'daki Beklemede veya Bırakıldı listelerine koyulan diziler İzlemeye Devam Et'te gizlenir. Bu listelerde kaldıkları sürece gizli kalırlar.</string>
     <string name="simkl_sync_info_docs">Simkl eşitleme rehberini oku</string>
     <string name="simkl_status_syncing">Simkl eşitleniyor…</string>
@@ -2442,7 +2442,7 @@
     <string name="settings_content_discovery_addons_subtitle">Eklentileri, katalog sırasını ve koleksiyonları yönetin</string>
     <string name="settings_content_discovery_plugins_subtitle">Depoları ve yayın sağlayıcılarını yönetin</string>
     <string name="tracking_accounts_subtitle">Takip servislerini bağla ve yönet</string>
-    <string name="tracking_sources_subtitle">Nuvio'nun kütüphane ve izleme ilerlemesini nereden okuyacağını seç. Oynatma, bağlı tüm servislere scrobble edilir.</string>
+    <string name="tracking_sources_subtitle">Fusion Pass'nun kütüphane ve izleme ilerlemesini nereden okuyacağını seç. Oynatma, bağlı tüm servislere scrobble edilir.</string>
     <string name="tracking_trakt_features_subtitle">Trakt'a özel geçmiş, incelemeler ve öneriler</string>
     <string name="tracking_simkl_features_title">Simkl özellikleri</string>
     <string name="tracking_simkl_features_subtitle">Simkl'a özel ayarlar</string>
@@ -2986,7 +2986,7 @@
     <string name="party_start_title">Birlikte izleyin</string>
     <string name="party_start_description">Arkadaşlarını davet et. Herkes kendi kaynaklarından oynatır ve senkronize kalır.</string>
     <string name="party_start_action">Watch party başlat</string>
-    <string name="party_sign_in_required">Watch party kullanmak için Nuvio hesabında oturum aç.</string>
+    <string name="party_sign_in_required">Watch party kullanmak için Fusion Pass hesabında oturum aç.</string>
     <string name="party_unavailable">Watch party şu anda kullanılamıyor.</string>
     <string name="party_experimental">Watch party deneyseldir ve beklendiği gibi çalışmayabilir.</string>
     <string name="party_code_label">Parti kodu</string>
@@ -3054,6 +3054,6 @@
     <string name="party_share_unavailable">Bu yayın paylaşılamaz.</string>
     <string name="party_shared_by">Paylaşan: %1$s</string>
     <string name="party_invite_scan">Katılmak için telefonla tara</string>
-    <string name="party_invite_share">Ya da kodu paylaş. Arkadaşların herhangi bir Nuvio uygulamasında Watch party bölümüne girebilir.</string>
+    <string name="party_invite_share">Ya da kodu paylaş. Arkadaşların herhangi bir Fusion Pass uygulamasında Watch party bölümüne girebilir.</string>
     <string name="party_invite_qr">Watch party davet QR kodu</string>
 </resources>

@@ -2844,7 +2844,7 @@
 <string name="server_options_title">Opzioni server</string>
 <string name="server_options_content_description">Opzioni server</string>
 <string name="server_options_custom_active">Connesso a un server autogestito</string>
-<string name="server_options_official_active">Stai usando il server ufficiale di Nuvio</string>
+<string name="server_options_official_active">Stai usando il server ufficiale di Fusion Pass</string>
 <string name="server_options_connect_custom">Connetti a un server personalizzato</string>
 <string name="server_options_change_custom">Connetti a un altro server</string>
 <string name="server_options_use_official">Usa il server ufficiale</string>
@@ -2924,8 +2924,8 @@
     <string name="mdblist_show_on_hero_subtitle">Mostra le valutazioni MDBList nell’hero (Modern e Classic/Grid)</string>
     <string name="mdblist_rating_order_title">Ordine delle valutazioni</string>
     <string name="mdblist_rating_order_subtitle">Nell’hero Modern vengono mostrate le prime 3 valutazioni abilitate e disponibili. Usa le frecce per cambiarne l’ordine.</string>
-    <string name="supporter_membership_title">Iscrizione Supporter di Nuvio</string>
-    <string name="supporter_membership_description">Sostenere Nuvio aiuta a coprire l\'infrastruttura e lo sviluppo continuo, mantenendo l\'esperienza principale gratuita per tutti.</string>
+    <string name="supporter_membership_title">Iscrizione Supporter di Fusion Pass</string>
+    <string name="supporter_membership_description">Sostenere Fusion Pass aiuta a coprire l\'infrastruttura e lo sviluppo continuo, mantenendo l\'esperienza principale gratuita per tutti.</string>
     <string name="supporter_membership_view">Visualizza iscrizione</string>
     <string name="supporter_membership_manage">Gestisci iscrizione</string>
     <string name="supporter_membership_refresh">Aggiorna</string>
@@ -2938,7 +2938,7 @@
     <string name="supporter_membership_tier_supporter">Supporter</string>
     <string name="supporter_membership_tier_supporter_plus">Supporter Plus</string>
     <string name="supporter_membership_connected_title">Patreon è connesso</string>
-    <string name="supporter_membership_connected_description">Nessun livello Nuvio attivo trovato su questo account Patreon. Visualizza le opzioni disponibili o aggiorna dopo aver modificato la tua iscrizione Patreon.</string>
+    <string name="supporter_membership_connected_description">Nessun livello Fusion Pass attivo trovato su questo account Patreon. Visualizza le opzioni disponibili o aggiorna dopo aver modificato la tua iscrizione Patreon.</string>
     <string name="supporter_membership_scan_support">Scansiona per visualizzare l\'iscrizione</string>
     <string name="supporter_membership_scan_support_description">Apri la pagina dell\'iscrizione Supporter sul tuo telefono.</string>
     <string name="supporter_membership_scan_manage">Scansiona per gestire l\'iscrizione</string>
@@ -2972,7 +2972,7 @@
     <string name="settings_style_zen_desc">Layout semplice e piatto</string>
     <string name="settings_style_horizon_desc">Schede di navigazione in alto</string>
     <string name="tracking_accounts_subtitle">Collega e gestisci i servizi di tracciamento</string>
-    <string name="tracking_sources_subtitle">Scegli da dove Nuvio legge la tua libreria e i progressi di visione. La riproduzione invia gli aggiornamenti di visione a tutti i servizi collegati.</string>
+    <string name="tracking_sources_subtitle">Scegli da dove Fusion Pass legge la tua libreria e i progressi di visione. La riproduzione invia gli aggiornamenti di visione a tutti i servizi collegati.</string>
     <string name="tracking_trakt_features_subtitle">Cronologia, recensioni e raccomandazioni specifiche di Trakt</string>
     <string name="tracking_simkl_features_title">Funzioni Simkl</string>
     <string name="tracking_simkl_features_subtitle">Impostazioni specifiche di Simkl</string>
@@ -3040,7 +3040,7 @@
     <string name="autoplay_post_play_movie_threshold">Tempistica consigliati film</string>
     <string name="autoplay_post_play_movie_threshold_sub">Scegli quando appaiono i consigliati per i film. Gli episodi seguono l\'impostazione Soglia prossimo episodio.</string>
     <string name="player_post_play_manual_subtitle">Riproduci</string>
-    <string name="addon_remote_title">Nuvio TV - Gestisci gli addon</string>
+    <string name="addon_remote_title">Fusion Pass - Gestisci gli addon</string>
     <string name="addon_remote_signed_in">Accesso effettuato. Le modifiche agli addon e ai cataloghi Home possono essere inviate al profilo sincronizzato tramite il servizio di sincronizzazione web.</string>
     <string name="addon_remote_signed_out">Accesso non effettuato. Le modifiche verranno salvate solo in questo browser, a meno che tu non acceda da questo telefono.</string>
     <string name="addon_remote_checking_account">Verifica dello stato dell’account...</string>
@@ -3223,7 +3223,7 @@
     <string name="party_start_title">Guarda insieme</string>
     <string name="party_start_description">Invita i tuoi amici. Ognuno riproduce dalle proprie fonti e resta sincronizzato con gli altri.</string>
     <string name="party_start_action">Avvia un Watch Party</string>
-    <string name="party_sign_in_required">Accedi al tuo account Nuvio per usare Watch Party.</string>
+    <string name="party_sign_in_required">Accedi al tuo account Fusion Pass per usare Watch Party.</string>
     <string name="party_unavailable">Watch Party non è disponibile al momento.</string>
     <string name="party_experimental">Watch Party è una funzionalità sperimentale e potrebbe non funzionare come previsto.</string>
     <string name="party_code_label">Codice del gruppo</string>
@@ -3291,7 +3291,7 @@
     <string name="party_share_unavailable">Questo flusso non può essere condiviso.</string>
     <string name="party_shared_by">Condiviso da %1$s</string>
     <string name="party_invite_scan">Inquadra con il telefono per unirti</string>
-    <string name="party_invite_share">Oppure condividi il codice. Gli amici possono inserirlo in Watch Party su qualsiasi app Nuvio.</string>
+    <string name="party_invite_share">Oppure condividi il codice. Gli amici possono inserirlo in Watch Party su qualsiasi app Fusion Pass.</string>
     <string name="party_invite_qr">Codice QR di invito al Watch Party</string>
 
     <string name="stream_resume_from_time">Riprendi da %1$s</string>

@@ -3013,7 +3013,7 @@
     <string name="party_start_title">Oglądajcie razem</string>
     <string name="party_start_description">Zaproś znajomych. Każdy odtwarza z własnych źródeł, a wszyscy pozostają zsynchronizowani.</string>
     <string name="party_start_action">Rozpocznij watch party</string>
-    <string name="party_sign_in_required">Zaloguj się na konto Nuvio, aby korzystać z watch party.</string>
+    <string name="party_sign_in_required">Zaloguj się na konto Fusion Pass, aby korzystać z watch party.</string>
     <string name="party_unavailable">Watch party jest teraz niedostępne.</string>
     <string name="party_experimental">Watch party to funkcja eksperymentalna i może nie działać zgodnie z oczekiwaniami.</string>
     <string name="party_code_label">Kod imprezy</string>
@@ -3081,6 +3081,6 @@
     <string name="party_share_unavailable">Tego strumienia nie można udostępnić.</string>
     <string name="party_shared_by">Udostępnia: %1$s</string>
     <string name="party_invite_scan">Zeskanuj telefonem, aby dołączyć</string>
-    <string name="party_invite_share">Albo udostępnij kod. Znajomi mogą go wpisać w sekcji Watch party w dowolnej aplikacji Nuvio.</string>
+    <string name="party_invite_share">Albo udostępnij kod. Znajomi mogą go wpisać w sekcji Watch party w dowolnej aplikacji Fusion Pass.</string>
     <string name="party_invite_qr">Kod QR zaproszenia do watch party</string>
 </resources>

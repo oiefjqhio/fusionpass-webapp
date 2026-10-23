@@ -1930,7 +1930,7 @@
     <string name="party_start_title">一緒に見る</string>
     <string name="party_start_description">友だちを招待しましょう。各自が自分のソースから再生し、全員が同期されます。</string>
     <string name="party_start_action">ウォッチパーティーを開始</string>
-    <string name="party_sign_in_required">ウォッチパーティーを使うには Nuvio アカウントにサインインしてください。</string>
+    <string name="party_sign_in_required">ウォッチパーティーを使うには Fusion Pass アカウントにサインインしてください。</string>
     <string name="party_unavailable">現在ウォッチパーティーは利用できません。</string>
     <string name="party_experimental">ウォッチパーティーは試験運用中のため、正しく動作しない場合があります。</string>
     <string name="party_code_label">パーティーコード</string>
@@ -1998,6 +1998,6 @@
     <string name="party_share_unavailable">このストリームは共有できません。</string>
     <string name="party_shared_by">%1$s が共有</string>
     <string name="party_invite_scan">スマートフォンでスキャンして参加</string>
-    <string name="party_invite_share">またはコードを共有してください。友だちはどの Nuvio アプリでもウォッチパーティーに入力できます。</string>
+    <string name="party_invite_share">またはコードを共有してください。友だちはどの Fusion Pass アプリでもウォッチパーティーに入力できます。</string>
     <string name="party_invite_qr">ウォッチパーティー招待用 QR コード</string>
 </resources>

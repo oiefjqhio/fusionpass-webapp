@@ -1337,7 +1337,7 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="party_start_title">Žiūrėkite kartu</string>
     <string name="party_start_description">Pakvieskite draugus. Kiekvienas leidžia iš savo šaltinių, o visi lieka sinchronizuoti.</string>
     <string name="party_start_action">Pradėti bendrą peržiūrą</string>
-    <string name="party_sign_in_required">Prisijunkite prie Nuvio paskyros, kad galėtumėte naudoti bendrą peržiūrą.</string>
+    <string name="party_sign_in_required">Prisijunkite prie Fusion Pass paskyros, kad galėtumėte naudoti bendrą peržiūrą.</string>
     <string name="party_unavailable">Bendra peržiūra šiuo metu nepasiekiama.</string>
     <string name="party_experimental">Bendra peržiūra yra eksperimentinė funkcija ir gali veikti ne taip, kaip tikėtasi.</string>
     <string name="party_code_label">Grupės kodas</string>
@@ -1405,6 +1405,6 @@ Klaida: Bandomoji simuliuojama klaida — tai nėra tikras gedimas. Šaltinis gr
     <string name="party_share_unavailable">Šio srauto bendrinti negalima.</string>
     <string name="party_shared_by">Bendrina %1$s</string>
     <string name="party_invite_scan">Nuskaitykite telefonu, kad prisijungtumėte</string>
-    <string name="party_invite_share">Arba pasidalykite kodu. Draugai gali jį įvesti skiltyje „Bendra peržiūra“ bet kurioje Nuvio programėlėje.</string>
+    <string name="party_invite_share">Arba pasidalykite kodu. Draugai gali jį įvesti skiltyje „Bendra peržiūra“ bet kurioje Fusion Pass programėlėje.</string>
     <string name="party_invite_qr">Bendros peržiūros kvietimo QR kodas</string>
 </resources>

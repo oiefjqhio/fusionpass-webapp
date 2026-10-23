@@ -2748,7 +2748,7 @@
     <string name="party_start_title">Regarder ensemble</string>
     <string name="party_start_description">Invitez vos amis. Chacun lit depuis ses propres sources et reste synchronisé.</string>
     <string name="party_start_action">Lancer une Watch Party</string>
-    <string name="party_sign_in_required">Connectez-vous à votre compte Nuvio pour utiliser les Watch Parties.</string>
+    <string name="party_sign_in_required">Connectez-vous à votre compte Fusion Pass pour utiliser les Watch Parties.</string>
     <string name="party_unavailable">Les Watch Parties ne sont pas disponibles pour le moment.</string>
     <string name="party_experimental">Les Watch Parties sont expérimentales et peuvent ne pas fonctionner comme prévu.</string>
     <string name="party_code_label">Code de la party</string>
@@ -2816,6 +2816,6 @@
     <string name="party_share_unavailable">Ce flux ne peut pas être partagé.</string>
     <string name="party_shared_by">Partagé par %1$s</string>
     <string name="party_invite_scan">Scannez avec un téléphone pour rejoindre</string>
-    <string name="party_invite_share">Ou partagez le code. Vos amis peuvent le saisir dans Watch Party sur n\'importe quelle app Nuvio.</string>
+    <string name="party_invite_share">Ou partagez le code. Vos amis peuvent le saisir dans Watch Party sur n\'importe quelle app Fusion Pass.</string>
     <string name="party_invite_qr">QR code d\'invitation à la Watch Party</string>
 </resources>

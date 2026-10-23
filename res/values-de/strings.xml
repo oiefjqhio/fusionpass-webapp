@@ -2475,7 +2475,7 @@
     <string name="party_start_title">Gemeinsam schauen</string>
     <string name="party_start_description">Lade deine Freunde ein. Alle spielen aus ihren eigenen Quellen ab und bleiben synchron.</string>
     <string name="party_start_action">Watch Party starten</string>
-    <string name="party_sign_in_required">Melde dich bei deinem Nuvio-Konto an, um Watch Partys zu nutzen.</string>
+    <string name="party_sign_in_required">Melde dich bei deinem Fusion Pass-Konto an, um Watch Partys zu nutzen.</string>
     <string name="party_unavailable">Watch Partys sind gerade nicht verfügbar.</string>
     <string name="party_experimental">Watch Partys sind experimentell und funktionieren möglicherweise nicht wie erwartet.</string>
     <string name="party_code_label">Party-Code</string>
@@ -2543,6 +2543,6 @@
     <string name="party_share_unavailable">Dieser Stream kann nicht geteilt werden.</string>
     <string name="party_shared_by">Geteilt von %1$s</string>
     <string name="party_invite_scan">Mit dem Smartphone scannen, um beizutreten</string>
-    <string name="party_invite_share">Oder teile den Code. Freunde können ihn in jeder Nuvio-App unter Watch Party eingeben.</string>
+    <string name="party_invite_share">Oder teile den Code. Freunde können ihn in jeder Fusion Pass-App unter Watch Party eingeben.</string>
     <string name="party_invite_qr">QR-Code der Watch-Party-Einladung</string>
 </resources>

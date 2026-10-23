@@ -1,6 +1,11 @@
 import { Router } from "./routerState.js";
 import { Platform } from "../../platform/index.js";
 
+// Fusion Pass: pointer (mouse / Magic Remote) handling on webOS and on any browser with a fine pointer.
+function fpPointerRemote() {
+  return Platform.isWebOS() || Boolean(globalThis.matchMedia?.("(pointer: fine)")?.matches);
+}
+
 // Hold detection must use when the key was pressed/released, not when a busy main thread got to the
 // event: a late keyup would otherwise turn a short OK press into a long press (Android uses key events too).
 function keyEventTime(event) {

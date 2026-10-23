@@ -15,7 +15,7 @@ function officialConfiguration() {
   return createServerConfiguration({
     backendUrl: SUPABASE_URL,
     publishableKey: SUPABASE_ANON_KEY,
-    capabilities: { emailPasswordAuth: false, tvLogin: true, watchParty: true },
+    capabilities: { emailPasswordAuth: true, tvLogin: true, watchParty: false }, // Fusion Pass: our self-hosted backend (no watch-party functions)
     isCustom: false,
     fallbackBackendUrl: SUPABASE_FALLBACK_URL,
     tvLoginWebBaseUrl: TV_LOGIN_WEB_BASE_URL,

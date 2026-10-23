@@ -1778,7 +1778,7 @@
     <string name="party_start_title">Gledajte zajedno</string>
     <string name="party_start_description">Pozovite prijatelje. Svako reproducira iz vlastitih izvora i svi ostajete usklađeni.</string>
     <string name="party_start_action">Pokreni watch party</string>
-    <string name="party_sign_in_required">Prijavite se na Nuvio račun da biste koristili watch party.</string>
+    <string name="party_sign_in_required">Prijavite se na Fusion Pass račun da biste koristili watch party.</string>
     <string name="party_unavailable">Watch party trenutno nije dostupan.</string>
     <string name="party_experimental">Watch party je eksperimentalna funkcija i možda neće raditi kako se očekuje.</string>
     <string name="party_code_label">Kod žurke</string>
@@ -1846,6 +1846,6 @@
     <string name="party_share_unavailable">Ovaj stream se ne može podijeliti.</string>
     <string name="party_shared_by">Podijelio/la %1$s</string>
     <string name="party_invite_scan">Skenirajte telefonom da biste se pridružili</string>
-    <string name="party_invite_share">Ili podijelite kod. Prijatelji ga mogu unijeti u Watch party u bilo kojoj Nuvio aplikaciji.</string>
+    <string name="party_invite_share">Ili podijelite kod. Prijatelji ga mogu unijeti u Watch party u bilo kojoj Fusion Pass aplikaciji.</string>
     <string name="party_invite_qr">QR kod pozivnice za watch party</string>
 </resources>

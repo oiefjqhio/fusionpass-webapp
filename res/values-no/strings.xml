@@ -1450,7 +1450,7 @@
     <string name="party_start_title">Se sammen</string>
     <string name="party_start_description">Inviter vennene dine. Alle spiller av fra sine egne kilder og holder seg synkronisert.</string>
     <string name="party_start_action">Start watch party</string>
-    <string name="party_sign_in_required">Logg på Nuvio-kontoen din for å bruke watch parties.</string>
+    <string name="party_sign_in_required">Logg på Fusion Pass-kontoen din for å bruke watch parties.</string>
     <string name="party_unavailable">Watch parties er ikke tilgjengelige akkurat nå.</string>
     <string name="party_experimental">Watch parties er eksperimentelle og fungerer kanskje ikke som forventet.</string>
     <string name="party_code_label">Partykode</string>
@@ -1518,6 +1518,6 @@
     <string name="party_share_unavailable">Denne strømmen kan ikke deles.</string>
     <string name="party_shared_by">Delt av %1$s</string>
     <string name="party_invite_scan">Skann med en telefon for å bli med</string>
-    <string name="party_invite_share">Eller del koden. Venner kan skrive den inn under Watch party i hvilken som helst Nuvio-app.</string>
+    <string name="party_invite_share">Eller del koden. Venner kan skrive den inn under Watch party i hvilken som helst Fusion Pass-app.</string>
     <string name="party_invite_qr">QR-kode for invitasjon til watch party</string>
 </resources>

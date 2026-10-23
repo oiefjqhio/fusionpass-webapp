@@ -2490,7 +2490,7 @@
     <string name="party_start_title">Nonton bersama</string>
     <string name="party_start_description">Undang teman-temanmu. Semua memutar dari sumber masing-masing dan tetap sinkron.</string>
     <string name="party_start_action">Mulai nonton bareng</string>
-    <string name="party_sign_in_required">Masuk ke akun Nuvio untuk menggunakan nonton bareng.</string>
+    <string name="party_sign_in_required">Masuk ke akun Fusion Pass untuk menggunakan nonton bareng.</string>
     <string name="party_unavailable">Nonton bareng sedang tidak tersedia.</string>
     <string name="party_experimental">Nonton bareng masih eksperimental dan mungkin tidak berfungsi seperti yang diharapkan.</string>
     <string name="party_code_label">Kode party</string>
@@ -2558,6 +2558,6 @@
     <string name="party_share_unavailable">Stream ini tidak dapat dibagikan.</string>
     <string name="party_shared_by">Dibagikan oleh %1$s</string>
     <string name="party_invite_scan">Pindai dengan ponsel untuk bergabung</string>
-    <string name="party_invite_share">Atau bagikan kodenya. Teman dapat memasukkannya di Nonton bareng pada aplikasi Nuvio mana pun.</string>
+    <string name="party_invite_share">Atau bagikan kodenya. Teman dapat memasukkannya di Nonton bareng pada aplikasi Fusion Pass mana pun.</string>
     <string name="party_invite_qr">Kode QR undangan nonton bareng</string>
 </resources>

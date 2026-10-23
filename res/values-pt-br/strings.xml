@@ -2873,28 +2873,28 @@
     <string name="simkl_status_waiting">Aguardando aprovação do Simkl…</string>
     <string name="simkl_sync_info_action">Como funciona a sincronização</string>
     <string name="simkl_sync_info_activity">Cada atualização verifica primeiro se o Simkl reporta alguma mudança e baixa apenas as atualizações. Isso segue as regras da API do Simkl, reduz o uso desnecessário de dados e ajuda a manter o serviço estável.</string>
-    <string name="simkl_sync_info_description">O Nuvio verifica automaticamente o Simkl no máximo uma vez a cada %1$d minutos. Alterações feitas em outro app ou no site do Simkl podem levar esse tempo para aparecer.</string>
+    <string name="simkl_sync_info_description">O Fusion Pass verifica automaticamente o Simkl no máximo uma vez a cada %1$d minutos. Alterações feitas em outro app ou no site do Simkl podem levar esse tempo para aparecer.</string>
     <string name="simkl_sync_info_docs">Leia o guia de sincronização do Simkl</string>
     <string name="simkl_sync_info_library_statuses">Séries colocadas nas listas “Em espera” ou “Abandonadas” do Simkl ficam ocultas em Continuar assistindo. Elas permanecem ocultas enquanto estiverem em uma dessas listas.</string>
-    <string name="simkl_sync_info_manual">Alterações feitas no Nuvio são enviadas ao Simkl imediatamente. Use “Sincronizar agora” sempre que quiser que o Nuvio verifique mudanças remotas mais cedo.</string>
+    <string name="simkl_sync_info_manual">Alterações feitas no Fusion Pass são enviadas ao Simkl imediatamente. Use “Sincronizar agora” sempre que quiser que o Fusion Pass verifique mudanças remotas mais cedo.</string>
     <string name="simkl_sync_info_title">Como funciona a sincronização do Simkl</string>
     <string name="simkl_sync_now">Sincronizar agora</string>
     <string name="simkl_visit">Visitar Simkl</string>
     <string name="tracking_accounts_subtitle">Conectar e gerenciar serviços de rastreamento</string>
     <string name="tracking_accounts_title">Contas</string>
-    <string name="tracking_library_source_dialog_subtitle">Escolha o serviço que o Nuvio usa para sua Biblioteca. O scrobbling de reprodução é enviado para todos os serviços conectados.</string>
+    <string name="tracking_library_source_dialog_subtitle">Escolha o serviço que o Fusion Pass usa para sua Biblioteca. O scrobbling de reprodução é enviado para todos os serviços conectados.</string>
     <string name="tracking_simkl_anime_id_subtitle">Controla como as séries de anime são identificadas. Escolher MAL ou Kitsu dá a cada temporada sua própria entrada em vez de agrupar sob um único ID do IMDB.</string>
     <string name="tracking_simkl_anime_id_title">Preferência de ID de anime</string>
     <string name="tracking_simkl_features_subtitle">Configurações específicas do Simkl</string>
     <string name="tracking_simkl_features_title">Recursos do Simkl</string>
-    <string name="tracking_sources_subtitle">Escolha de onde o Nuvio lê sua biblioteca e progresso de reprodução. O scrobbling é enviado para todos os serviços conectados.</string>
+    <string name="tracking_sources_subtitle">Escolha de onde o Fusion Pass lê sua biblioteca e progresso de reprodução. O scrobbling é enviado para todos os serviços conectados.</string>
     <string name="tracking_sources_title">Fontes</string>
     <string name="tracking_status_connected">Conectado</string>
     <string name="tracking_status_disconnected">Não conectado</string>
     <string name="tracking_status_waiting">Aguardando aprovação</string>
     <string name="tracking_trakt_features_subtitle">Histórico, avaliações e recomendações específicas do Trakt</string>
     <string name="tracking_trakt_features_title">Recursos do Trakt</string>
-    <string name="tracking_watch_progress_dialog_subtitle">Escolha o serviço que o Nuvio usa para retomar e Continuar Assistindo. O scrobbling permanece ativo para todos os serviços conectados.</string>
+    <string name="tracking_watch_progress_dialog_subtitle">Escolha o serviço que o Fusion Pass usa para retomar e Continuar Assistindo. O scrobbling permanece ativo para todos os serviços conectados.</string>
     <string name="action_back">Voltar</string>
 
     <string name="mdblist_library_lists">Listas da Biblioteca</string>
@@ -2911,7 +2911,7 @@
     <string name="party_start_title">Assistir juntos</string>
     <string name="party_start_description">Convide seus amigos. Cada um reproduz das próprias fontes e todos ficam sincronizados.</string>
     <string name="party_start_action">Iniciar Watch Party</string>
-    <string name="party_sign_in_required">Entre na sua conta Nuvio para usar as Watch Parties.</string>
+    <string name="party_sign_in_required">Entre na sua conta Fusion Pass para usar as Watch Parties.</string>
     <string name="party_unavailable">As Watch Parties não estão disponíveis no momento.</string>
     <string name="party_experimental">As Watch Parties são experimentais e podem não funcionar como esperado.</string>
     <string name="party_code_label">Código da party</string>
@@ -2979,6 +2979,6 @@
     <string name="party_share_unavailable">Este stream não pode ser compartilhado.</string>
     <string name="party_shared_by">Compartilhado por %1$s</string>
     <string name="party_invite_scan">Escaneie com um celular para entrar</string>
-    <string name="party_invite_share">Ou compartilhe o código. Seus amigos podem digitá-lo em Watch Party em qualquer app Nuvio.</string>
+    <string name="party_invite_share">Ou compartilhe o código. Seus amigos podem digitá-lo em Watch Party em qualquer app Fusion Pass.</string>
     <string name="party_invite_qr">QR code de convite da Watch Party</string>
 </resources>

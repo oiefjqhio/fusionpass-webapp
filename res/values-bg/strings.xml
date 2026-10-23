@@ -125,7 +125,7 @@
     <string name="trakt_continue_watching_window">Прозорец на Продължи гледането</string>
     <string name="trakt_days_format">%1$d дни</string>
     <string name="trakt_disconnect">Прекъсни</string>
-    <string name="trakt_disconnect_subtitle">Това ще прекъсне връзката на Trakt акаунта ти с Nuvio.</string>
+    <string name="trakt_disconnect_subtitle">Това ще прекъсне връзката на Trakt акаунта ти с Fusion Pass.</string>
     <string name="trakt_disconnect_title">Прекъсни Trakt?</string>
     <string name="trakt_error_code_expired">Device кодът е изтекъл. Стартирай отново.</string>
     <string name="trakt_error_code_used">Device кодът вече е използван. Стартирай отново.</string>
@@ -148,7 +148,7 @@
     <string name="party_start_title">Гледайте заедно</string>
     <string name="party_start_description">Поканете приятелите си. Всеки възпроизвежда от собствените си източници и всички остават синхронизирани.</string>
     <string name="party_start_action">Започване на съвместно гледане</string>
-    <string name="party_sign_in_required">Влезте в профила си в Nuvio, за да използвате съвместното гледане.</string>
+    <string name="party_sign_in_required">Влезте в профила си в Fusion Pass, за да използвате съвместното гледане.</string>
     <string name="party_unavailable">Съвместното гледане в момента не е достъпно.</string>
     <string name="party_experimental">Съвместното гледане е експериментална функция и може да не работи според очакванията.</string>
     <string name="party_code_label">Код на групата</string>
@@ -216,6 +216,6 @@
     <string name="party_share_unavailable">Този поток не може да бъде споделен.</string>
     <string name="party_shared_by">Споделено от %1$s</string>
     <string name="party_invite_scan">Сканирайте с телефон, за да се присъедините</string>
-    <string name="party_invite_share">Или споделете кода. Приятелите могат да го въведат в „Съвместно гледане“ във всяко приложение на Nuvio.</string>
+    <string name="party_invite_share">Или споделете кода. Приятелите могат да го въведат в „Съвместно гледане“ във всяко приложение на Fusion Pass.</string>
     <string name="party_invite_qr">QR код за покана за съвместно гледане</string>
 </resources>

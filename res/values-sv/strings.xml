@@ -1827,7 +1827,7 @@
     <string name="party_start_title">Titta tillsammans</string>
     <string name="party_start_description">Bjud in dina vänner. Alla spelar upp från sina egna källor och håller sig synkade.</string>
     <string name="party_start_action">Starta watch party</string>
-    <string name="party_sign_in_required">Logga in på ditt Nuvio-konto för att använda watch parties.</string>
+    <string name="party_sign_in_required">Logga in på ditt Fusion Pass-konto för att använda watch parties.</string>
     <string name="party_unavailable">Watch parties är inte tillgängliga just nu.</string>
     <string name="party_experimental">Watch parties är experimentella och kanske inte fungerar som förväntat.</string>
     <string name="party_code_label">Partykod</string>
@@ -1895,6 +1895,6 @@
     <string name="party_share_unavailable">Den här streamen kan inte delas.</string>
     <string name="party_shared_by">Delad av %1$s</string>
     <string name="party_invite_scan">Skanna med en telefon för att gå med</string>
-    <string name="party_invite_share">Eller dela koden. Vänner kan ange den under Watch party i valfri Nuvio-app.</string>
+    <string name="party_invite_share">Eller dela koden. Vänner kan ange den under Watch party i valfri Fusion Pass-app.</string>
     <string name="party_invite_qr">QR-kod för inbjudan till watch party</string>
 </resources>

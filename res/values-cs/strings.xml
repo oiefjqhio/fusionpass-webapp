@@ -2409,7 +2409,7 @@
     <string name="party_start_title">Sledujte společně</string>
     <string name="party_start_description">Pozvěte přátele. Každý přehrává z vlastních zdrojů a všichni zůstávají synchronizovaní.</string>
     <string name="party_start_action">Spustit watch party</string>
-    <string name="party_sign_in_required">Pro používání watch party se přihlaste ke svému účtu Nuvio.</string>
+    <string name="party_sign_in_required">Pro používání watch party se přihlaste ke svému účtu Fusion Pass.</string>
     <string name="party_unavailable">Watch party nyní není k dispozici.</string>
     <string name="party_experimental">Watch party je experimentální funkce a nemusí fungovat podle očekávání.</string>
     <string name="party_code_label">Kód party</string>
@@ -2477,6 +2477,6 @@
     <string name="party_share_unavailable">Tento stream nelze sdílet.</string>
     <string name="party_shared_by">Sdílí %1$s</string>
     <string name="party_invite_scan">Naskenujte telefonem a připojte se</string>
-    <string name="party_invite_share">Nebo sdílejte kód. Přátelé ho mohou zadat v sekci Watch party v jakékoli aplikaci Nuvio.</string>
+    <string name="party_invite_share">Nebo sdílejte kód. Přátelé ho mohou zadat v sekci Watch party v jakékoli aplikaci Fusion Pass.</string>
     <string name="party_invite_qr">QR kód pozvánky do watch party</string>
 </resources>

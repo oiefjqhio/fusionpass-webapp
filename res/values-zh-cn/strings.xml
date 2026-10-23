@@ -2632,28 +2632,28 @@
     <string name="simkl_status_waiting">正在等待 Simkl 批准…</string>
     <string name="simkl_sync_info_action">同步如何工作</string>
     <string name="simkl_sync_info_activity">每次刷新都会先检查 Simkl 是否报告任何更改，并仅下载更新内容。这遵循 Simkl 的 API 规则，减少不必要的数据使用，并有助于保持服务稳定。</string>
-    <string name="simkl_sync_info_description">Nuvio 每隔 %1$d 分钟最多自动检查一次 Simkl。通过其他应用或 Simkl 网站所做的更改可能需要等这么久才会显示。</string>
+    <string name="simkl_sync_info_description">Fusion Pass 每隔 %1$d 分钟最多自动检查一次 Simkl。通过其他应用或 Simkl 网站所做的更改可能需要等这么久才会显示。</string>
     <string name="simkl_sync_info_docs">阅读 Simkl 同步指南</string>
     <string name="simkl_sync_info_library_statuses">放入 Simkl 的「暂时搁置」或「已放弃」列表的节目会从继续观看中隐藏。只要它们留在任一列表中，就会保持隐藏。</string>
-    <string name="simkl_sync_info_manual">在 Nuvio 中所做的更改会立即发送到 Simkl。当您希望 Nuvio 更快检查远程更改时，可使用「立即同步」。</string>
+    <string name="simkl_sync_info_manual">在 Fusion Pass 中所做的更改会立即发送到 Simkl。当您希望 Fusion Pass 更快检查远程更改时，可使用「立即同步」。</string>
     <string name="simkl_sync_info_title">Simkl 同步如何工作</string>
     <string name="simkl_sync_now">立即同步</string>
     <string name="simkl_visit">访问 Simkl</string>
     <string name="tracking_accounts_subtitle">连接并管理追踪服务</string>
     <string name="tracking_accounts_title">账户</string>
-    <string name="tracking_library_source_dialog_subtitle">选择 Nuvio 从哪里读取您的媒体库。播放记录会同步到所有已连接的服务。</string>
+    <string name="tracking_library_source_dialog_subtitle">选择 Fusion Pass 从哪里读取您的媒体库。播放记录会同步到所有已连接的服务。</string>
     <string name="tracking_simkl_anime_id_subtitle">控制动画剧集的识别方式。选择 MAL 或 Kitsu 会让每一季拥有独立条目，而非归组在同一个 IMDB ID 下。</string>
     <string name="tracking_simkl_anime_id_title">动画 ID 偏好</string>
     <string name="tracking_simkl_features_subtitle">Simkl 专属设置</string>
     <string name="tracking_simkl_features_title">Simkl 功能</string>
-    <string name="tracking_sources_subtitle">选择 Nuvio 从哪里读取您的媒体库和观看进度。播放记录会同步到所有已连接的服务。</string>
+    <string name="tracking_sources_subtitle">选择 Fusion Pass 从哪里读取您的媒体库和观看进度。播放记录会同步到所有已连接的服务。</string>
     <string name="tracking_sources_title">来源</string>
     <string name="tracking_status_connected">已连接</string>
     <string name="tracking_status_disconnected">未连接</string>
     <string name="tracking_status_waiting">正在等待批准</string>
     <string name="tracking_trakt_features_subtitle">Trakt 专属的历史记录、评论和推荐</string>
     <string name="tracking_trakt_features_title">Trakt 功能</string>
-    <string name="tracking_watch_progress_dialog_subtitle">选择 Nuvio 从哪里读取继续播放和继续观看数据。所有已连接的服务仍会保持记录。</string>
+    <string name="tracking_watch_progress_dialog_subtitle">选择 Fusion Pass 从哪里读取继续播放和继续观看数据。所有已连接的服务仍会保持记录。</string>
     <string name="action_back">返回</string>
 
     <string name="mdblist_connected_as">以 %1$s 身份连接</string>
@@ -2681,7 +2681,7 @@
     <string name="party_start_title">一起观看</string>
     <string name="party_start_description">邀请好友。每个人都从自己的来源播放，并保持同步。</string>
     <string name="party_start_action">开始一起看</string>
-    <string name="party_sign_in_required">登录 Nuvio 帐户即可使用一起看。</string>
+    <string name="party_sign_in_required">登录 Fusion Pass 帐户即可使用一起看。</string>
     <string name="party_unavailable">一起看目前不可用。</string>
     <string name="party_experimental">一起看为实验性功能，可能无法按预期工作。</string>
     <string name="party_code_label">派对代码</string>
@@ -2749,6 +2749,6 @@
     <string name="party_share_unavailable">此串流无法分享。</string>
     <string name="party_shared_by">由 %1$s 分享</string>
     <string name="party_invite_scan">用手机扫描即可加入</string>
-    <string name="party_invite_share">或者分享代码。好友可以在任意 Nuvio 应用的“一起看”中输入代码。</string>
+    <string name="party_invite_share">或者分享代码。好友可以在任意 Fusion Pass 应用的“一起看”中输入代码。</string>
     <string name="party_invite_qr">一起看邀请二维码</string>
 </resources>

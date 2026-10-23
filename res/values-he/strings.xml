@@ -1014,7 +1014,7 @@
     <string name="simkl_sync_info_title">איך סנכרון Simkl עובד</string>
     <string name="simkl_sync_info_description">Fusion Pass בודקת את Simkl באופן אוטומטי לכל היותר פעם ב-%1$d דקות. שינויים שנעשו דרך אפליקציה אחרת או אתר Simkl עשויים להופיע רק לאחר זמן זה.</string>
     <string name="simkl_sync_info_activity">כל רענון בודק תחילה אם Simkl מדווחת על שינויים ומוריד רק את העדכונים. כך נשמרים כללי ה-API של Simkl, מצטמצם שימוש מיותר בנתונים, והשירות נשאר יציב יותר.</string>
-    <string name="simkl_sync_info_manual">שינויים שנעשים ב-Nuvio נשלחים ל-Simkl באופן מיידי. השתמש ב"סנכרן עכשיו" כשתרצה ש-Nuvio תבדוק שינויים מרוחקים מוקדם יותר.</string>
+    <string name="simkl_sync_info_manual">שינויים שנעשים ב-Fusion Pass נשלחים ל-Simkl באופן מיידי. השתמש ב"סנכרן עכשיו" כשתרצה ש-Fusion Pass תבדוק שינויים מרוחקים מוקדם יותר.</string>
     <string name="simkl_sync_info_library_statuses">פריטים שנמצאים ברשימות On Hold או Dropped של Simkl מוסתרים מהמשך צפייה. הם יישארו מוסתרים כל עוד הם נמצאים באחת מהרשימות הללו.</string>
     <string name="simkl_sync_info_docs">קרא את מדריך הסנכרון של Simkl</string>
     <string name="simkl_status_syncing">מסתנכרן עם Simkl…</string>
@@ -1896,7 +1896,7 @@
     <string name="party_start_title">צפו יחד</string>
     <string name="party_start_description">הזמינו את החברים שלכם. כל אחד מפעיל מהמקורות שלו וכולם נשארים מסונכרנים.</string>
     <string name="party_start_action">התחלת צפייה משותפת</string>
-    <string name="party_sign_in_required">התחברו לחשבון Nuvio כדי להשתמש בצפייה משותפת.</string>
+    <string name="party_sign_in_required">התחברו לחשבון Fusion Pass כדי להשתמש בצפייה משותפת.</string>
     <string name="party_unavailable">צפייה משותפת אינה זמינה כרגע.</string>
     <string name="party_experimental">צפייה משותפת היא תכונה ניסיונית ועשויה שלא לפעול כמצופה.</string>
     <string name="party_code_label">קוד הקבוצה</string>
@@ -1964,6 +1964,6 @@
     <string name="party_share_unavailable">לא ניתן לשתף את הזרם הזה.</string>
     <string name="party_shared_by">שותף על ידי %1$s</string>
     <string name="party_invite_scan">סרקו בטלפון כדי להצטרף</string>
-    <string name="party_invite_share">או שתפו את הקוד. חברים יכולים להזין אותו בצפייה משותפת בכל אפליקציית Nuvio.</string>
+    <string name="party_invite_share">או שתפו את הקוד. חברים יכולים להזין אותו בצפייה משותפת בכל אפליקציית Fusion Pass.</string>
     <string name="party_invite_qr">קוד QR להזמנה לצפייה משותפת</string>
 </resources>

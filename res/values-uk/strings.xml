@@ -125,7 +125,7 @@
     <string name="trakt_continue_watching_window">Вікно «Продовжити перегляд»</string>
     <string name="trakt_days_format">%1$d днів</string>
     <string name="trakt_disconnect">Відключити</string>
-    <string name="trakt_disconnect_subtitle">Це відключить ваш акаунт Trakt від Nuvio.</string>
+    <string name="trakt_disconnect_subtitle">Це відключить ваш акаунт Trakt від Fusion Pass.</string>
     <string name="trakt_disconnect_title">Відключити Trakt?</string>
     <string name="trakt_error_code_expired">Код пристрою застарів. Почніть знову.</string>
     <string name="trakt_error_code_used">Код пристрою вже використано. Почніть знову.</string>
@@ -148,7 +148,7 @@
     <string name="party_start_title">Дивіться разом</string>
     <string name="party_start_description">Запросіть друзів. Кожен відтворює зі своїх джерел, і всі залишаються синхронізованими.</string>
     <string name="party_start_action">Почати спільний перегляд</string>
-    <string name="party_sign_in_required">Увійдіть в обліковий запис Nuvio, щоб користуватися спільним переглядом.</string>
+    <string name="party_sign_in_required">Увійдіть в обліковий запис Fusion Pass, щоб користуватися спільним переглядом.</string>
     <string name="party_unavailable">Спільний перегляд зараз недоступний.</string>
     <string name="party_experimental">Спільний перегляд — експериментальна функція і може працювати не так, як очікується.</string>
     <string name="party_code_label">Код групи</string>
@@ -216,6 +216,6 @@
     <string name="party_share_unavailable">Цим потоком не можна поділитися.</string>
     <string name="party_shared_by">Поділився(-лася) %1$s</string>
     <string name="party_invite_scan">Відскануйте телефоном, щоб приєднатися</string>
-    <string name="party_invite_share">Або поділіться кодом. Друзі можуть ввести його в розділі «Спільний перегляд» у будь-якому застосунку Nuvio.</string>
+    <string name="party_invite_share">Або поділіться кодом. Друзі можуть ввести його в розділі «Спільний перегляд» у будь-якому застосунку Fusion Pass.</string>
     <string name="party_invite_qr">QR-код запрошення до спільного перегляду</string>
 </resources>
