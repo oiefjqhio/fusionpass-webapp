@@ -6,12 +6,23 @@ export function createPlayerScreenMethods73() {
 
   return {
     cleanup() {
+      this.closeStreamInfo({ restore: false });
+      // Android stopAndRelease(): read the position before playback is torn down.
+      try {
+        this.leavePartyPlayback();
+      } catch (error) {
+        console.warn("[party] leaving playback failed", error);
+      }
+      this.unbindParty();
+      this.partyPanelVisible = false;
       try {
         this.cancelSourceLoad();
         streamRepository.setLocalPluginSearchPaused(true);
         this.playerRouteActive = false;
         this.playbackRecoveryActive = false;
         this.playbackRecoveryAttempts = 0;
+        this.webOsAddonSubtitleRestoreRequestId = Number(this.webOsAddonSubtitleRestoreRequestId || 0) + 1;
+        this.pendingWebOsAddonSubtitleRestore = null;
         this.playerMountToken = Number(this.playerMountToken || 0) + 1;
         if (this.tizenAvPlayConnectionRetryTimer) {
           clearTimeout(this.tizenAvPlayConnectionRetryTimer);
@@ -34,9 +45,9 @@ export function createPlayerScreenMethods73() {
         this.clearPostPlayLongPressTimer();
         this.clearPostPlaySynopsisScrollAnimation();
         this.postPlayLongPressTriggered = false;
-        this.cancelPostPlayNativeSurfaceAnimation();
-        this.postPlayNativeSurfaceStateKey = "";
-        this.postPlayNativeSurfaceRect = null;
+        this.cancelPostPlayPlayerSurfaceAnimation();
+        this.postPlayPlayerSurfaceStateKey = "";
+        this.postPlayPlayerSurfaceRect = null;
         if (this.postPlayDescriptionMeasureFrame) {
           cancelAnimationFrame(this.postPlayDescriptionMeasureFrame);
           this.postPlayDescriptionMeasureFrame = null;
@@ -104,6 +115,7 @@ export function createPlayerScreenMethods73() {
         this.clearPlaybackStallGuard();
         this.bufferingActive = false;
         this.clearBufferingSpinnerTimer();
+        this.stopSeekLoadingWatchdog();
         // The loading-completion poll self-reschedules; without this it
         // survives the route change and janks the next menu on Tizen.
         if (this.loadingCompletionTimer) {

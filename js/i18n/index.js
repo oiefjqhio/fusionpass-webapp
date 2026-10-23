@@ -82,7 +82,10 @@ const KEY_ALIASES = {
   "settings.about.version": "about_version",
   "settings.dialogs.backdropExpandDelay": "layout_expand_delay",
   "settings.dialogs.modernTrailerPlaybackLocation": "layout_trailer_location",
+  "settings.dialogs.performanceMode": "layout_animations_effects",
   "settings.dialogs.preferredAudioLanguage": "audio_preferred_lang",
+  "settings.performance.mode.subtitle": "layout_animations_effects_sub",
+  "settings.performance.mode.title": "layout_animations_effects",
   "settings.dialogs.selectFont": "appearance_font_dialog_title",
   "settings.dialogs.selectLanguage": "appearance_language_dialog_title",
   "settings.dialogs.selectTmdbLanguage": "tmdb_language_dialog_title",
@@ -715,6 +718,19 @@ export const I18n = {
 
     warnMissingKey(locale, key);
     return interpolate(options?.fallback ?? key, params);
+  },
+
+  getQuantityString(key, count, params = [count]) {
+    const locale = this.getLocale();
+    let category = Number(count) === 1 ? "one" : "other";
+    try {
+      if (typeof globalThis.Intl?.PluralRules === "function")
+        category = new Intl.PluralRules(locale).select(Number(count));
+    } catch (_) {
+      /* Fall back to the available one/other forms on older TVs. */
+    }
+    const selected = `${key}_${category}`;
+    return this.t(typeof activeMessages[selected] === "string" ? selected : `${key}_other`, params);
   },
 
   apply() {

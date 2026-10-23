@@ -1,3 +1,5 @@
+import { syncHtmlSubtitleClearance } from "./subtitleOverlayClearance.js";
+import { MediaServerScrobbleService } from "../../../data/mediaserver/mediaServerScrobbleService.js";
 /* eslint-disable no-unused-vars */
 import * as internals from "./playerScreenContext.js";
 
@@ -7,6 +9,7 @@ export function createPlayerScreenMethods32() {
 
   return {
     updateUiTick() {
+      if (this.playerRouteActive) MediaServerScrobbleService.update(this.buildScrobbleContext());
       if (this.isExternalFrameMode()) {
         return;
       }
@@ -17,12 +20,13 @@ export function createPlayerScreenMethods32() {
       const current = this.getPlaybackCurrentSeconds();
       this.updateActiveSkipInterval(current);
       this.updateSkipIntroCountdown(Date.now());
-      const duration = this.getPlaybackDurationSeconds();
+      const displayCurrent = this.getPlaybackDisplayCurrentSeconds();
+      const duration = this.getPlaybackDisplayDurationSeconds();
       this.evaluatePostPlayRecommendation();
       const effectiveProgressSeconds =
         this.controlsVisible && this.controlFocusZone === "progress" && this.seekPreviewSeconds != null
           ? Number(this.seekPreviewSeconds)
-          : current;
+          : displayCurrent;
       const progress = duration > 0 ? clamp(effectiveProgressSeconds / duration, 0, 1) : 0;
       const uiRefs = this.uiRefs || {};
       const uiState = this.lastUiTickState || (this.lastUiTickState = {});
@@ -74,13 +78,13 @@ export function createPlayerScreenMethods32() {
         const playbackSpeed = this.getPlaybackSpeed();
         // Keep this clock based on the full media duration. Outro intervals are
         // handled independently by skip/autoplay, as they are on Android TV.
-        const remainingMs = isLivePlayback ? null : calculateRemainingPlaybackMilliseconds(current, duration, playbackSpeed);
+        const remainingMs = isLivePlayback ? null : calculateRemainingPlaybackMilliseconds(displayCurrent, duration, playbackSpeed);
         const nextEndsAtMinuteBucket = remainingMs == null ? -1 : Math.floor((Date.now() + remainingMs) / 60000);
         endsAt.classList.toggle("hidden", isLivePlayback);
         if (uiState.endsAtMinuteBucket !== nextEndsAtMinuteBucket) {
           const nextEndsAtText = isLivePlayback
             ? ""
-            : t("player_ends_at", [formatEndsAt(current, duration, this.webOsClockLocaleInfo, playbackSpeed)], "Ends at %1$s");
+            : t("player_ends_at", [formatEndsAt(displayCurrent, duration, this.webOsClockLocaleInfo, playbackSpeed)], "Ends at %1$s");
           endsAt.textContent = nextEndsAtText;
           uiState.endsAtText = nextEndsAtText;
           uiState.endsAtMinuteBucket = nextEndsAtMinuteBucket;
@@ -109,6 +113,7 @@ export function createPlayerScreenMethods32() {
 
       this.syncPauseOverlayState();
       this.renderNextEpisodeCard();
+      syncHtmlSubtitleClearance(this);
 
       if (this.seekOverlayVisible && this.seekPreviewSeconds == null) {
         this.renderSeekOverlay();
@@ -123,8 +128,8 @@ export function createPlayerScreenMethods32() {
         return;
       }
 
-      const duration = this.getPlaybackDurationSeconds();
-      const currentPreview = this.seekPreviewSeconds != null ? Number(this.seekPreviewSeconds) : this.getPlaybackCurrentSeconds();
+      const duration = this.getPlaybackDisplayDurationSeconds();
+      const currentPreview = this.seekPreviewSeconds != null ? Number(this.seekPreviewSeconds) : this.getPlaybackDisplayCurrentSeconds();
 
       const shouldShowOverlay = this.seekOverlayVisible && !this.controlsVisible;
       overlay.classList.toggle("hidden", !shouldShowOverlay);
@@ -140,6 +145,7 @@ export function createPlayerScreenMethods32() {
         uiState.seekDirectionText = nextDirectionText;
       }
 
+      syncHtmlSubtitleClearance(this);
       const percent = duration > 0 ? clamp(currentPreview / duration, 0, 1) : 0;
       const nextSeekWidth = `${Math.round(percent * 10000) / 100}%`;
       if (uiState.seekWidth !== nextSeekWidth) {
@@ -147,7 +153,7 @@ export function createPlayerScreenMethods32() {
         uiState.seekWidth = nextSeekWidth;
       }
     },
-    beginSeekPreview(direction, isRepeat = false) {
+    beginSeekPreview(direction, isRepeat = false, commitOnRelease = false) {
       if (!this.isSeekBarAvailable()) {
         return;
       }
@@ -181,7 +187,12 @@ export function createPlayerScreenMethods32() {
         this.seekOverlayTimer = null;
       }
 
-      this.scheduleSeekPreviewCommit();
+      if (commitOnRelease) {
+        clearTimeout(this.seekCommitTimer);
+        this.seekCommitTimer = null;
+      } else {
+        this.scheduleSeekPreviewCommit();
+      }
     },
     scheduleSeekPreviewCommit() {
       if (this.seekCommitTimer) {
@@ -197,9 +208,22 @@ export function createPlayerScreenMethods32() {
         return;
       }
 
+      // AVPlay cannot accept a second seek until the previous one settles.
+      // Keep the preview target instead of dropping a released-key command.
+      if (this.seekPreviewSeconds != null && PlayerController.avplaySeekInFlight) {
+        clearTimeout(this.seekCommitTimer);
+        this.seekCommitTimer = setTimeout(() => this.commitSeekPreview(), 100);
+        return;
+      }
+
       if (this.seekPreviewSeconds != null) {
-        this.suppressControlsForHiddenSeek();
-        this.seekPlaybackSeconds(Number(this.seekPreviewSeconds));
+        const requestedMs = Math.round(Number(this.seekPreviewSeconds) * 1000);
+        const targetMs = this.partyUserSeekTarget ? this.partyUserSeekTarget(requestedMs) : requestedMs;
+        if (targetMs != null) {
+          this.suppressControlsForHiddenSeek();
+          this.seekPlaybackSeconds(targetMs / 1000);
+          this.publishPartyPlayback?.({ positionMs: targetMs });
+        }
       }
 
       if (this.stickyProgressFocus && this.controlsVisible) {
@@ -265,7 +289,17 @@ export function createPlayerScreenMethods32() {
       if (this.isExternalFrameMode()) {
         return;
       }
-      if (this.paused) {
+      if (this.isPartyControlLocked?.()) {
+        this.toggleOwnPlayback();
+        this.renderControlButtons();
+        return;
+      }
+      const wasPaused = this.getPlaybackControlPaused();
+      this.togglePauseLocally({ focusControls, preserveProgressFocus });
+      this.publishPartyPlayback?.({ paused: !wasPaused });
+    },
+    togglePauseLocally({ focusControls = true, preserveProgressFocus = false } = {}) {
+      if (this.getPlaybackControlPaused()) {
         this.dismissPauseOverlay();
         PlayerController.resume();
         this.paused = false;

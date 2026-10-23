@@ -1,3 +1,5 @@
+import { createWebOsDtsAudioMethods } from "../../platform/webos/webosDtsAudioTranscoder.js";
+import { createWebOsExactSeekMethods } from "../../platform/webos/webosExactSeek.js";
 import { watchProgressRepository } from "../../data/repository/watchProgressRepository.js";
 import { watchedItemsRepository } from "../../data/repository/watchedItemsRepository.js";
 import { watchedSeriesReconciliationService } from "../../data/repository/watchedSeriesReconciliationService.js";
@@ -16,10 +18,7 @@ import { dashJsEngine } from "./engines/dashJsEngine.js";
 import { resolvePlatformAvplayEngine } from "./engines/platformAvplayEngine.js";
 import { isTerminalHlsHttpStatus } from "./hlsNetworkErrorPolicy.js";
 import { isShortPlaceholderDuration } from "./naturalPlaybackCompletion.js";
-import {
-  applyWebOsAudioCodecOverrides,
-  detectWebOsAudioCapabilities
-} from "../../platform/webos/webosAudioCapabilities.js";
+import { detectWebOsAudioCapabilities } from "../../platform/webos/webosAudioCapabilities.js";
 import { WebOsLunaService } from "../../platform/webos/webosLunaService.js";
 import { subscribeWebOsCompanionService } from "../../platform/webos/webosCompanionService.js";
 import { WebOSPlayerExtensions } from "../../platform/webos/webosPlayerExtensions.js";
@@ -87,7 +86,6 @@ export {
   resolvePlatformAvplayEngine,
   isTerminalHlsHttpStatus,
   isShortPlaceholderDuration,
-  applyWebOsAudioCodecOverrides,
   detectWebOsAudioCapabilities,
   WebOsLunaService,
   subscribeWebOsCompanionService,
@@ -218,14 +216,23 @@ function syncTizenAvPlayObjectStyle(rect) {
 
   // Samsung renders AVPlay in the application/avplayer object, not in the
   // HTML video element. Keep the object CSS rectangle in lockstep with the
-  // native display rectangle as required by the AVPlay API.
+  // native display rectangle as required by the AVPlay API. Native coordinates
+  // always use 1920x1080; the object style must use the actual CSS viewport.
+  const cssWidth = Number(
+    globalThis.window?.innerWidth || globalThis.document?.documentElement?.clientWidth || 1920
+  );
+  const cssHeight = Number(
+    globalThis.window?.innerHeight || globalThis.document?.documentElement?.clientHeight || 1080
+  );
+  const scaleX = cssWidth / 1920;
+  const scaleY = cssHeight / 1080;
   object.style.position = "fixed";
-  object.style.left = `${rect.x}px`;
-  object.style.top = `${rect.y}px`;
+  object.style.left = `${rect.x * scaleX}px`;
+  object.style.top = `${rect.y * scaleY}px`;
   object.style.right = "auto";
   object.style.bottom = "auto";
-  object.style.width = `${rect.width}px`;
-  object.style.height = `${rect.height}px`;
+  object.style.width = `${rect.width * scaleX}px`;
+  object.style.height = `${rect.height * scaleY}px`;
   object.style.maxWidth = "none";
   object.style.maxHeight = "none";
   object.style.transform = "none";
@@ -338,8 +345,6 @@ export const PlayerController = {
   webosDeviceInfoPromise: null,
   webosAudioCapabilities: null,
   webosUnsupportedAudioCodecs: new Set(["dts", "truehd"]),
-  forceDtsAudio: false,
-  forceTrueHdAudio: false,
   viewportSyncHandler: null,
   avplayDisplayRect: null,
   avplayDisplayMethod: "PLAYER_DISPLAY_MODE_FULL_SCREEN",
@@ -371,5 +376,7 @@ export const PlayerController = {
   ...createPlayerControllerMethods17(),
   ...createPlayerControllerMethods18(),
   ...createPlayerControllerMethods19(),
-  ...createPlayerControllerMethods20()
+  ...createPlayerControllerMethods20(),
+  ...createWebOsDtsAudioMethods(),
+  ...createWebOsExactSeekMethods()
 };

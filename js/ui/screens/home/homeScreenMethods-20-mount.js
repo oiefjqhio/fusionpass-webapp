@@ -1,3 +1,4 @@
+import { nextShuffleVisit } from "../../../core/player/episodeShuffle.js";
 import * as internals from "./homeScreenContext.js";
 
 export function createHomeScreenMethods20() {
@@ -24,9 +25,11 @@ export function createHomeScreenMethods20() {
 
   return {
     async mount(params = {}, navigationContext = {}) {
+      this.shuffleVisit = nextShuffleVisit();
       const mountStart = HOME_PERF_DEBUG ? homePerfNow() : 0;
       const isBackNavigation = Boolean(navigationContext?.isBackNavigation);
       this.container = document.getElementById("home");
+      this.hasUserInteractedSinceHomePaint = false;
       const restoredRouteFocusState =
         navigationContext?.isBackNavigation && navigationContext?.restoredState?.layoutMode ? navigationContext.restoredState : null;
       const storedReturnFocusState = navigationContext?.isBackNavigation
@@ -140,6 +143,7 @@ export function createHomeScreenMethods20() {
         const restoredFocus = this.restoreFocusState(returnFocusState);
         if (restoredFocus) {
           this.isRestoringFocusFromBack = false;
+          this.clearStoredReturnFocusState();
         } else {
           ScreenUtils.setInitialFocus(this.container, this.getInitialFocusSelector());
         }
@@ -155,7 +159,7 @@ export function createHomeScreenMethods20() {
         this.scheduleHomeLazyImageHydration();
         this.scheduleReturnFocusRestore();
         this.ensureStartupSyncSubscription();
-        this.requestHomeBackgroundRefresh({
+        this.refreshHomeAfterRouteReturn({
           preserveReturnState: true,
           reason: "route-resume"
         }).catch((error) => {
@@ -184,7 +188,7 @@ export function createHomeScreenMethods20() {
         this.homeLoadToken = (this.homeLoadToken || 0) + 1;
         this.render();
         this.ensureStartupSyncSubscription();
-        this.requestHomeBackgroundRefresh({
+        this.refreshHomeAfterRouteReturn({
           preserveReturnState: Boolean(navigationContext?.isBackNavigation || returnFocusState?.layoutMode),
           reason: "route-return"
         }).catch((error) => {
@@ -202,7 +206,6 @@ export function createHomeScreenMethods20() {
 
       this.homeLoadToken = (this.homeLoadToken || 0) + 1;
       this.hasAppliedInitialContinueWatchingFocus = false;
-      this.hasUserInteractedSinceHomePaint = false;
       this.isInitialHomeLoading = true;
       this.ensureStartupSyncSubscription();
       this.layoutPrefs = LayoutPreferences.get();
@@ -220,7 +223,7 @@ export function createHomeScreenMethods20() {
       // prevents catalog cards from becoming the accidental focus anchor.
       this.continueWatchingLoading = continueWatchingEnabled && !this.continueWatchingInitialResolved;
       this.heroCandidates = [];
-      this.heroItem = null;
+      this.heroItem = this.pickInitialHero();
       // Paint from local profile/member/avatar state first. Remote membership and
       // avatar refresh is already started by loadData after this first render.
       this.sidebarProfile = await getSidebarProfileState({ cacheOnly: true }).catch(() => null);
@@ -255,7 +258,7 @@ export function createHomeScreenMethods20() {
           if (loadToken !== this.homeLoadToken || Router.getCurrent() !== "home") {
             return;
           }
-          this.releaseInitialHomeLoading();
+          this.releaseInitialHomeLoading({ force: true });
           console.error("Home background load failed", error);
           this.requestBackgroundRender();
         });
@@ -287,7 +290,13 @@ export function createHomeScreenMethods20() {
       }
       this.watchedItems = Array.isArray(projectedItems) ? projectedItems : baseWatchedItems;
       this.watchedTitleIds = buildWatchedTitleIdSet(this.watchedItems);
-      this.requestBackgroundRender();
+      // Every Home return re-projects watched titles; re-rendering all rows for an unchanged set only repeats identical markup.
+      const rendered = this.renderedWatchedTitleIds;
+      const unchanged =
+        rendered instanceof Set && rendered.size === this.watchedTitleIds.size && [...rendered].every((id) => this.watchedTitleIds.has(id));
+      if (!unchanged) {
+        this.requestBackgroundRender();
+      }
     }
   };
 }

@@ -1,3 +1,108 @@
+## 1.2.8
+
+### Improvements & Fixes
+
+- Revalidated cached addon manifests at each app session so addon updates are picked up without reinstalling (@WhiteGiso)
+- Kept Library filter and sort selections when returning to the screen, per profile, aligned with Android TV (@WhiteGiso)
+- Discarded stale Discover results when changing filters quickly, aligned with Android TV (@WhiteGiso)
+- Fixed audio transcoding stalls on webOS when the player requests frames beyond the buffer limit (@WhiteGiso)
+
+## 1.2.7
+
+### Improvements & Fixes
+
+- Fixed seeking and resume on Samsung Tizen AVPlay: addon redirect sources now play directly instead of through the local proxy, resume seeks wait until the player is prepared, and the seek spinner no longer gets stuck (@Riccardo1451, @WhiteGiso)
+- Made Watch Party seeks land exactly on the requested position with the webOS native file player (@WhiteGiso)
+- Kept an episode marked as watched for the rest of the playback after it completes, aligned with Android TV (@WhiteGiso)
+- Kept the player layout in place while browsing the Watch Party panel (@WhiteGiso)
+- Prevented Skip Intro from seeking past the end of the video (@WhiteGiso)
+- Added AVPlay seek and source diagnostics to Console Debug on Tizen (@Riccardo1451)
+
+## 1.2.6
+
+### Improvements & Fixes
+
+- Added Watch Party with realtime sync, QR invites, a party preview before joining, host-only control, member catch-up, shared streams and episode switching, aligned with Android TV (@WhiteGiso)
+- Added Ambient mode with idle slideshow, blocked during trailer playback and closing open dialogs when it starts (@WhiteGiso)
+- Added episode shuffle on detail and player screens with persisted history (@WhiteGiso)
+- Added MDBList account sign-in and library lists, including liked, dynamic and external lists with release-date sorting (@WhiteGiso)
+- Added custom poster configuration from the phone companion page with profile sync (@WhiteGiso)
+- Added media server watched-state import and sync, mixed movie/show libraries and server-watched notices (@WhiteGiso)
+- Improved playback with ASS subtitle placement, subtitles kept clear of player controls, a stream info overlay on the Info key, filename-based episode matching and stream link reuse (@WhiteGiso)
+- Preserved playback proxy headers across HLS/DASH redirects and child playlists on webOS (@WhiteGiso)
+- Improved Trakt and Simkl tracking with activity-gated refreshes, Continue Watching kept when progress requests fail, restored tracking sources after signing back in and tracking error messages (@WhiteGiso)
+- Kept post-play recommendations available when watched-state lookups fail (@WhiteGiso)
+- Removed settings not present on Android TV (effects mode, minimal buffering UI, webOS audio compatibility) and the built-in Cinemeta fallback manifest (@WhiteGiso)
+- Updated and refined Hungarian translations (@ToxicLand)
+
+## 1.2.5
+
+### Improvements & Fixes
+
+- Fixed duplicate webOS OK/click activation on the sign-in screen and sign-out confirmation, preventing unintended login-mode changes while preserving text input and consecutive remote actions (@nenad, @WhiteGiso)
+- Preserved active text editing when pointer hover moves across controls, keeping the TV keyboard open until an explicit click or D-pad navigation changes focus (@WhiteGiso)
+- Retained loaded Discover posters across grid and screen updates to prevent visible artwork from blanking during re-renders (@WhiteGiso)
+- Fixed Home hero logos inserted during transitions so incremental updates can correctly reuse or remove them (@WhiteGiso)
+- Preserved unset TMDB rating and vote-count filters in collections instead of converting empty values to zero (@WhiteGiso)
+- Reduced repeated stream badge settings reads during virtualized rendering and avoided unnecessary Tizen native-surface lookups on other platforms (@WhiteGiso)
+
+## 1.2.4
+
+### Improvements & Fixes
+
+- Added bounded, seek-aware DTS and TrueHD to AC-3 conversion for supported webOS Matroska playback, with fallback to the original audio track when conversion cannot proceed (@WhiteGiso)
+- Added configurable MDBList ratings to Home hero cards in Modern and Classic/Grid layouts, including provider visibility and order, certified Rotten Tomatoes states, and bounded lookups (@WhiteGiso)
+- Improved Home catalog loading with deferred-row prefetch reuse within TV budgets, more efficient retained-row updates, and refreshed rows after effects-mode changes; expanded Trakt collection artwork and metadata (@nenad, @WhiteGiso)
+- Improved profile and Home sync behavior by showing local profiles while remote lock checks resolve and applying synced catalog preferences only to installed rows (@WhiteGiso)
+- Added a persisted device-local reduced-effects override, restored automatic mode, and hid the browser control when the runtime does not support it (@perinazzoo, @WhiteGiso)
+- Improved webOS responsiveness by avoiding Home layer stalls, delaying unnecessary proxy startup, and keeping cached badge image payloads out of stream markup (@WhiteGiso)
+- Improved TV sign-in with QR-first login and a login-mode switch while preserving Android's email/password default (@nenad, @WhiteGiso)
+- Improved TV playback controls and recovery with safer webOS audio and subtitle selection, synchronized pause and buffering state, and better post-play focus and localized recommendations; native Back now dismisses post-play dialogs (@WhiteGiso)
+- Routed hidden Samsung playback through the existing player exit lifecycle for consistent cleanup and navigation (@WhiteGiso)
+- Added stream refresh and preserved D-pad focus while results reload; superseded loads no longer replace current results (@WhiteGiso)
+- Updated the loading indicator to follow the selected theme accent colors, including on legacy TV runtimes (@WhiteGiso)
+
+## 1.2.3
+
+### Improvements & Fixes
+
+- Fixed Tizen AIOStreams playback through the local proxy, including redirects, relative HLS segment and key URLs, non-default ports, declared playback headers, and upstream connection cleanup (@O1Abdulrahman, @WhiteGiso)
+- Improved discovery of late AVPlay tracks and prevented outdated audio-selection callbacks from affecting newer selections or playback sessions; retained native buffering defaults and supported audio-selection states (@O1Abdulrahman, @WhiteGiso)
+- Kept focus changes immediate for additional legacy Tizen detail and sidebar controls (@O1Abdulrahman)
+- Improved Home poster loading when catalog rows scroll and retained the four-line Modern Home synopsis limit on constrained TVs (@WhiteGiso)
+- Reduced repeated stream badge matching work while preserving filter semantics (@WhiteGiso)
+- Fixed Library updates arriving before the content mount is ready (@WhiteGiso)
+- Applied the Continue Watching recent-title limit after series deduplication and aligned marking previous episodes as watched with the current-season Android behavior (@WhiteGiso)
+- Displayed episode sources progressively while preserving source focus and ignoring results after the panel closes (@WhiteGiso)
+- Allowed slower address connection attempts for embedded subtitle range requests while preserving larger configured timeouts and older Node runtime compatibility (@WhiteGiso)
+
+## 1.2.2
+
+### Improvements & Fixes
+
+- Improved Home catalog refreshes with incremental row updates that preserve focused cards, artwork, expanded posters, trailers, and scroll position; deferred rows now appear progressively on constrained TVs too (@WhiteGiso)
+- Fixed delayed Home focus restoration overriding remote navigation, and kept catalog pagination attached to the current row state (@WhiteGiso)
+- Preserved active TV keyboard composition during search updates, cancelled superseded searches, and prevented stale results from replacing the current query (@WhiteGiso)
+- Cancelled outdated Trakt comment requests when changing titles or leaving Details, preventing comments from a previous title from appearing (@WhiteGiso)
+- Added profile-synced subtitle preferences per title, including embedded tracks, addon subtitles, and subtitles turned off; restored saved selections after track discovery and respected preferred audio-language priority (@WhiteGiso)
+- Improved post-play mini-player positioning and animation across TV playback surfaces, including Tizen viewport scaling and visibility through the recommendation background (@WhiteGiso)
+- Added a next-episode countdown toggle, preserved Home return navigation across episode transitions, and committed seek previews when releasing the remote direction key (@WhiteGiso)
+- Fixed plugin HTTP forwarding on webOS 5/6 by using the Node 8 request contract for fetch and cancellation (@WhiteGiso)
+- Improved legacy TV layout compatibility by guarding modern CSS math in custom properties and retaining supported fallback values (@WhiteGiso)
+
+## 1.2.1
+
+### Improvements & Fixes
+
+- Improved constrained-Tizen navigation with faster menu transitions, lighter D-pad handling, and bounded Home image work (@agbabaumut, @WhiteGiso)
+- Added profile-synced custom theme colors and episode-rating visibility controls, and kept poster depth inside card shapes (@WhiteGiso)
+- Improved TV browsing with a CSS Grid fallback, short-screen entity layouts, normalized Continue Watching artwork, and correct handling of unnumbered live TV in episode details (@WhiteGiso)
+- Improved webOS subtitles by restoring addon tracks after source reopening, keeping usable embedded windows active, and shipping static fonts for HTML subtitle styles (@WhiteGiso)
+- Added Tizen AVPlay subtitle callback diagnostics to the console debug screen (@WhiteGiso)
+- Fixed manual Addons refresh to reload enabled manifests and clear catalog response data so Discovery reflects the updated definitions (@agbabaumut)
+- Preferred explicit audio language codes when they conflict with track labels, including Finnish aliases and legacy labels (@agbabaumut, @WhiteGiso)
+- Refreshed Smart TV app icons (@WhiteGiso)
+
 ## 1.2.0
 
 ### Improvements & Fixes

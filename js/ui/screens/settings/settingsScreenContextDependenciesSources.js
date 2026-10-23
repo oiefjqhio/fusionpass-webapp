@@ -20,6 +20,14 @@ export { ThemeManager } from "../../theme/themeManager.js";
 
 export { ThemeColors } from "../../theme/themeColors.js";
 
+export {
+  areCustomThemeColorsSolid,
+  encodeCustomThemeColors,
+  normalizeCustomThemeColors,
+  parseCustomThemeColor,
+  resolveCustomThemeColors
+} from "../../../core/util/customThemeColors.js";
+
 export { availableThemeIds, resolveThemeName } from "../../theme/themeAccess.js";
 
 export { renderMemberBrandWordmark } from "../../components/memberBrandWordmark.js";
@@ -41,8 +49,6 @@ export {
 } from "../../../core/player/subtitleTextOpacity.js";
 
 export { TorrentSettingsStore } from "../../../data/local/torrentSettingsStore.js";
-
-export { WebOsAudioCompatibilityStore } from "../../../data/local/webOsAudioCompatibilityStore.js";
 
 export { LayoutPreferences } from "../../../data/local/layoutPreferences.js";
 

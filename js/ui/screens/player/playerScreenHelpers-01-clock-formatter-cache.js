@@ -76,8 +76,6 @@ import { StreamBadgeSettingsStore } from "../../../data/local/streamBadgeSetting
 
 import { TorrentSettingsStore } from "../../../data/local/torrentSettingsStore.js";
 
-import { WebOsAudioCompatibilityStore } from "../../../data/local/webOsAudioCompatibilityStore.js";
-
 import { matchStreamBadges } from "../../../core/streams/streamBadgeRules.js";
 
 import { hasReleaseToken } from "../../../core/streams/releaseToken.js";
@@ -425,6 +423,7 @@ export const AUDIO_TRACK_LANGUAGE_KEY_BY_CODE = {
   de: "common.german",
   en: "common.english",
   es: "common.spanish",
+  fi: "common.finnish",
   fr: "common.french",
   hi: "common.hindi",
   hu: "common.hungarian",

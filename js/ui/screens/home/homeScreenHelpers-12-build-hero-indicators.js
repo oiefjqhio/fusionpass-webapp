@@ -1,3 +1,4 @@
+import { customPosterForItem, posterFallbackAttributes } from "../../../core/poster/customPoster.js";
 /* eslint-disable no-unused-vars */
 import { Router } from "../../navigation/routerState.js";
 
@@ -194,6 +195,7 @@ import { normalizeCatalogItem } from "./homeScreenHelpers-08-partition-continue-
 import { normalizeContinueWatchingItem } from "./homeScreenHelpers-09-normalize-continue-watching-item.js";
 import { isSeriesTypeForContinueWatching } from "./homeScreenHelpers-06-resolve-trailer-source.js";
 import { buildLazyImageAttributes } from "./homeScreenHelpers-14-get-home-grid-column-count.js";
+import { normalizeTmdbBackdropUrl, normalizeTmdbPosterUrl } from "../../../core/tmdb/tmdbImageUrl.js";
 
 export function buildHeroIndicators(items = [], activeItem) {
   if (!Array.isArray(items) || items.length <= 1) {
@@ -238,6 +240,7 @@ export function renderHeroMarkup(layoutMode, heroItem, heroCandidates) {
           <div class="home-hero-meta-primary${display.metaPrimary.length ? "" : " is-empty"}">${renderMetaTokens(display.metaPrimary)}</div>
           <div class="home-hero-chip-row${display.chips.length ? "" : " is-empty"}">${display.chips.map((chip) => `<span class="home-hero-chip">${escapeHtml(chip)}</span>`).join("")}</div>
           <div class="home-hero-meta-secondary${display.metaSecondary.length ? "" : " is-empty"}">${renderMetaTokens(display.metaSecondary)}</div>
+          <div class="home-hero-mdb-ratings${display.mdbListMarkup ? "" : " is-empty"}">${display.mdbListMarkup || ""}</div>
           <p class="home-hero-description">${escapeHtml(display.description)}</p>
         </div>
         <div class="home-hero-indicators">${buildHeroIndicators(heroCandidates, heroItem)}</div>
@@ -277,11 +280,15 @@ export function resolveContinueWatchingBlurNextUp(layoutPrefs) {
 }
 
 export function renderContinueWatchingCard(item, index, options = {}) {
-  const normalized = normalizeContinueWatchingItem(item);
+  const originalItem = normalizeContinueWatchingItem(item);
+  const normalized = customPosterForItem(originalItem, "continue_watching");
   const subtitle = normalized.episodeTitle || "";
   const isNextUp = Boolean(normalized?.isNextUp);
   const hasAired = normalized?.hasAired !== false;
-  const cardStyle = options?.cardStyle;
+  const requestedCardStyle = String(options?.cardStyle || "card")
+    .trim()
+    .toLowerCase();
+  const cardStyle = ["card", "wide", "poster"].includes(requestedCardStyle) ? requestedCardStyle : "card";
   const useEpisodeThumbnails = continueWatchingUsesEpisodeThumbnails(cardStyle, options?.useEpisodeThumbnails);
   const blurNextUp = Boolean(options?.blurNextUp && isNextUp && useEpisodeThumbnails);
   const rowKey = String(options?.rowKey || "continue_watching").trim() || "continue_watching";
@@ -300,7 +307,26 @@ export function renderContinueWatchingCard(item, index, options = {}) {
       hasAired
     }
   );
-  const uniqueCardImageSources = uniqueNonEmptyValues(cardImageSources);
+  const originalCardImages =
+    normalized === originalItem
+      ? []
+      : continueWatchingImageSources(
+          {
+            poster: originalItem.poster,
+            backdrop: originalItem.backdrop,
+            thumbnail: originalItem.thumbnail,
+            episodeThumbnail: originalItem.episodeThumbnail
+          },
+          {
+            cardStyle,
+            useEpisodeThumbnails: options?.useEpisodeThumbnails,
+            isSeries: isSeriesTypeForContinueWatching(normalized.type),
+            isNextUp,
+            hasAired
+          }
+        );
+  const normalizeCardImageUrl = cardStyle === "card" ? normalizeTmdbBackdropUrl : normalizeTmdbPosterUrl;
+  const uniqueCardImageSources = uniqueNonEmptyValues(cardImageSources.map((source) => normalizeCardImageUrl(source)));
   const cardImage = uniqueCardImageSources[0] || "";
   const fallbackQueue = encodeHeroBackdropFallbacks(uniqueCardImageSources.slice(1));
   const deferContinueImage = getTvRuntimePerformanceProfile().isPerformanceConstrained;
@@ -321,7 +347,7 @@ export function renderContinueWatchingCard(item, index, options = {}) {
              data-item-type="${escapeAttribute(normalized.type || "movie")}"
              data-item-title="${escapeAttribute(normalized.title || "Untitled")}">
       <div class="home-continue-media">
-        ${cardImage ? `<img class="home-continue-bg" ${continueImageAttrs}${fallbackQueue ? ` data-fallback-srcs="${escapeAttribute(fallbackQueue)}"` : ""} alt="" aria-hidden="true" decoding="async" onerror="${buildImageFallbackErrorHandler()}" />` : ""}
+        ${cardImage ? `<img class="home-continue-bg"${posterFallbackAttributes({ rawPosterUrl: originalCardImages[0] })} ${continueImageAttrs}${fallbackQueue ? ` data-fallback-srcs="${escapeAttribute(fallbackQueue)}"` : ""} alt="" aria-hidden="true" decoding="async" onerror="${buildImageFallbackErrorHandler()}" />` : ""}
         <span class="home-continue-badge">${escapeHtml(normalized.progressStatus || t("home.continueStatusContinue", {}, "Continue"))}</span>
         <div class="home-continue-copy">
           ${normalized.episodeCode ? `<div class="home-continue-kicker">${escapeHtml(normalized.episodeCode)}</div>` : ""}

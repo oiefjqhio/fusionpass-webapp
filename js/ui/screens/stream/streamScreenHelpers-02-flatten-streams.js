@@ -1,3 +1,4 @@
+import { canResolveMediaServerStream } from "../../../data/mediaserver/mediaServerRepository.js";
 import { Router } from "../../navigation/routerState.js";
 
 import { ScreenUtils } from "../../navigation/screen.js";
@@ -149,6 +150,7 @@ export function flattenStreams(streamResult) {
         raw: stream
       };
       if (
+        canResolveMediaServerStream(entry) ||
         DirectDebridResolver.shouldListStream(entry) ||
         WebOsEngineFsResolver.canResolveStream(entry) ||
         TizenStreamingServerResolver.canResolveStream(entry)
@@ -282,6 +284,5 @@ export function getStreamDescriptionLines(stream = {}) {
   return displayDescription
     .split(/\r?\n/)
     .map((line) => line.trim())
-    .filter(Boolean)
-    .slice(0, 12);
+    .filter(Boolean);
 }

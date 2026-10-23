@@ -6,12 +6,12 @@ import path from 'node:path';
 const here = path.dirname(new URL(import.meta.url).pathname);
 const exe = process.env.CHROME || fs.readdirSync(`${process.env.HOME}/.cache/ms-playwright`).filter((d) => d.startsWith('chromium-')).map((d) => `${process.env.HOME}/.cache/ms-playwright/${d}/chrome-linux64/chrome`)[0];
 const jobs = [
-  ...[['mdpi', 48], ['hdpi', 72], ['xhdpi', 96], ['xxhdpi', 144], ['xxxhdpi', 192]].map(([d, s]) => [`ic_launcher-${d}.png`, 'icon', s, s]),
-  ['banner-xhdpi.png', 'banner', 320, 180],
-  ['tv_banner.png', 'banner', 1280, 720],
+  ['app_icon.png', 'icon', 192, 192],
+  ['app_icon_512.png', 'icon', 512, 512],
+  ['app_icon_maskable_196.png', 'maskable', 196, 196],
+  ['app_icon_maskable_512.png', 'maskable', 512, 512],
   ['app_logo_mark.png', 'mark', 1080, 1080],
   ['app_logo_wordmark.png', 'wordmark', 1085, 344],
-  ['brand_text.png', 'text', 1000, 230],
 ];
 const b = await chromium.launch({ executablePath: exe, args: ['--no-sandbox', '--allow-file-access-from-files'] });
 fs.mkdirSync(`${here}/out`, { recursive: true });

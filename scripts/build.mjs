@@ -11,6 +11,7 @@ import { readAppMetadata, syncVersionFiles } from "./appMetadata.mjs";
 import { compatibilityPolicy } from "./compatibilityPolicy.mjs";
 import { writeRuntimeEnvScriptFile } from "./envProperties.mjs";
 import { buildI18nBundles } from "./buildI18nBundles.mjs";
+import { assSubtitleRuntimeSource } from "./assSubtitleRuntime.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -245,13 +246,35 @@ function insertInsetFallbacks(decl) {
 }
 
 function legacyDeclarationFallbackPlugin() {
+  const guardedDeclarations = new WeakSet();
+  const lastGuardByRule = new WeakMap();
   return {
     postcssPlugin: "nuvio-legacy-declaration-fallbacks",
     Declaration(decl) {
+      if (guardedDeclarations.has(decl)) return;
       insertInsetFallbacks(decl);
 
       const legacyValue = toLegacyColorValue(toLegacyLengthValue(decl.value));
       if (legacyValue && legacyValue !== decl.value) {
+        // Custom properties accept unsupported math as tokens. A later var()
+        // substitution then invalidates the consuming property, so duplicate
+        // declarations alone cannot provide a legacy fallback.
+        if (decl.prop.startsWith("--") && /\b(min|max|clamp)\(/.test(decl.value)) {
+          const modernDecl = decl.clone();
+          guardedDeclarations.add(modernDecl);
+          const modernRule = decl.parent.clone({ nodes: [modernDecl] });
+          const guard = postcss.atRule({
+            name: "supports",
+            params:
+              "(width: min(1px, 2px)) and (width: max(1px, 2px)) and (width: clamp(1px, 2px, 3px))"
+          });
+          guard.append(modernRule);
+          const previousGuard = lastGuardByRule.get(decl.parent);
+          (previousGuard || decl.parent).after(guard);
+          lastGuardByRule.set(decl.parent, guard);
+          decl.value = legacyValue;
+          return;
+        }
         const previous = decl.prev();
         if (
           !previous ||
@@ -519,7 +542,13 @@ async function buildCoreJsBundle() {
 
 async function buildAssSubtitleLibrary() {
   await build({
-    entryPoints: [path.join(rootDir, "node_modules", "assjs", "dist", "ass.global.min.js")],
+    stdin: {
+      contents: await assSubtitleRuntimeSource(rootDir),
+      resolveDir: rootDir,
+      sourcefile: "ass-runtime.js"
+    },
+    bundle: true,
+    format: "iife",
     outfile: path.join(distDir, "assets", "libs", "ass.min.js"),
     minify: !debugBundle,
     target: [`chrome${compatibilityPolicy.chromiumVersion}`],

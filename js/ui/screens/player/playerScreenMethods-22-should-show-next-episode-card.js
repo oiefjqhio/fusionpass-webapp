@@ -8,7 +8,6 @@ export function createPlayerScreenMethods22() {
     PlayerSettingsStore,
     Router,
     shouldShowNextEpisodeCardRule,
-    NEXT_EPISODE_PREFETCH_PERCENT,
     normalizeItemType,
     isSeriesItemType
   } = internals;
@@ -107,7 +106,12 @@ export function createPlayerScreenMethods22() {
       if (!this.isNaturalPlaybackCompletionEligible(durationSeconds)) {
         return false;
       }
-      return currentSeconds / durationSeconds >= NEXT_EPISODE_PREFETCH_PERCENT;
+      const settings = PlayerSettingsStore.get();
+      const leadSeconds = Math.min(30, Math.max(10, Number(settings.streamAutoPlayTimeoutSeconds) || 0));
+      return (
+        this.getNextEpisodeCardThresholdReached(currentSeconds + leadSeconds, durationSeconds) ||
+        durationSeconds - currentSeconds <= leadSeconds
+      );
     },
     getStreamCacheKey(videoId, itemType, season = null, episode = null) {
       const normalizedVideoId = String(videoId || "").trim();

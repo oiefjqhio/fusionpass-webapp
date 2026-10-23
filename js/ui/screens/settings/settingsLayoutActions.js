@@ -21,7 +21,6 @@ export function registerLayoutActions(model) {
   this.actionMap.set("layout:toggle:cardAppearance", () => {
     this.toggleExpandedSection("layout", "cardAppearance");
   });
-
   HOME_LAYOUT_OPTIONS.forEach((option) => {
     this.actionMap.set(`layout:layout:${option.id}`, () => {
       LayoutPreferences.set({ homeLayout: option.id });
@@ -259,9 +258,32 @@ export function registerLayoutActions(model) {
       detailPageTrailerButtonEnabled: !LayoutPreferences.get().detailPageTrailerButtonEnabled
     });
   });
+  this.actionMap.set("layout:detail:shuffle", () =>
+    LayoutPreferences.set({ randomEpisodeEnabled: !LayoutPreferences.get().randomEpisodeEnabled })
+  );
   this.actionMap.set("layout:detail:blurUnwatched", () => {
     LayoutPreferences.set({
       blurUnwatchedEpisodes: !LayoutPreferences.get().blurUnwatchedEpisodes
+    });
+  });
+  this.actionMap.set("layout:detail:episodeRatings", () => {
+    const options = [
+      { id: "SHOW_ALL", labelKey: "layout_ratings_show", label: "Show" },
+      { id: "HIDE_EPISODES", labelKey: "layout_ratings_hide", label: "Hide" },
+      {
+        id: "HIDE_UNWATCHED_EPISODES",
+        labelKey: "layout_ratings_hide_unwatched",
+        label: "Hide Unwatched"
+      }
+    ];
+    this.openOptionDialog({
+      title: t("layout_episode_ratings", {}, "Episode Ratings"),
+      options,
+      selectedId: LayoutPreferences.get().detailImdbRatingsVisibility,
+      returnFocusKey: "layout:detail:episodeRatings",
+      onSelect: (option) => {
+        LayoutPreferences.set({ detailImdbRatingsVisibility: String(option.id || "SHOW_ALL") });
+      }
     });
   });
 }

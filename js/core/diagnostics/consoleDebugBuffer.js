@@ -9,6 +9,7 @@ let nextEventId = 1;
 let installed = false;
 let originalWarn = null;
 let originalError = null;
+let originalInfo = null;
 
 function truncate(value, maxLength) {
   const text = String(value ?? "");
@@ -116,6 +117,7 @@ export function installConsoleDebugBuffer() {
   installed = true;
   originalWarn = typeof consoleRef.warn === "function" ? consoleRef.warn : function () {};
   originalError = typeof consoleRef.error === "function" ? consoleRef.error : function () {};
+  originalInfo = typeof consoleRef.info === "function" ? consoleRef.info : function () {};
 
   consoleRef.warn = function (...args) {
     captureConsoleEvent("warn", args);
@@ -125,6 +127,23 @@ export function installConsoleDebugBuffer() {
   consoleRef.error = function (...args) {
     captureConsoleEvent("error", args);
     return originalError.apply(this, args);
+  };
+
+  consoleRef.info = function (...args) {
+    // The Tizen diagnostics toggle also covers AVPlay seek and source
+    // diagnostics, so capture those families. Buffering-progress lines stay
+    // out: they are emitted per percent and would push the useful events out
+    // of the buffer.
+    const isTizenAvPlayDiagnostic =
+      globalThis.__NUVIO_DEBUG_TIZEN_AVPLAY__ === true &&
+      typeof args[0] === "string" &&
+      (args[0].startsWith("Tizen AVPlay subtitle") ||
+        args[0].startsWith("Tizen AVPlay seek") ||
+        args[0].startsWith("Tizen AVPlay source"));
+    if (isTizenAvPlayDiagnostic) {
+      captureConsoleEvent("info", args);
+    }
+    return originalInfo.apply(this, args);
   };
 }
 
