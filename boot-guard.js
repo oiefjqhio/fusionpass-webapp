@@ -799,8 +799,16 @@
   window.NuvioBootGuard = guard;
 
   var previousOnError = window.onerror;
+  // Safari reports errors from cross-origin or injected scripts (content blockers, translation,
+  // extensions, a CDN fallback) as a bare "Script error." with no file and no error object. Our own
+  // startup files are same-origin and always report details, so such an error never means the app
+  // failed to start: don't cover a working app with the failure screen for it.
+  function isOpaqueForeignError(message, source, error) {
+    return !error && !source && /^script error\.?$/i.test(String(message || "").trim());
+  }
+
   window.onerror = function onBootError(message, source, line, column, error) {
-    if (active) {
+    if (active && !isOpaqueForeignError(message, source, error)) {
       showError(
         "Something went wrong while the application was starting.",
         formatRuntimeError(message, source, line, column, error),
